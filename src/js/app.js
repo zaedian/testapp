@@ -17,8 +17,24 @@ class ExamApp {
     }
 
     async loadQuestionsAndShowMenu() {
+        // Show loading screen
+        const loadingScreen = document.getElementById("loading-screen");
+        const appContainer = document.querySelector(".app-container");
+        
+        if (loadingScreen && appContainer) {
+            loadingScreen.classList.remove("hidden");
+            appContainer.style.visibility = "hidden";
+        }
+        
         this.questions = await loadQuestions();
         this.state = new ExamState(this.questions);
+        
+        // Hide loading screen and show app
+        if (loadingScreen && appContainer) {
+            loadingScreen.classList.add("hidden");
+            appContainer.style.visibility = "visible";
+        }
+        
         this.showMainMenu();
     }
 
@@ -28,6 +44,15 @@ class ExamApp {
         this.currentLang = savedLang;
         this.ui.setLanguage(this.currentLang);
         this.ui.updateUIText(translations[this.currentLang]);
+        
+        // Update loading screen text
+        const loadingScreen = document.getElementById("loading-screen");
+        if (loadingScreen) {
+            const titleEl = loadingScreen.querySelector("h2");
+            const subtitleEl = loadingScreen.querySelector("p");
+            if (titleEl) titleEl.textContent = translations[this.currentLang].loading.title;
+            if (subtitleEl) subtitleEl.textContent = translations[this.currentLang].loading.subtitle;
+        }
     }
 
     initTheme() {

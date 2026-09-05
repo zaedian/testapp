@@ -1,10 +1,13 @@
 export const translations = {
   nl: {
+    loading: {
+      title: "Examen Laden...",
+      subtitle: "Even geduld a.u.b."
+    },
     header: {
       title: "CBR Rijtheorie Oefenen (Categorie B)",
-      subtitle: "Officieel Nederlandse Verkeersregels & Gevaarherkenning"
+      subtitle: "Officiële Nederlandse Verkeersregels & Gevaarherkenning Training"
     },
-    loading: "Vragen laden...",
     menu: {
       title: "Klaar om je Nederlandse verkeerskennis te testen?",
       description: "Dit oefenexamen simuleert de officiële CBR theorie-test structuur. Je moet aan de slagingscriteria in alle drie categorieën voldoen om in totaal te slagen.",
@@ -73,11 +76,14 @@ export const translations = {
     }
   },
   en: {
+    loading: {
+      title: "Loading Exam...",
+      subtitle: "Please wait a moment"
+    },
     header: {
       title: "CBR Driving Theory Practice (Category B)",
       subtitle: "Official Netherlands Traffic Rules & Hazard Training"
     },
-    loading: "Loading questions...",
     menu: {
       title: "Ready to test your Dutch traffic knowledge?",
       description: "This practice exam simulates the official CBR theory test structure. You must satisfy the passing criteria in all three categories to pass overall.",
