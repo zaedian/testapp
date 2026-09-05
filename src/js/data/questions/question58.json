@@ -1,0 +1,21 @@
+{
+  "category": "Inzicht",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Rijden in de winter.",
+    "en": "Driving in winter."
+  },
+  "question": {
+    "nl": "Wat moet je doen als je op een besneeuwde weg rijdt en je begint te slippen?",
+    "en": "What should you do if you are driving on a snowy road and start to skid?"
+  },
+  "options": {
+    "nl": ["Niet remmen, stuur in de richting van de slip", "Hard remmen", "Snel sturen in de tegenovergestelde richting"],
+    "en": ["Do not brake, steer in the direction of the skid", "Brake hard", "Steer quickly in the opposite direction"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Bij slippen moet je niet remmen en sturen in de richting van de slip om de controle over het voertuig te herwinnen.",
+    "en": "When skidding, do not brake and steer in the direction of the skid to regain control of the vehicle."
+  }
+}

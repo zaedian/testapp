@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Voorrang op kruispunten zonder verkeersborden.",
+    "en": "Right of way at intersections without traffic signs."
+  },
+  "question": {
+    "nl": "Welke regel geldt voor voorrang op een kruispunt zonder verkeersborden of verkeerslichten?",
+    "en": "Which rule applies for right of way at an intersection without traffic signs or traffic lights?"
+  },
+  "options": {
+    "nl": ["Voorrang van rechts", "Voorrang voor wie rechtdoor rijdt", "Voorrang voor wie uit de grootste weg komt"],
+    "en": ["Right from right", "Right of way for those going straight", "Right of way for those coming from the largest road"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Op kruispunten zonder verkeersregeling geldt de regel 'voorrang van rechts'. Het voertuig dat van rechts komt heeft voorrang.",
+    "en": "At intersections without traffic regulation, the 'right from right' rule applies. The vehicle coming from the right has right of way."
+  }
+}

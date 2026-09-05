@@ -1,0 +1,21 @@
+{
+  "category": "Inzicht",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Tram op kruispunt.",
+    "en": "Tram at intersection."
+  },
+  "question": {
+    "nl": "Wie heeft voorrang als een tram een kruispunt nadert?",
+    "en": "Who has right of way when a tram approaches an intersection?"
+  },
+  "options": {
+    "nl": ["De tram heeft voorrang", "Het overige verkeer heeft voorrang", "Voorrang van rechts geldt"],
+    "en": ["The tram has right of way", "Other traffic has right of way", "Right from right applies"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Trams hebben altijd voorrang op andere verkeersdeelnemers op kruispunten, tenzij anders aangegeven met verkeerslichten.",
+    "en": "Trams always have right of way over other road users at intersections, unless otherwise indicated by traffic lights."
+  }
+}

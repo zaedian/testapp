@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Zebrapad regels.",
+    "en": "Zebra crossing rules."
+  },
+  "question": {
+    "nl": "Wat moet je doen als een voetganger op een zebrapad staat en wil oversteken?",
+    "en": "What must you do if a pedestrian is standing on a zebra crossing and wants to cross?"
+  },
+  "options": {
+    "nl": ["Stoppen en voorrang verlenen", "Langsrijden als er genoeg ruimte is", "Toeteren om de voetganger te waarschuwen"],
+    "en": ["Stop and give way", "Drive past if there is enough space", "Honk to warn the pedestrian"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Je moet stoppen en voorrang verlenen aan voetgangers op een zebrapad die willen oversteken.",
+    "en": "You must stop and give way to pedestrians on a zebra crossing who want to cross."
+  }
+}

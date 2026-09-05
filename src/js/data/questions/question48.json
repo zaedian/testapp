@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "APK (Algemene Periodieke Keuring).",
+    "en": "APK (General Periodic Inspection)."
+  },
+  "question": {
+    "nl": "Hoe vaak moet een personenauto APK gekeurd worden?",
+    "en": "How often must a passenger car undergo APK inspection?"
+  },
+  "options": {
+    "nl": ["Elk jaar na 4 jaar oud", "Elk 2 jaar", "Elke 3 jaar"],
+    "en": ["Every year after 4 years old", "Every 2 years", "Every 3 years"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Een personenauto moet elk jaar APK gekeurd worden na de eerste 4 jaar. De eerste APK is na 4 jaar, daarna elk jaar.",
+    "en": "A passenger car must undergo APK inspection every year after the first 4 years. The first inspection is at 4 years, then annually."
+  }
+}

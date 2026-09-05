@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Erf (woonerf).",
+    "en": "Erf (home zone)."
+  },
+  "question": {
+    "nl": "Wat is de maximumsnelheid op een erf?",
+    "en": "What is the maximum speed on an erf (home zone)?"
+  },
+  "options": {
+    "nl": ["15 km/h", "30 km/h", "50 km/h"],
+    "en": ["15 km/h", "30 km/h", "50 km/h"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Op een erf (woonerf) is de maximumsnelheid 15 km/h. Voetgangers hebben voorrang en spelen kinderen vaak op de weg.",
+    "en": "On an erf (home zone), the maximum speed is 15 km/h. Pedestrians have right of way and children often play on the road."
+  }
+}

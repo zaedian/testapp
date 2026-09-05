@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Verkeerslichten.",
+    "en": "Traffic lights."
+  },
+  "question": {
+    "nl": "Wat betekent een oranje verkeerslicht?",
+    "en": "What does an amber traffic light mean?"
+  },
+  "options": {
+    "nl": ["Stop, tenzij je al zo dicht bij bent dat stoppen gevaarlijk veroorzaakt", "Versnel om door het licht te komen", "Stop altijd, ongeacht de afstand"],
+    "en": ["Stop, unless you are already so close that stopping would be dangerous", "Accelerate to make it through the light", "Always stop, regardless of distance"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Oranje betekent stop, maar als je al zo dicht bij de stoplijn bent dat een noodstop gevaarlijk zou zijn, mag je doorrijden.",
+    "en": "Amber means stop, but if you are already so close to the stop line that an emergency stop would be dangerous, you may continue."
+  }
+}

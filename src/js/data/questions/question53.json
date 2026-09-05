@@ -1,0 +1,21 @@
+{
+  "category": "Inzicht",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Verkeersborden begrijpen.",
+    "en": "Understanding traffic signs."
+  },
+  "question": {
+    "nl": "Wat betekent een rood cirkelvormig bord met een witte streep erdoor?",
+    "en": "What does a red circular sign with a white line through it mean?"
+  },
+  "options": {
+    "nl": ["Verbod om in te rijden", "Maximumsnelheid", "Einde van een verbod"],
+    "en": ["No entry", "Speed limit", "End of prohibition"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Een rood cirkelvormig bord met een witte streep erdoor betekent 'verbod om in te rijden' (no entry).",
+    "en": "A red circular sign with a white line through it means 'no entry'."
+  }
+}

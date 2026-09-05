@@ -26,6 +26,10 @@ export class UIRenderer {
         this.langIcon = document.getElementById("lang-icon");
         this.langText = document.getElementById("lang-text");
 
+        this.answersContainer = document.getElementById("answers-container");
+        this.toggleAnswersBtn = document.getElementById("toggle-answers-btn");
+        this.showAllAnswers = false;
+
         this.currentLang = "nl";
     }
 
@@ -190,12 +194,23 @@ export class UIRenderer {
         this.nextBtn.disabled = false;
     }
 
-    renderResults({ breakdown, overallPassed }) {
+    renderResults({ breakdown, overallPassed, questionResults }) {
         this.progressBar.style.width = "100%";
         
-        const fragment = document.createDocumentFragment();
         const lang = this.currentLang;
+        const totalQuestions = questionResults.length;
+        const correctCount = questionResults.filter(r => r.isCorrect).length;
+        const incorrectCount = totalQuestions - correctCount;
+        const passRate = totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0;
 
+        // Update overall statistics
+        document.getElementById("stat-total").textContent = totalQuestions;
+        document.getElementById("stat-correct").textContent = correctCount;
+        document.getElementById("stat-incorrect").textContent = incorrectCount;
+        document.getElementById("stat-rate").textContent = `${passRate}%`;
+
+        // Render category breakdown
+        const fragment = document.createDocumentFragment();
         for (const [cat, data] of Object.entries(breakdown)) {
             const categoryPassed = data.correct >= data.passLimit;
             const row = document.createElement("tr");
@@ -215,10 +230,98 @@ export class UIRenderer {
 
         this.breakdownBody.replaceChildren(fragment);
 
+        // Update status badge
         const isPassed = Boolean(overallPassed);
         const passedText = lang === "nl" ? "GESLAAGD" : "PASSED";
         const failedText = lang === "nl" ? "GEZAKT" : "FAILED";
         this.statusBadge.textContent = isPassed ? passedText : failedText;
         this.statusBadge.className = `status-badge ${isPassed ? 'pass' : 'fail'}`;
+
+        // Reset toggle state
+        this.showAllAnswers = false;
+        this.toggleAnswersBtn.textContent = lang === "nl" ? "Toon Alle Antwoorden" : "Show All Answers";
+        this.toggleAnswersBtn.onclick = () => this.toggleAnswerView(questionResults);
+
+        // Render detailed question analysis
+        this.renderAnswerCards(questionResults, false);
+    }
+
+    toggleAnswerView(questionResults) {
+        this.showAllAnswers = !this.showAllAnswers;
+        const lang = this.currentLang;
+        
+        this.toggleAnswersBtn.textContent = this.showAllAnswers 
+            ? (lang === "nl" ? "Toon Alleen Foute Antwoorden" : "Show Wrong Answers Only")
+            : (lang === "nl" ? "Toon Alle Antwoorden" : "Show All Answers");
+        
+        this.renderAnswerCards(questionResults, this.showAllAnswers);
+    }
+
+    renderAnswerCards(questionResults, showAll) {
+        const lang = this.currentLang;
+        const noWrongAnswersDiv = document.getElementById("no-wrong-answers");
+        
+        const answersToShow = showAll ? questionResults : questionResults.filter(r => !r.isCorrect);
+        
+        if (answersToShow.length === 0 && !showAll) {
+            this.answersContainer.style.display = "none";
+            noWrongAnswersDiv.style.display = "block";
+            this.toggleAnswersBtn.style.display = "none";
+        } else {
+            this.answersContainer.style.display = "flex";
+            noWrongAnswersDiv.style.display = "none";
+            this.toggleAnswersBtn.style.display = "block";
+            
+            const fragment = document.createDocumentFragment();
+            answersToShow.forEach((result, index) => {
+                const questionCard = document.createElement("div");
+                questionCard.className = result.isCorrect ? "answer-card correct" : "answer-card wrong";
+                
+                const questionText = typeof result.question.question === 'object' 
+                    ? result.question.question[lang] 
+                    : result.question.question;
+                const options = typeof result.question.options === 'object' 
+                    ? result.question.options[lang] 
+                    : result.question.options;
+                const explanation = typeof result.question.explanation === 'object' 
+                    ? result.question.explanation[lang] 
+                    : result.question.explanation;
+                
+                const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
+                const userAnswerLetter = result.userAnswer !== -1 ? letters[result.userAnswer] : '-';
+                const correctAnswerLetter = letters[result.correctAnswer];
+                const userAnswerText = result.userAnswer !== -1 ? options[result.userAnswer] : '-';
+                const correctAnswerText = options[result.correctAnswer];
+
+                questionCard.innerHTML = `
+                    <div class="answer-card-header">
+                        <span class="question-number">${lang === "nl" ? "Vraag" : "Question"} ${result.questionIndex + 1}</span>
+                        <span class="category-badge">${result.category}</span>
+                        <span class="status-badge-small ${result.isCorrect ? 'correct' : 'wrong'}">
+                            ${result.isCorrect ? (lang === "nl" ? "Juist" : "Correct") : (lang === "nl" ? "Fout" : "Incorrect")}
+                        </span>
+                    </div>
+                    <div class="answer-card-question">${questionText}</div>
+                    <div class="answer-card-details">
+                        <div class="answer-row ${result.isCorrect ? 'correct' : 'wrong'}">
+                            <span class="answer-label">${lang === "nl" ? "Jouw Antwoord:" : "Your Answer:"}</span>
+                            <span class="answer-value">${userAnswerLetter}. ${userAnswerText}</span>
+                        </div>
+                        <div class="answer-row correct">
+                            <span class="answer-label">${lang === "nl" ? "Juiste Antwoord:" : "Correct Answer:"}</span>
+                            <span class="answer-value">${correctAnswerLetter}. ${correctAnswerText}</span>
+                        </div>
+                    </div>
+                    <div class="answer-card-explanation">
+                        <strong>${lang === "nl" ? "Uitleg:" : "Explanation:"}</strong>
+                        <span>${explanation}</span>
+                    </div>
+                `;
+                
+                fragment.appendChild(questionCard);
+            });
+            
+            this.answersContainer.replaceChildren(fragment);
+        }
     }
 }

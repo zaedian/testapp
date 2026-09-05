@@ -70,6 +70,11 @@ class ExamApp {
             checkbox.addEventListener("change", () => this.updateStartButtonState());
         });
         
+        // Question order radio buttons
+        document.querySelectorAll("input[name='question-order']").forEach(radio => {
+            radio.addEventListener("change", (e) => this.handleQuestionOrderChange(e.target.value));
+        });
+        
         // Mode selection buttons - only highlight, don't start
         document.querySelectorAll(".btn-mode").forEach(btn => {
             btn.addEventListener("click", (e) => {
@@ -128,13 +133,69 @@ class ExamApp {
         return selectedModules;
     }
 
+    getQuestionOrder() {
+        const selectedOrder = document.querySelector("input[name='question-order']:checked");
+        return selectedOrder ? selectedOrder.value : 'random';
+    }
+
+    handleQuestionOrderChange(order) {
+        if (order === 'sequential') {
+            // Set time limit to 30 for sequential mode
+            document.getElementById("time-limit-override").value = "30";
+            document.getElementById("time-limit-override").disabled = true;
+            
+            // Set question count to total available (60)
+            document.getElementById("custom-question-count").value = "60";
+            document.getElementById("custom-question-count").disabled = true;
+            this.selectedQuestionCount = 60;
+            
+            // Clear mode button selection and disable them
+            document.querySelectorAll(".btn-mode").forEach(btn => {
+                btn.classList.remove("active");
+                btn.disabled = true;
+            });
+            
+            // Disable module checkboxes
+            document.querySelectorAll(".module-checkboxes input[type='checkbox']").forEach(checkbox => {
+                checkbox.disabled = true;
+            });
+        } else {
+            // Clear custom settings when switching back to random
+            document.getElementById("time-limit-override").value = "";
+            document.getElementById("time-limit-override").disabled = false;
+            document.getElementById("custom-question-count").value = "";
+            document.getElementById("custom-question-count").disabled = false;
+            this.selectedQuestionCount = null;
+            
+            // Enable mode buttons
+            document.querySelectorAll(".btn-mode").forEach(btn => {
+                btn.disabled = false;
+            });
+            
+            // Enable module checkboxes
+            document.querySelectorAll(".module-checkboxes input[type='checkbox']").forEach(checkbox => {
+                checkbox.disabled = false;
+            });
+        }
+        
+        this.updateStartButtonState();
+    }
+
     updateStartButtonState() {
         const customCount = document.getElementById("custom-question-count").value;
         const hasQuestionCount = customCount || this.selectedQuestionCount;
         const selectedModules = this.getSelectedModules();
         const hasSelectedModules = selectedModules.length > 0;
         
-        document.getElementById("start-btn").disabled = !(hasQuestionCount && hasSelectedModules);
+        // Additional validation for sequential mode - always allow start since it's auto-configured
+        const questionOrder = this.getQuestionOrder();
+        const isSequential = questionOrder === 'sequential';
+        
+        if (isSequential) {
+            document.getElementById("start-btn").disabled = false;
+        } else {
+            document.getElementById("start-btn").disabled = !(hasQuestionCount && hasSelectedModules);
+        }
     }
 
     showMainMenu() {
@@ -146,15 +207,22 @@ class ExamApp {
         this.customTimeLimit = null;
         document.querySelectorAll(".btn-mode").forEach(btn => {
             btn.classList.remove("active");
+            btn.disabled = false;
         });
         document.getElementById("start-btn").disabled = true;
         document.getElementById("time-limit-override").value = "";
+        document.getElementById("time-limit-override").disabled = false;
         document.getElementById("custom-question-count").value = "";
+        document.getElementById("custom-question-count").disabled = false;
         
-        // Reset module selection checkboxes to all checked
+        // Reset module selection checkboxes to all checked and enabled
         document.querySelectorAll(".module-checkboxes input[type='checkbox']").forEach(checkbox => {
             checkbox.checked = true;
+            checkbox.disabled = false;
         });
+        
+        // Reset question order to random (default)
+        document.querySelector("input[name='question-order'][value='random']").checked = true;
     }
 
     startExam(questionCount = 15) {
@@ -168,7 +236,11 @@ class ExamApp {
         // Get selected modules
         const selectedModules = this.getSelectedModules();
         
-        this.state.reset(questionCount, selectedModules);
+        // Get question order preference
+        const questionOrder = this.getQuestionOrder();
+        const randomOrder = questionOrder === 'random';
+        
+        this.state.reset(questionCount, selectedModules, randomOrder);
         this.ui.showView("quiz");
         this.loadCurrentQuestion();
     }
@@ -216,6 +288,7 @@ class ExamApp {
         this.timer.stop();
         this.ui.showView("results");
         const resultsData = this.state.calculateResults();
+        resultsData.questionResults = this.state.questionResults;
         this.ui.renderResults(resultsData);
     }
 }

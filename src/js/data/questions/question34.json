@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Alcohol en rijden.",
+    "en": "Alcohol and driving."
+  },
+  "question": {
+    "nl": "Wat is de maximaal toegestane alcoholpromillage voor bestuurders van personenauto's in Nederland?",
+    "en": "What is the maximum permitted blood alcohol concentration for drivers of passenger cars in the Netherlands?"
+  },
+  "options": {
+    "nl": ["0,5 promille", "0,2 promille", "0,8 promille"],
+    "en": ["0.5 per mil", "0.2 per mil", "0.8 per mil"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "De wettelijke limiet voor bestuurders van personenauto's is 0,5 promille. Voor beginnende bestuurders (5 jaar of minder rijbewijs) is de limiet 0,2 promille.",
+    "en": "The legal limit for passenger car drivers is 0.5 per mil. For novice drivers (5 years or less driving experience), the limit is 0.2 per mil."
+  }
+}

@@ -4,15 +4,17 @@ export class ExamState {
         this.questions = [];
         this.currentIndex = 0;
         this.userAnswers = [];
+        this.questionResults = []; // Track detailed results for each question
     }
 
-    reset(questionCount = 15, selectedModules = null) {
+    reset(questionCount = 15, selectedModules = null, randomOrder = true) {
         this.currentIndex = 0;
         this.userAnswers = [];
-        this.generateQuestions(questionCount, selectedModules);
+        this.questionResults = [];
+        this.generateQuestions(questionCount, selectedModules, randomOrder);
     }
 
-    generateQuestions(count, selectedModules = null) {
+    generateQuestions(count, selectedModules = null, randomOrder = true) {
         // Group questions by category
         const questionsByCategory = {
             Gevaarherkenning: [],
@@ -33,19 +35,32 @@ export class ExamState {
 
         // Calculate proportional distribution based on selected modules
         const availableQuestions = modulesToUse.reduce((sum, cat) => sum + questionsByCategory[cat].length, 0);
+        
+        // Handle edge case: no questions available
+        if (availableQuestions === 0) {
+            console.warn('No questions available in selected modules');
+            this.questions = [];
+            return;
+        }
+        
         const distribution = {};
 
-        modulesToUse.forEach(cat => {
-            const proportion = questionsByCategory[cat].length / availableQuestions;
-            distribution[cat] = Math.max(1, Math.round(count * proportion));
-        });
+        if (count === 1) {
+            // Special case: single question - pick from first available category
+            distribution[modulesToUse[0]] = 1;
+        } else {
+            modulesToUse.forEach(cat => {
+                const proportion = questionsByCategory[cat].length / availableQuestions;
+                distribution[cat] = Math.max(1, Math.round(count * proportion));
+            });
 
-        // Adjust for rounding to match total count
-        const distributedTotal = Object.values(distribution).reduce((sum, val) => sum + val, 0);
-        if (distributedTotal !== count) {
-            const diff = count - distributedTotal;
-            const moduleToAdjust = modulesToUse[0];
-            distribution[moduleToAdjust] += diff;
+            // Adjust for rounding to match total count
+            const distributedTotal = Object.values(distribution).reduce((sum, val) => sum + val, 0);
+            if (distributedTotal !== count) {
+                const diff = count - distributedTotal;
+                const moduleToAdjust = modulesToUse[0];
+                distribution[moduleToAdjust] += diff;
+            }
         }
 
         // Generate questions from each selected module
@@ -54,23 +69,38 @@ export class ExamState {
             const catQuestions = questionsByCategory[cat];
             const countFromCat = distribution[cat];
 
-            // Shuffle and select from this category
-            const shuffled = [...catQuestions].sort(() => Math.random() - 0.5);
+            if (randomOrder) {
+                // Shuffle and select from this category
+                const shuffled = [...catQuestions].sort(() => Math.random() - 0.5);
 
-            if (countFromCat <= catQuestions.length) {
-                // Take first N without repetition
-                this.questions.push(...shuffled.slice(0, countFromCat));
+                if (countFromCat <= catQuestions.length) {
+                    // Take first N without repetition
+                    this.questions.push(...shuffled.slice(0, countFromCat));
+                } else {
+                    // For larger counts, allow repetition within category
+                    for (let i = 0; i < countFromCat; i++) {
+                        const randomIndex = Math.floor(Math.random() * catQuestions.length);
+                        this.questions.push(catQuestions[randomIndex]);
+                    }
+                }
             } else {
-                // For larger counts, allow repetition within category
-                for (let i = 0; i < countFromCat; i++) {
-                    const randomIndex = Math.floor(Math.random() * catQuestions.length);
-                    this.questions.push(catQuestions[randomIndex]);
+                // Sequential: take from start of each category
+                if (countFromCat <= catQuestions.length) {
+                    this.questions.push(...catQuestions.slice(0, countFromCat));
+                } else {
+                    // For larger counts, cycle through sequentially
+                    for (let i = 0; i < countFromCat; i++) {
+                        this.questions.push(catQuestions[i % catQuestions.length]);
+                    }
                 }
             }
         });
 
-        // Shuffle final question list to mix categories
-        this.questions = this.questions.sort(() => Math.random() - 0.5);
+        if (randomOrder) {
+            // Shuffle final question list to mix categories
+            this.questions = this.questions.sort(() => Math.random() - 0.5);
+        }
+        // For sequential, keep categories grouped in order
     }
 
     getCurrentQuestion() {
@@ -83,6 +113,19 @@ export class ExamState {
 
     setAnswer(index) {
         this.userAnswers[this.currentIndex] = index;
+        
+        // Track detailed result for this question
+        const question = this.questions[this.currentIndex];
+        const isCorrect = index === question.answer;
+        
+        this.questionResults.push({
+            questionIndex: this.currentIndex,
+            question: question,
+            userAnswer: index,
+            correctAnswer: question.answer,
+            isCorrect: isCorrect,
+            category: question.category
+        });
     }
 
     nextQuestion() {
@@ -91,14 +134,14 @@ export class ExamState {
     }
 
     calculateResults() {
-        const breakdown = {
-            Gevaarherkenning: { correct: 0, total: 0 },
-            Kennis: { correct: 0, total: 0 },
-            Inzicht: { correct: 0, total: 0 }
-        };
+        const breakdown = {};
 
+        // Only include categories that actually have questions in this exam
         this.questions.forEach((q, idx) => {
             const cat = q.category;
+            if (!breakdown[cat]) {
+                breakdown[cat] = { correct: 0, total: 0 };
+            }
             breakdown[cat].total++;
             if (this.userAnswers[idx] === q.answer) {
                 breakdown[cat].correct++;
@@ -115,17 +158,15 @@ export class ExamState {
         const customTotal = this.questions.length;
         const scaleFactor = customTotal / officialTotal;
 
-        // Scale pass limits based on custom question count
-        const passLimits = {
-            Gevaarherkenning: Math.max(1, Math.ceil(officialStructure.Gevaarherkenning.required * scaleFactor)),
-            Kennis: Math.max(1, Math.ceil(officialStructure.Kennis.required * scaleFactor)),
-            Inzicht: Math.max(1, Math.ceil(officialStructure.Inzicht.required * scaleFactor))
-        };
-
-        // Add passLimit to each category
-        breakdown.Gevaarherkenning.passLimit = passLimits.Gevaarherkenning;
-        breakdown.Kennis.passLimit = passLimits.Kennis;
-        breakdown.Inzicht.passLimit = passLimits.Inzicht;
+        // Scale pass limits based on custom question count, only for categories used
+        for (const cat of Object.keys(breakdown)) {
+            if (officialStructure[cat]) {
+                breakdown[cat].passLimit = Math.max(1, Math.ceil(officialStructure[cat].required * scaleFactor));
+            } else {
+                // Fallback for unknown categories
+                breakdown[cat].passLimit = Math.ceil(breakdown[cat].total * 0.8);
+            }
+        }
 
         let overallPassed = true;
         for (const data of Object.values(breakdown)) {

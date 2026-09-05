@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Autosnelweg regels.",
+    "en": "Motorway rules."
+  },
+  "question": {
+    "nl": "Wat is de minimumsnelheid op de autosnelweg in Nederland?",
+    "en": "What is the minimum speed on the motorway in the Netherlands?"
+  },
+  "options": {
+    "nl": ["60 km/h", "80 km/h", "40 km/h"],
+    "en": ["60 km/h", "80 km/h", "40 km/h"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "De minimumsnelheid op de autosnelweg is 60 km/h, tenzij anders aangegeven. Langzamer voertuigen moeten de rechterrijstrook gebruiken.",
+    "en": "The minimum speed on the motorway is 60 km/h, unless otherwise indicated. Slower vehicles must use the right lane."
+  }
+}

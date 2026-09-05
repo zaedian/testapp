@@ -96,6 +96,20 @@
                     </div>
                 </div>
 
+                <div class="config-card order-selection">
+                    <h3 data-i18n="menu.questionOrder">Question Order</h3>
+                    <div class="order-buttons">
+                        <label class="radio-label">
+                            <input type="radio" name="question-order" value="random" checked>
+                            <span data-i18n="menu.randomOrder">Random</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="question-order" value="sequential">
+                            <span data-i18n="menu.sequentialOrder">Sequential (from question 1)</span>
+                        </label>
+                    </div>
+                </div>
+
                 <div class="config-card time-limit-selection">
                     <h3 data-i18n="menu.timeLimitTitle">Time Limit per Question</h3>
                     <div class="input-field-group time-limit-input">
@@ -143,6 +157,27 @@
             <div id="status-badge" class="status-badge">PASSED</div>
         </div>
         
+        <!-- Overall Statistics -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label" data-i18n="results.totalQuestions">Total Questions</div>
+                <div class="stat-value" id="stat-total">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label" data-i18n="results.correctAnswers">Correct Answers</div>
+                <div class="stat-value text-success" id="stat-correct">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label" data-i18n="results.incorrectAnswers">Incorrect Answers</div>
+                <div class="stat-value text-danger" id="stat-incorrect">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label" data-i18n="results.passRate">Pass Rate</div>
+                <div class="stat-value" id="stat-rate">0%</div>
+            </div>
+        </div>
+
+        <!-- Category Breakdown -->
         <div class="table-responsive">
             <table class="score-breakdown">
                 <thead>
@@ -155,6 +190,18 @@
                 </thead>
                 <tbody id="breakdown-body"></tbody>
             </table>
+        </div>
+
+        <!-- Detailed Question Analysis -->
+        <div class="detailed-analysis">
+            <div class="analysis-header">
+                <h3 data-i18n="results.detailedBreakdown">Detailed Question Analysis</h3>
+                <button class="btn-toggle-answers" id="toggle-answers-btn" data-i18n="results.showAllAnswers">Show All Answers</button>
+            </div>
+            <div id="answers-container" class="answers-list"></div>
+            <div id="no-wrong-answers" class="no-wrong-answers" style="display: none;">
+                <p data-i18n="results.noWrongAnswers">Congratulations! You answered all questions correctly.</p>
+            </div>
         </div>
 
         <div class="results-actions">

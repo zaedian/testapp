@@ -1,0 +1,21 @@
+{
+  "category": "Inzicht",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Rijden in mist.",
+    "en": "Driving in fog."
+  },
+  "question": {
+    "nl": "Je rijdt in dichte mist met zicht minder dan 50 meter. Wat moet je doen?",
+    "en": "You are driving in dense fog with visibility less than 50 meters. What should you do?"
+  },
+  "options": {
+    "nl": ["Snelheid verlagen tot maximaal 50 km/h en mistlichten aanzetten", "Normaal blijven rijden met dimlicht", "Snelheid verhogen om snel uit de mist te komen"],
+    "en": ["Reduce speed to maximum 50 km/h and turn on fog lights", "Continue driving normally with dipped headlights", "Increase speed to get out of the fog quickly"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "In mist met zicht minder dan 50 meter moet je je snelheid beperken tot maximaal 50 km/h en je mistlichten gebruiken.",
+    "en": "In fog with visibility less than 50 meters, you must limit your speed to maximum 50 km/h and use your fog lights."
+  }
+}

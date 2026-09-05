@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Mobiel telefoon gebruik tijdens het rijden.",
+    "en": "Mobile phone use while driving."
+  },
+  "question": {
+    "nl": "Mag je als bestuurder een mobiele telefoon vasthouden tijdens het rijden?",
+    "en": "Are you allowed to hold a mobile phone while driving?"
+  },
+  "options": {
+    "nl": ["Nee, dit is verboden", "Ja, als je alleen belt", "Ja, als je stilstaat bij een rood licht"],
+    "en": ["No, this is prohibited", "Yes, if you only make a call", "Yes, if you are stopped at a red light"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Het is verboden om een mobiele telefoon vast te houden tijdens het rijden, zelfs als je stilstaat bij een verkeerslicht. Je mag alleen handsfree bellen.",
+    "en": "It is prohibited to hold a mobile phone while driving, even when stopped at a traffic light. You may only use hands-free calling."
+  }
+}

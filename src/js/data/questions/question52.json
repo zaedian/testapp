@@ -1,0 +1,21 @@
+{
+  "category": "Inzicht",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Remafstand.",
+    "en": "Stopping distance."
+  },
+  "question": {
+    "nl": "Hoe beïnvloedt snelheid je remafstand?",
+    "en": "How does speed affect your stopping distance?"
+  },
+  "options": {
+    "nl": ["Hogere snelheid verdubbelt de remafstand bij verdubbeling van de snelheid", "Remafstand blijft gelijk bij verdubbeling van de snelheid", "Remafstand neemt toe met 50% bij verdubbeling van de snelheid"],
+    "en": ["Higher speed doubles the stopping distance when speed is doubled", "Stopping distance remains the same when speed is doubled", "Stopping distance increases by 50% when speed is doubled"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Wanneer je je snelheid verdubbelt, verdubbelt je reactieafstand en je remafstand meer dan verdubbelt. De totale remafstand is veel groter bij hogere snelheid.",
+    "en": "When you double your speed, your reaction distance doubles and your braking distance more than doubles. Total stopping distance is much greater at higher speeds."
+  }
+}

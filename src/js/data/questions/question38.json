@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Rotonde regels.",
+    "en": "Roundabout rules."
+  },
+  "question": {
+    "nl": "Wie heeft voorrang op een rotonde?",
+    "en": "Who has right of way on a roundabout?"
+  },
+  "options": {
+    "nl": ["Verkeer op de rotonde", "Verkeer dat de rotonde oprijdt", "Verkeer dat van rechts komt"],
+    "en": ["Traffic on the roundabout", "Traffic entering the roundabout", "Traffic coming from the right"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Op een rotonde heeft verkeer dat al op de rotonde rijdt voorrang op verkeer dat de rotonde oprijdt.",
+    "en": "On a roundabout, traffic already on the roundabout has right of way over traffic entering the roundabout."
+  }
+}
