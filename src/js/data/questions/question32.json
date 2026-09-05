@@ -1,0 +1,21 @@
+{
+  "category": "Inzicht",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Je rijdt rechtdoor op een ongereguleerd kruispunt zonder borden. Een tram aan je linkerkant geeft aan dat hij rechtsaf wil slaan over jouw pad.",
+    "en": "You are driving straight ahead at an uncontrolled intersection without signs. A tram on your left is signaling to turn right across your path."
+  },
+  "question": {
+    "nl": "Wie moet voorrang verlenen?",
+    "en": "Who must yield priority?"
+  },
+  "options": {
+    "nl": ["Je moet voorrang verlenen aan de tram", "De tram moet voorrang verlenen aan jou omdat je rechtdoor gaat op dezelfde weg", "De tram moet voorrang verlenen omdat hij van links nadert"],
+    "en": ["You must yield to the tram", "The tram must yield to you because you are going straight ahead on the same road", "The tram must yield because it approaches from your left"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Bij ongereguleerde kruispunten hebben trams altijd voorrang boven andere weggebruikers, ongeacht of ze van links/rechts komen of over jouw baan draaien.",
+    "en": "At uncontrolled intersections, trams always have priority over other road users, regardless of whether they come from the left/right or are turning across your lane."
+  }
+}

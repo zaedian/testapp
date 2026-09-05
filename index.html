@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBR Auto Theory Exam Practice (Netherlands)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/css/styles.css">
+</head>
+<body>
+
+<div class="app-container">
+    <header>
+        <div class="header-content">
+            <h1 data-i18n="header.title">CBR Driving Theory Practice (Category B)</h1>
+            <p data-i18n="header.subtitle">Official Netherlands Traffic Rules & Hazard Training</p>
+        </div>
+        <div class="header-controls">
+            <button id="lang-toggle" class="control-btn" aria-label="Toggle Language">
+                <span id="lang-icon">🇳🇱</span> 
+                <span id="lang-text">NL</span>
+            </button>
+            <button id="theme-toggle" class="control-btn" aria-label="Toggle Theme">
+                <span id="theme-icon">☀️</span> 
+                <span id="theme-text" data-i18n="buttons.lightMode">Light Mode</span>
+            </button>
+        </div>
+    </header>
+    
+    <div class="progress-bar-container" id="progress-container">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <!-- Main Menu View -->
+    <div class="menu-container" id="menu-view">
+        <div id="loading-state" class="loading-state" style="display: none;">
+            <div class="spinner"></div>
+            <p data-i18n="loading">Loading questions...</p>
+        </div>
+        
+        <div id="menu-content" class="menu-content">
+            <div class="menu-header">
+                <h2 class="menu-title" data-i18n="menu.title">Ready to test your Dutch traffic knowledge?</h2>
+                <p class="menu-desc" data-i18n="menu.description">This practice exam simulates the official CBR theory test structure. You must satisfy the passing criteria in all three categories to pass overall.</p>
+            </div>
+        
+            <div class="rules-card">
+                <h3 data-i18n="menu.rulesTitle">Exam Breakdown & Requirements</h3>
+                <ul class="rules-list">
+                    <li>
+                        <span class="rule-label"><strong data-i18n="menu.hazard">1. Gevaarherkenning</strong></span>
+                        <span class="tag tag-primary" data-i18n="menu.minCorrect" data-i18n-args='{"percent":52}'>Min. 52% Correct</span>
+                    </li>
+                    <li>
+                        <span class="rule-label"><strong data-i18n="menu.knowledge">2. Kennis</strong></span>
+                        <span class="tag tag-primary" data-i18n="menu.minCorrect" data-i18n-args='{"percent":83}'>Min. 83% Correct</span>
+                    </li>
+                    <li>
+                        <span class="rule-label"><strong data-i18n="menu.insight">3. Inzicht</strong></span>
+                        <span class="tag tag-primary" data-i18n="menu.minCorrect" data-i18n-args='{"percent":89}'>Min. 89% Correct</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="config-grid">
+                <div class="config-card module-selection">
+                    <h3 data-i18n="menu.selectModules">Select Categories</h3>
+                    <div class="module-checkboxes">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="module-hazard" value="Gevaarherkenning" checked>
+                            <span data-i18n="menu.hazard">1. Hazard Perception</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="module-knowledge" value="Kennis" checked>
+                            <span data-i18n="menu.knowledge">2. Traffic Knowledge</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="module-insight" value="Inzicht" checked>
+                            <span data-i18n="menu.insight">3. Traffic Insight</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="config-card mode-selection">
+                    <h3 data-i18n="menu.selectMode">Select Exam Mode</h3>
+                    <div class="mode-buttons">
+                        <button class="btn-mode" data-questions="15" data-i18n-questions="15">15 Questions</button>
+                        <button class="btn-mode" data-questions="30" data-i18n-questions="30">30 Questions</button>
+                        <button class="btn-mode" data-questions="60" data-i18n-questions="60">60 Questions</button>
+                    </div>
+                    <div class="input-field-group custom-count-input">
+                        <label for="custom-question-count" data-i18n="menu.orCustom">Or custom amount:</label>
+                        <input type="number" id="custom-question-count" min="1" max="100" placeholder="e.g. 25">
+                    </div>
+                </div>
+
+                <div class="config-card time-limit-selection">
+                    <h3 data-i18n="menu.timeLimitTitle">Time Limit per Question</h3>
+                    <div class="input-field-group time-limit-input">
+                        <input type="number" id="time-limit-override" min="10" max="300" placeholder="Seconds per question">
+                        <span class="input-unit">sec</span>
+                    </div>
+                    <p class="time-limit-hint" data-i18n="menu.timeLimitHint">Leave empty to use question's default time limit</p>
+                </div>
+            </div>
+
+            <button class="btn-primary btn-large" id="start-btn" disabled data-i18n="menu.startBtn">Start Practice Exam</button>
+        </div>
+    </div>
+
+    <!-- Quiz View -->
+    <div class="quiz-body" id="quiz-view">
+        <div class="meta-info">
+            <span class="badge" id="category-badge">Category</span>
+            <div class="question-tracker">
+                <span data-i18n="quiz.question">Question</span> 
+                <strong id="current-num">1</strong> 
+                <span data-i18n="quiz.of">of</span> 
+                <strong id="total-num">15</strong>
+            </div>
+            <span class="timer" id="timer">--s</span>
+        </div>
+
+        <div class="question-card">
+            <div class="scenario-box" id="scenario-text">Scenario details...</div>
+            <h2 class="question-title" id="question-text">Question text goes here?</h2>
+            <div class="options-grid" id="options-container"></div>
+        </div>
+
+        <div class="explanation" id="explanation-box"></div>
+
+        <div class="controls">
+            <button class="btn-primary" id="next-btn" disabled data-i18n="quiz.nextBtn">Next Question</button>
+        </div>
+    </div>
+
+    <!-- Results View -->
+    <div class="results-container" id="results-view">
+        <div class="results-header">
+            <h2 data-i18n="results.title">Exam Summary</h2>
+            <div id="status-badge" class="status-badge">PASSED</div>
+        </div>
+        
+        <div class="table-responsive">
+            <table class="score-breakdown">
+                <thead>
+                    <tr>
+                        <th data-i18n="results.category">Category</th>
+                        <th data-i18n="results.yourScore">Your Score</th>
+                        <th data-i18n="results.required">Required to Pass</th>
+                        <th data-i18n="results.status">Status</th>
+                    </tr>
+                </thead>
+                <tbody id="breakdown-body"></tbody>
+            </table>
+        </div>
+
+        <div class="results-actions">
+            <button class="btn-secondary" id="menu-btn" data-i18n="results.menuBtn">Main Menu</button>
+            <button class="btn-primary" id="restart-btn" data-i18n="results.restartBtn">Restart Exam</button>
+        </div>
+    </div>
+</div>
+
+<script type="module" src="src/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "category": "Gevaarherkenning",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Je rijdt 80 km/h op een buitenstedelijke weg. Een groep duiven voedt op het wegdek ongeveer 200 meter voor je.",
+    "en": "You are driving at 80 km/h on an outer-city road. A flock of pigeons is feeding on the road asphalt about 200 meters ahead."
+  },
+  "question": {
+    "nl": "Welke actie moet je nemen?",
+    "en": "What action should you take?"
+  },
+  "options": {
+    "nl": ["Remmen", "Gas loslaten", "Niets doen"],
+    "en": ["Brake", "Release Gas", "Do Nothing"]
+  },
+  "answer": 1,
+  "explanation": {
+    "nl": "Vogels vliegen meestal weg, maar het loslaten van het gas geeft ze tijd om uiteen te gaan zonder plotseling noodremmen voor het verkeer achter je.",
+    "en": "Birds usually fly away, but releasing the gas gives them time to scatter without causing sudden emergency braking for traffic behind."
+  }
+}

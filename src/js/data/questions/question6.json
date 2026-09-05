@@ -1,0 +1,21 @@
+{
+  "category": "Gevaarherkenning",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Je rijdt 50 km/h in de buurt van een school. Een ijscoman staat geparkeerd aan de rechterkant van de weg, en verschillende jonge kinderen verzamelen zich eromheen.",
+    "en": "You are driving at 50 km/h near a school. An ice cream truck is parked on the right side of the road, and several young children are gathered around it."
+  },
+  "question": {
+    "nl": "Welke actie moet je nemen?",
+    "en": "What action should you take?"
+  },
+  "options": {
+    "nl": ["Remmen", "Gas loslaten", "Niets doen"],
+    "en": ["Brake", "Release Gas", "Do Nothing"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Kinderen rond een ijscoman zijn zeer onvoorspelbaar en kunnen zonder kijken de weg opstappen. Hard remmen om de snelheid aanzienlijk te verlagen is noodzakelijk.",
+    "en": "Children around an ice cream truck are highly unpredictable and may step into the road without looking. Hard braking to lower speed significantly is necessary."
+  }
+}

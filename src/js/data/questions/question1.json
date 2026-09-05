@@ -1,0 +1,21 @@
+{
+  "category": "Gevaarherkenning",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Je rijdt 80 km/h op een smalle landelijke weg. Een trekker trekt langzaam uit een verborgen oprit 50 meter voor je je rijbaan op.",
+    "en": "You are driving at 80 km/h on a narrow rural road. A farm tractor pulls out slowly from a concealed driveway 50 meters ahead into your lane."
+  },
+  "question": {
+    "nl": "Wat is de veiligste actie om direct te nemen?",
+    "en": "What is the safest action to take immediately?"
+  },
+  "options": {
+    "nl": ["Remmen", "Gas loslaten", "Niets doen"],
+    "en": ["Brake", "Release Gas", "Do Nothing"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Vanwege het grote snelheidsverschil en de korte remafstand is onmiddellijk en stevig remmen vereist om een botsing te voorkomen.",
+    "en": "Because of the high speed difference and short stopping distance, immediate and firm braking is required to prevent a collision."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Sleepen van een lichte aanhanger met standaard categorie B rijbewijs.",
+    "en": "Towing a light trailer with standard category B license."
+  },
+  "question": {
+    "nl": "Wat is de maximumsnelheid op snelwegen bij het rijden van een personenauto met een aanhanger onder 3.500 kg?",
+    "en": "What is the maximum speed limit on motorways when driving a passenger car towing a trailer under 3,500 kg?"
+  },
+  "options": {
+    "nl": ["80 km/h", "90 km/h", "100 km/h"],
+    "en": ["80 km/h", "90 km/h", "100 km/h"]
+  },
+  "answer": 1,
+  "explanation": {
+    "nl": "In Nederland hebben personenauto's die aanhangers of caravans slepen met een maximaal toegestaan gewicht onder 3.500 kg een snelheidslimiet van 90 km/h op snelwegen en autowegen.",
+    "en": "In the Netherlands, passenger cars towing trailers or caravans with a maximum allowed weight under 3,500 kg have a speed limit of 90 km/h on motorways and expressways."
+  }
+}

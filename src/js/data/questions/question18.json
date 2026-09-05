@@ -1,0 +1,21 @@
+{
+  "category": "Inzicht",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Je nadert een ongereguleerd rotonde zonder voorrangsborden of haaientanden markeringen.",
+    "en": "You approach an uncontrolled roundabout without any priority signs or shark teeth (haaientanden) markings."
+  },
+  "question": {
+    "nl": "Wie heeft voorrang op dit kruispunt?",
+    "en": "Who has priority at this intersection?"
+  },
+  "options": {
+    "nl": ["Voertuigen die al op de rotonde rijden", "Voertuigen die van rechts naderen om de rotonde op te gaan", "Voertuigen die de rotonde verlaten"],
+    "en": ["Vehicles already driving on the roundabout", "Vehicles approaching from the right to enter the roundabout", "Vehicles exiting the roundabout"]
+  },
+  "answer": 1,
+  "explanation": {
+    "nl": "Zonder verkeersborden of voorrangsmarkeringen (haaientanden) gelden standaard voorrangsregels: bestuurders van rechts hebben voorrang. Daarom heeft het inrijdend verkeer dat van rechts nadert voorrang.",
+    "en": "Without traffic signs or priority markings (shark teeth), standard priority rules apply: drivers coming from the right have right-of-way. Therefore, entering traffic approaching from the right has priority."
+  }
+}

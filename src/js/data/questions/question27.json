@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Wegmarkeringen (Haaientanden).",
+    "en": "Road surface markings (Shark teeth / Haaientanden)."
+  },
+  "question": {
+    "nl": "Wat geven 'haaientanden' op het wegdek bij een kruispunt aan?",
+    "en": "What do 'shark teeth' (haaientanden) painted on the road surface at an intersection signify?"
+  },
+  "options": {
+    "nl": ["Je moet voorrang verlenen aan bestuurders op de kruisende weg", "Je moet je voertuig tot stilstand brengen voordat je oversteekt", "De weg versmalt en gaat samenvoegen vooruit"],
+    "en": ["You must give priority to drivers on the intersecting road", "You must bring your vehicle to a complete stop before crossing", "The road is narrowing and merging ahead"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Haaientanden geven aan dat je voorrang moet verlenen aan bestuurders op de kruisende weg. In tegenstelling tot een stopbord is stoppen niet verplicht als de weg vrij is.",
+    "en": "Shark teeth indicate that you must yield priority to drivers on the intersecting road. Unlike a stop sign, stopping is not mandatory if the road is clear."
+  }
+}

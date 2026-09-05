@@ -1,0 +1,21 @@
+{
+  "category": "Inzicht",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Tijdens het rijden op 100 km/h op de snelweg tijdens zware regenval, ervaart je voertuig plotseling aquaplaning (sturen voelt gewichtloos en reageert niet).",
+    "en": "While driving at 100 km/h on the highway during heavy rain, your vehicle suddenly experiences aquaplaning (steering feels weightless and unresponsive)."
+  },
+  "question": {
+    "nl": "Wat is de juiste reactie?",
+    "en": "What is the correct reaction?"
+  },
+  "options": {
+    "nl": ["Laat het gaspedaal soepel los, rem niet hard, en houd het stuurwiel steady in de rijrichting", "Trap stevig op de remmen om snelheid snel te verliezen", "Draai het stuurwiel snel links en rechts om bandengrip te herwinnen"],
+    "en": ["Ease off the gas pedal smoothly, do not brake hard, and keep the steering wheel steady in the direction of travel", "Slam firmly on the brakes to quickly shed speed", "Rapidly turn the steering wheel left and right to regain tyre grip"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Tijdens aquaplaning verliezen je banden contact met de weg. Remmen of scherp sturen kan een spin veroorzaken zodra grip plotseling terugkeert. Laat het gas zacht los en houd de wielen recht totdat tractie is hersteld.",
+    "en": "During aquaplaning, your tires lose contact with the road. Braking or sharp steering can cause a spin once grip suddenly returns. Release the gas gently and keep the wheels straight until traction is restored."
+  }
+}

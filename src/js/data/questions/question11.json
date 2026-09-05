@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Snelheidslimieten op autosnelwegen (Autoweg).",
+    "en": "Speed limits on non-motorway expressways (Autoweg)."
+  },
+  "question": {
+    "nl": "Wat is de standaard maximumsnelheid op een autoweg buiten de bebouwde kom voor personenauto's, tenzij anders aangegeven?",
+    "en": "What is the standard maximum speed limit on an expressway (Autoweg) outside built-up areas for passenger cars, unless posted otherwise?"
+  },
+  "options": {
+    "nl": ["80 km/h", "100 km/h", "130 km/h"],
+    "en": ["80 km/h", "100 km/h", "130 km/h"]
+  },
+  "answer": 1,
+  "explanation": {
+    "nl": "De wettelijke standaard snelheidslimiet op een autoweg buiten de bebouwde kom is 100 km/h.",
+    "en": "The default legal speed limit on an autoweg (expressway) outside built-up areas is 100 km/h."
+  }
+}

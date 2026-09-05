@@ -1,0 +1,21 @@
+{
+  "category": "Inzicht",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Een officiële militaire kolonne nadert een gelijk/ongereguleerd kruispunt vanuit je links. Het eerste voertuig met gele vlaggen heeft al het kruispunt betreden.",
+    "en": "An official military convoy (militaire kolonne) approaches an equal/uncontrolled intersection from your left. The first vehicle with yellow flags has already passed into the intersection."
+  },
+  "question": {
+    "nl": "Wat moet je doen?",
+    "en": "What should you do?"
+  },
+  "options": {
+    "nl": ["Je moet de gehele resterende kolonne laten passeren zonder er doorheen te snijden", "Je moet doorgaan omdat je van rechts komt", "Je moet toeteren om aan te geven dat je voorrang hebt"],
+    "en": ["You must allow the entire remaining convoy to pass without cutting through it", "You should proceed because you are coming from the right", "You should honk to indicate that you have right-of-way"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Zodra het eerste voertuig van een officieel gemarkeerde militaire kolonne wettelijk een kruispunt heeft betreden, vormt de gehele kolonne één eenheid. Het is strikt verboden door een militaire kolonne te snijden.",
+    "en": "Once the first vehicle of an officially marked military convoy has lawfully entered an intersection, the entire convoy forms a single unit. You are strictly forbidden from cutting through a military convoy."
+  }
+}

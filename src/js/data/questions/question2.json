@@ -1,0 +1,21 @@
+{
+  "category": "Gevaarherkenning",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Je rijdt 50 km/h op een stadsstraat. Een voetbal stuift de weg op tussen twee geparkeerde bestelwagens, gevolgd door een rennend kind.",
+    "en": "You are driving at 50 km/h on an urban street. A football bounces onto the road ahead from between two parked vans, followed by a running child."
+  },
+  "question": {
+    "nl": "Welke actie moet je nemen?",
+    "en": "What action should you take?"
+  },
+  "options": {
+    "nl": ["Remmen", "Gas loslaten", "Niets doen"],
+    "en": ["Brake", "Release Gas", "Do Nothing"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Een kind dat de straat op rent creëert een noodsituatie. Noodremmen is direct vereist.",
+    "en": "A child running into the street creates an emergency situation. Emergency braking is required immediately."
+  }
+}

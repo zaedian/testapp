@@ -1,0 +1,21 @@
+{
+  "category": "Inzicht",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Je nadert een zebrapad. Een voetganger staat op de stoep in de buurt, met de rug naar de straat gericht terwijl hij op zijn telefoon typt.",
+    "en": "You approach a zebra crossing. A pedestrian is standing on the pavement nearby, facing away from the street while texting on their phone."
+  },
+  "question": {
+    "nl": "Wat is de voorzichtigste rijbeslissing?",
+    "en": "What is the most prudent driving decision?"
+  },
+  "options": {
+    "nl": ["Houd snelheid en rijd voorzichtig voorbij, maar dek de rem voor het geval ze onverwachts draaien", "Toeter om de voetganger te waarschuwen, en accelereer dan voorbij", "Stop volledig en wacht tot de voetganger opkijkt en overstekt"],
+    "en": ["Maintain speed and drive past carefully, but cover the brake in case they turn unexpectedly", "Honk your horn to warn the pedestrian, then accelerate past", "Stop completely and wait until the pedestrian looks up and crosses"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Onnodig stoppen wanneer een voetganger geen intentie toont om over te steken creëert potentiële gevaren en verwarring voor het verkeer achter je. Rijd voorzichtig door terwijl je de rem dekt.",
+    "en": "Unnecessarily stopping when a pedestrian shows no intention of crossing creates potential hazards and confusion for trailing traffic. Proceed with caution while covering the brake."
+  }
+}

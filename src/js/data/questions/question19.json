@@ -1,0 +1,21 @@
+{
+  "category": "Inzicht",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Het zicht daalt onder de 50 meter op de snelweg door extreem dichte mist.",
+    "en": "Visibility drops below 50 meters on the motorway due to extremely dense fog."
+  },
+  "question": {
+    "nl": "Welke verlichtingsconfiguratie moet je wettelijk en veilig gebruiken?",
+    "en": "Which lighting configuration should you legally and safely use?"
+  },
+  "options": {
+    "nl": ["Achtermistlicht en grootlicht", "Achtermistlicht en dimlicht", "Mistlichten voor en waarschuwingslichten"],
+    "en": ["Rear fog light and high beam headlights", "Rear fog light and dipped beam (low beam) headlights", "Front fog lights and hazard warning lights"]
+  },
+  "answer": 1,
+  "explanation": {
+    "nl": "Het achtermistlicht is toegestaan wanneer het zicht onder de 50 meter is in mist of sneeuw. Grootlicht weerkaatst op mistdeeltjes en verblindt de bestuurder, dus dimlicht moet worden gebruikt.",
+    "en": "The rear fog light is permitted when visibility is under 50 meters in fog or snow. High beams reflect off fog particles and blind the driver, so dipped beams (dimlicht) must be used."
+  }
+}

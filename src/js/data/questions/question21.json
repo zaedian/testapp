@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Algemene snelheidslimieten op Nederlandse snelwegen (Autosnelweg).",
+    "en": "General speed limits on Dutch motorways (Autosnelweg)."
+  },
+  "question": {
+    "nl": "Wat is de wettelijke maximumsnelheid op Nederlandse snelwegen tussen 06:00 en 19:00 uur, tenzij matrix- of verkeersborden anders aangeven?",
+    "en": "What is the legal maximum speed limit on Dutch motorways between 06:00 and 19:00 hours, unless matrix or road signs specify otherwise?"
+  },
+  "options": {
+    "nl": ["100 km/h", "120 km/h", "130 km/h"],
+    "en": ["100 km/h", "120 km/h", "130 km/h"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Tijdens daguren (06:00 tot 19:00) is de nationale snelheidslimiet op Nederlandse snelwegen ingesteld op 100 km/h.",
+    "en": "During daytime hours (06:00 to 19:00), the national speed limit on Dutch motorways is set to 100 km/h."
+  }
+}

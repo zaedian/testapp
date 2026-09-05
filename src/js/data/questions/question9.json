@@ -1,0 +1,21 @@
+{
+  "category": "Gevaarherkenning",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Je rijdt 50 km/h in nat weer. Voorop op een scherpe rechtsbocht zie je natte bladeren die het asfalt volledig bedekken.",
+    "en": "You are driving at 50 km/h in wet weather. Up ahead on a sharp right-hand bend, you spot wet leaves completely covering the asphalt surface."
+  },
+  "question": {
+    "nl": "Welke actie moet je nemen?",
+    "en": "What action should you take?"
+  },
+  "options": {
+    "nl": ["Remmen", "Gas loslaten", "Niets doen"],
+    "en": ["Brake", "Release Gas", "Do Nothing"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Nat blad veroorzaakt extreem verlies van tractie vergelijkbaar met ijs. Je moet tot een zeer lage snelheid remmen voordat je de bocht betreedt.",
+    "en": "Wet leaves create extreme loss of traction similar to ice. You must brake down to a very low speed before entering the curve."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Gebruik van dagrijverlichting versus dimlichten.",
+    "en": "Use of daytime running lights versus dipped headlights."
+  },
+  "question": {
+    "nl": "Zijn dagrijverlichting voldoende als enige verlichting tijdens overdag rijden in Nederland?",
+    "en": "Are daytime running lights (dagrijverlichting) sufficient as the only lighting during daytime driving in the Netherlands?"
+  },
+  "options": {
+    "nl": ["Ja, ze zijn ontworpen voor overdag gebruik", "Nee, dimlichten moeten worden gebruikt bij slechte zichtbaarheid", "Nee, dimlichten zijn altijd vereist ongeacht de omstandigheden"],
+    "en": ["Yes, they are designed for daytime use only", "No, dipped headlights must be used in poor visibility conditions", "No, dipped headlights are always required regardless of conditions"]
+  },
+  "answer": 1,
+  "explanation": {
+    "nl": "Dagrijverlichting verlicht de achterkant van het voertuig niet. Bij slechte zichtbaarheid (regen, mist, duisternis) zijn dimlichten wettelijk vereist.",
+    "en": "Daytime running lights do not illuminate the rear of the vehicle. In poor visibility (rain, fog, darkness), dipped headlights are legally required."
+  }
+}

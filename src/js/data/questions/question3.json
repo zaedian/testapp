@@ -1,0 +1,21 @@
+{
+  "category": "Gevaarherkenning",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Je rijdt 100 km/h op de snelweg met weinig verkeer. Een elektronisch matrixbord boven de weg gaat aan en toont een snelheidslimiet van 70 km/h ongeveer 300 meter voor je.",
+    "en": "You are driving at 100 km/h on the highway with light traffic. An electronic matrix sign overhead turns on showing a speed limit of 70 km/h approximately 300 meters ahead."
+  },
+  "question": {
+    "nl": "Welke actie moet je nemen?",
+    "en": "What action should you take?"
+  },
+  "options": {
+    "nl": ["Remmen", "Gas loslaten", "Niets doen"],
+    "en": ["Brake", "Release Gas", "Do Nothing"]
+  },
+  "answer": 1,
+  "explanation": {
+    "nl": "Je hebt genoeg afstand om je snelheid veilig te verlagen. Het loslaten van het gaspedaal zorgt voor een soepele vertraging zonder bestuurders achter je in gevaar te brengen.",
+    "en": "You have plenty of distance to lower your speed safely. Releasing the gas pedal allows smooth deceleration without endangering drivers behind you."
+  }
+}

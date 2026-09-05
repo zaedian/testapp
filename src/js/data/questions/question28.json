@@ -1,0 +1,21 @@
+{
+  "category": "Inzicht",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Je nadert een verkeerslicht dat op groen springt. Je wilt rechtsaf slaan, maar een voetganger steekt de zijstraat over waar je naartoe wilt.",
+    "en": "You approach a traffic light that turns green. You want to turn right, but a pedestrian is crossing the side street you are turning into."
+  },
+  "question": {
+    "nl": "Wie heeft voorrang in deze situatie?",
+    "en": "Who has priority in this situation?"
+  },
+  "options": {
+    "nl": ["De voetganger, omdat verkeer dat rechtdoor gaat op dezelfde weg voorrang heeft boven draaiend verkeer", "Jij, omdat draaiende voertuigen voorrang hebben boven voetgangers tenzij er een zebrapad is", "Wie als eerste bij het draaipunt aankomt"],
+    "en": ["The pedestrian, because traffic going straight on the same road has priority over turning traffic", "You, because turning vehicles have right-of-way over pedestrians unless there is a zebra crossing", "Whoever arrives at the turn point first"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "De gulden regel geldt: verkeer dat rechtdoor gaat op dezelfde weg (inclusief voetgangers en fietsers) heeft voorrang boven draaiend verkeer.",
+    "en": "The golden rule applies: traffic going straight on the same road (including pedestrians and cyclists) has priority over turning traffic."
+  }
+}
