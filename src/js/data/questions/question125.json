@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je wilt de ruitenwisservloeistof van je auto controleren.",
+    "en": "You want to check the windshield washer fluid of your car."
+  },
+  "question": {
+    "nl": "Waarom is het belangrijk om de ruitenwisservloeistof te controleren?",
+    "en": "Why is it important to check the windshield washer fluid?"
+  },
+  "options": {
+    "nl": ["Voor goed zicht bij slechte weersomstandigheden", "Het voorkomt motorproblemen", "Het is verplicht bij de APK"],
+    "en": ["For good visibility in poor weather conditions", "It prevents engine problems", "It is required during APK inspection"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Genoeg ruitenwisservloeistof is belangrijk voor goed zicht bij regen, sneeuw of vuil op de ruit. Controleer regelmatig het peil.",
+    "en": "Sufficient windshield washer fluid is important for good visibility in rain, snow or dirt on the windshield. Check the level regularly."
+  }
+}

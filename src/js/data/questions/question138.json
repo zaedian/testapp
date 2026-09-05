@@ -1,0 +1,21 @@
+{
+  "category": "Gevaarherkenning",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Je rijdt 50 km/h op een kruispunt. Een fietser die voorrang heeft nadert snel.",
+    "en": "You are driving at 50 km/h at an intersection. A cyclist with right of way approaches quickly."
+  },
+  "question": {
+    "nl": "Welke actie moet je nemen?",
+    "en": "What action should you take?"
+  },
+  "options": {
+    "nl": ["Remmen", "Gas loslaten", "Niets doen"],
+    "en": ["Brake", "Release Gas", "Do Nothing"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Een fietser met voorrang die snel nadert vereist dat je stopt of sterk vertraagt om voorrang te verlenen.",
+    "en": "A cyclist with right of way approaching quickly requires you to stop or significantly slow down to yield."
+  }
+}

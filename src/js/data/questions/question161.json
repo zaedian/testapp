@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je ziet een blauw cirkelvormig bord met een witte pijn naar links.",
+    "en": "You see a blue circular sign with a white arrow pointing left."
+  },
+  "question": {
+    "nl": "Wat betekent dit bord?",
+    "en": "What does this sign mean?"
+  },
+  "options": {
+    "nl": ["Linksaf verplicht", "Linksaf toegestaan", "Links inhalen toegestaan"],
+    "en": ["Mandatory left turn", "Left turn allowed", "Left overtaking allowed"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Een blauw cirkelvormig bord met een witte pijn is een gebodsbord. Een pijn naar links betekent dat je verplicht bent linksaf te slaan.",
+    "en": "A blue circular sign with a white arrow is a mandatory sign. An arrow pointing left means you are required to turn left."
+  }
+}

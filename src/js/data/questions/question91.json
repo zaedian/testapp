@@ -1,0 +1,21 @@
+{
+  "category": "Inzicht",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je nadert een wegversmalling waar twee rijstroken samenkomen tot één. Er staat een bord met het ritssymbool.",
+    "en": "You approach a road narrowing where two lanes merge into one. There is a sign with the zipper merge symbol."
+  },
+  "question": {
+    "nl": "Wat is de juiste rijstijl bij ritsen (zipper merging)?",
+    "en": "What is the correct driving style for zipper merging?"
+  },
+  "options": {
+    "nl": ["Rij tot aan het punt van samensmelten en voeg dan afwisselend in", "Versnel om als eerste in te voegen", "Stop en laat alle anderen eerst gaan"],
+    "en": ["Drive to the merge point and then take turns merging", "Accelerate to merge first", "Stop and let everyone else go first"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Bij ritsen (zipper merging) rijd je tot aan het punt waar de rijstroken samenkomen en voeg dan afwisselend in. Dit zorgt voor een gelijke verdeling van het verkeer en voorkomt opstoppingen.",
+    "en": "With zipper merging, drive to the point where lanes merge and then take turns merging. This ensures equal distribution of traffic and prevents congestion."
+  }
+}

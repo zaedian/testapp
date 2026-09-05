@@ -1,0 +1,21 @@
+{
+  "category": "Gevaarherkenning",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Je rijdt 70 km/h op een natte autoweg. Een hond rent plotseling de weg op 40 meter voor je.",
+    "en": "You are driving at 70 km/h on a wet expressway. A dog suddenly runs onto the road 40 meters ahead."
+  },
+  "question": {
+    "nl": "Wat is de veiligste actie om direct te nemen?",
+    "en": "What is the safest action to take immediately?"
+  },
+  "options": {
+    "nl": ["Remmen", "Gas loslaten", "Niets doen"],
+    "en": ["Brake", "Release Gas", "Do Nothing"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Een hond op de weg is een onvoorspelbaar obstakel. Op een nat wegdek is de remweg langer, dus moet je direct en stevig remmen.",
+    "en": "A dog on the road is an unpredictable obstacle. On a wet road surface, braking distance is longer, so you must brake immediately and firmly."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je nadert een kruispunt waar een tram van rechts komt op een gelijkwaardige weg zonder voorrangsborden.",
+    "en": "You approach an intersection where a tram approaches from the right on an equal road without priority signs."
+  },
+  "question": {
+    "nl": "Wie heeft voorrang?",
+    "en": "Who has right of way?"
+  },
+  "options": {
+    "nl": ["De tram heeft altijd voorrang", "De auto heeft voorrang (van rechts)", "Het voertuig dat als eerste aankomt", "Er is geen duidelijke regel"],
+    "en": ["The tram always has right of way", "The car has right of way (from the right)", "The vehicle that arrives first", "There is no clear rule"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Trams hebben altijd voorrang op gelijkwaardige kruisingen, tenzij door verkeersborden of haaientanden anders wordt aangegeven.",
+    "en": "Trams always have right of way at equal intersections, unless otherwise indicated by traffic signs or shark teeth."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je nadert een bromfiets op de fietspad.",
+    "en": "You approach a moped on the bike path."
+  },
+  "question": {
+    "nl": "Wat is de maximumsnelheid voor een bromfiets op het fietspad?",
+    "en": "What is the maximum speed for a moped on the bike path?"
+  },
+  "options": {
+    "nl": ["25 km/h", "45 km/h", "30 km/h"],
+    "en": ["25 km/h", "45 km/h", "30 km/h"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Bromfietsen (gele kentekenplaat) mogen op het fietspad maximaal 25 km/h rijden. Snorfietsen (blauwe kentekenplaat) mogen 25 km/h op de weg.",
+    "en": "Mopeds (yellow license plate) may drive a maximum of 25 km/h on bike paths. Light mopeds (blue license plate) may drive 25 km/h on the road."
+  }
+}

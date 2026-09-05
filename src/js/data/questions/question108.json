@@ -1,0 +1,21 @@
+{
+  "category": "Inzicht",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je controleert de bandenspanning van je auto.",
+    "en": "You are checking the tire pressure of your car."
+  },
+  "question": {
+    "nl": "Hoe beïnvloedt de bandenspanning het brandstofverbruik?",
+    "en": "How does tire pressure affect fuel consumption?"
+  },
+  "options": {
+    "nl": ["Te lage bandenspanning verhoogt het brandstofverbruik", "Te hoge bandenspanning verhoogt het brandstofverbruik", "Bandenspanning heeft geen invloed op brandstofverbruik"],
+    "en": ["Too low tire pressure increases fuel consumption", "Too high tire pressure increases fuel consumption", "Tire pressure has no effect on fuel consumption"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Te lage bandenspanning zorgt voor meer rolweerstand, wat het brandstofverbruik verhoogt. Controleer regelmatig de bandenspanning voor optimale efficiëntie.",
+    "en": "Too low tire pressure causes more rolling resistance, which increases fuel consumption. Check tire pressure regularly for optimal efficiency."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je ziet een waarschuwingsbord met een symbool van een wegwerker met een schop.",
+    "en": "You see a warning sign with a road worker symbol with a shovel."
+  },
+  "question": {
+    "nl": "Wat waarschuwt dit bord voor?",
+    "en": "What does this sign warn for?"
+  },
+  "options": {
+    "nl": ["Wegwerkzaamheden", "Bouwzone", "Parkeerplaats voor wegwerkers"],
+    "en": ["Road works", "Construction zone", "Parking for road workers"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Dit waarschuwingsbord geeft aan dat er wegwerkzaamheden zijn. Pas je snelheid aan en volg de aanwijzingen van de wegwerkers.",
+    "en": "This warning sign indicates road works. Adjust your speed and follow the instructions of the road workers."
+  }
+}

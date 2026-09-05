@@ -1,0 +1,21 @@
+{
+  "category": "Gevaarherkenning",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Je rijdt 70 km/h op een weg met slecht zicht door mist. Een voertuig komt plotseling uit de mist tegemoet.",
+    "en": "You are driving at 70 km/h on a road with poor visibility due to fog. A vehicle suddenly emerges from the fog coming toward you."
+  },
+  "question": {
+    "nl": "Wat is de veiligste actie?",
+    "en": "What is the safest action?"
+  },
+  "options": {
+    "nl": ["Remmen", "Gas loslaten", "Niets doen"],
+    "en": ["Brake", "Release Gas", "Do Nothing"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "In mist met plotseling tegemoetkomend verkeer is remmen nodig om de snelheid te verlagen en reactietijd te vergroten.",
+    "en": "In fog with suddenly oncoming traffic, braking is necessary to reduce speed and increase reaction time."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je ziet een rood cirkelvormig bord met twee auto's naast elkaar en een kruis erover.",
+    "en": "You see a red circular sign with two cars side by side and a cross over them."
+  },
+  "question": {
+    "nl": "Wat betekent dit bord?",
+    "en": "What does this sign mean?"
+  },
+  "options": {
+    "nl": ["Inhalen verboden voor auto's en motorfietsen", "Twee rijstroken verboden", "Auto's verboden"],
+    "en": ["No overtaking for cars and motorcycles", "Two lanes prohibited", "Cars prohibited"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Dit bord betekent dat inhalen verboden is voor auto's en motorfietsen. Het is een specifiek inhalenverbod.",
+    "en": "This sign means that overtaking is prohibited for cars and motorcycles. It is a specific overtaking prohibition."
+  }
+}

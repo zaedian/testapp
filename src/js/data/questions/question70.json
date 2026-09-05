@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je rijdt door een zone met een schoolbord.",
+    "en": "You are driving through a zone with a school sign."
+  },
+  "question": {
+    "nl": "Wat is de maximumsnelheid in een schoolzone?",
+    "en": "What is the maximum speed in a school zone?"
+  },
+  "options": {
+    "nl": ["30 km/h", "50 km/h", "60 km/h", "70 km/h"],
+    "en": ["30 km/h", "50 km/h", "60 km/h", "70 km/h"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "In schoolzones geldt een maximumsnelheid van 30 km/h om de veiligheid van kinderen te waarborgen die naar school lopen.",
+    "en": "In school zones, a maximum speed of 30 km/h applies to ensure the safety of children walking to school."
+  }
+}

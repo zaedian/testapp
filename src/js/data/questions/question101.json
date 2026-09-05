@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je hebt een rijbewijs categorie B.",
+    "en": "You have a category B driving license."
+  },
+  "question": {
+    "nl": "Wat is de maximum toegestane massa (MAM) van een voertuig dat je met rijbewijs B mag besturen?",
+    "en": "What is the maximum authorized mass (MAM) of a vehicle you may drive with a category B license?"
+  },
+  "options": {
+    "nl": ["3.500 kg", "4.500 kg", "7.500 kg"],
+    "en": ["3,500 kg", "4,500 kg", "7,500 kg"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Met een rijbewijs categorie B mag je voertuigen besturen met een maximum toegestane massa (MAM) van maximaal 3.500 kg.",
+    "en": "With a category B license, you may drive vehicles with a maximum authorized mass (MAM) of up to 3,500 kg."
+  }
+}

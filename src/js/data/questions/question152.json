@@ -1,0 +1,21 @@
+{
+  "category": "Inzicht",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je rijdt in de file op de snelweg. Een auto probeert in te voegen voor je.",
+    "en": "You are driving in traffic on the highway. A car is trying to merge in front of you."
+  },
+  "question": {
+    "nl": "Wat is de veiligste actie?",
+    "en": "What is the safest action?"
+  },
+  "options": {
+    "nl": ["Ruimte maken en laten invoegen", "Dicht oprijden om te voorkomen dat ze invoegen", "Toeteren"],
+    "en": ["Make space and let them merge", "Drive close to prevent them from merging", "Honk"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "In files moet je ruimte maken voor invoegend verkeer. Dit zorgt voor een betere doorstroming en voorkomt agressief gedrag.",
+    "en": "In traffic, you should make space for merging vehicles. This ensures better flow and prevents aggressive behavior."
+  }
+}

@@ -148,23 +148,24 @@ export class ExamState {
             }
         });
 
-        // Official CBR exam structure (old format)
-        const officialStructure = {
-            Gevaarherkenning: { total: 25, required: 13 },
-            Kennis: { total: 12, required: 10 },
-            Inzicht: { total: 28, required: 25 }
+        // CBR target pass ratios per category
+        const passRatios = {
+            Gevaarherkenning: 0.52,
+            Kennis: 0.83,
+            Inzicht: 0.89
         };
-        const officialTotal = 65;
-        const customTotal = this.questions.length;
-        const scaleFactor = customTotal / officialTotal;
 
-        // Scale pass limits based on custom question count, only for categories used
+        // Calculate dynamic pass limits based on actual question counts
         for (const cat of Object.keys(breakdown)) {
-            if (officialStructure[cat]) {
-                breakdown[cat].passLimit = Math.max(1, Math.ceil(officialStructure[cat].required * scaleFactor));
-            } else {
-                // Fallback for unknown categories
-                breakdown[cat].passLimit = Math.ceil(breakdown[cat].total * 0.8);
+            const data = breakdown[cat];
+            const ratio = passRatios[cat] || 0.8; // Fallback to 80% for unknown categories
+            
+            // Calculate pass limit using CBR target ratios
+            data.passLimit = Math.max(1, Math.ceil(data.total * ratio));
+            
+            // GUARANTEED RULE: If user answers 100% correctly, they MUST pass
+            if (data.correct === data.total) {
+                data.passLimit = data.total;
             }
         }
 

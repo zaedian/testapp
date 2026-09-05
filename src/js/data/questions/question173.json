@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je ziet een rood cirkelvormig bord met een fiets met een kruis erover.",
+    "en": "You see a red circular sign with a bicycle crossed out."
+  },
+  "question": {
+    "nl": "Wat betekent dit bord?",
+    "en": "What does this sign mean?"
+  },
+  "options": {
+    "nl": ["Fietsen verboden", "Fietsen toegestaan", "Fietspad"],
+    "en": ["Bicycles prohibited", "Bicycles allowed", "Bike path"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Een rood cirkelvormig bord met een fiets en een kruis erover betekent dat fietsen verboden zijn op deze weg.",
+    "en": "A red circular sign with a bicycle crossed out means that bicycles are prohibited on this road."
+  }
+}

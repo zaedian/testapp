@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je ziet een blauw cirkelvormig bord met een witte pijl naar rechts.",
+    "en": "You see a blue circular sign with a white arrow pointing right."
+  },
+  "question": {
+    "nl": "Wat betekent dit bord?",
+    "en": "What does this sign mean?"
+  },
+  "options": {
+    "nl": ["Rechtsaf verplicht", "Rechtsaf toegestaan", "Rechts inhalen toegestaan"],
+    "en": ["Mandatory right turn", "Right turn allowed", "Right overtaking allowed"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Een blauw cirkelvormig bord met een witte pijn is een gebodsbord. Een pijl naar rechts betekent dat je verplicht bent rechtsaf te slaan.",
+    "en": "A blue circular sign with a white arrow is a mandatory sign. An arrow pointing right means you are required to turn right."
+  }
+}

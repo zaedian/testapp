@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je nadert een kruispunt met een STOP-bord (rood achthoekig bord met witte tekst).",
+    "en": "You approach an intersection with a STOP sign (red octagonal sign with white text)."
+  },
+  "question": {
+    "nl": "Wat betekent dit STOP-bord?",
+    "en": "What does this STOP sign mean?"
+  },
+  "options": {
+    "nl": ["Je moet volledig stoppen en voorrang verlenen aan kruisend verkeer", "Je moet vertragen maar niet stoppen", "Je hebt voorrang"],
+    "en": ["You must come to a complete stop and give way to crossing traffic", "You must slow down but not stop", "You have right of way"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Een STOP-bord betekent dat je volledig moet stoppen bij de stoplijn en voorrang moet verlenen aan alle kruisend verkeer.",
+    "en": "A STOP sign means you must come to a complete stop at the stop line and give way to all crossing traffic."
+  }
+}

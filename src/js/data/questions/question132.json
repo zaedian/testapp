@@ -1,0 +1,21 @@
+{
+  "category": "Gevaarherkenning",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Je rijdt 90 km/h op de snelweg. Een stuk autoband ligt op het wegdek 100 meter voor je.",
+    "en": "You are driving at 90 km/h on the highway. A piece of tire is on the road surface 100 meters ahead."
+  },
+  "question": {
+    "nl": "Welke actie moet je nemen?",
+    "en": "What action should you take?"
+  },
+  "options": {
+    "nl": ["Gas loslaten", "Remmen", "Niets doen"],
+    "en": ["Release Gas", "Brake", "Do Nothing"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Op 100 meter afstand heb je genoeg tijd om je snelheid veilig te verlagen door het gas los te laten. Remmen kan onnodig gevaarlijk zijn voor het verkeer achter je.",
+    "en": "At 100 meters distance, you have enough time to safely lower your speed by releasing the gas. Braking can be unnecessarily dangerous for traffic behind you."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je wilt het motoroliepeil van je auto controleren.",
+    "en": "You want to check the engine oil level of your car."
+  },
+  "question": {
+    "nl": "Wanneer is het beste moment om het motoroliepeil te controleren?",
+    "en": "When is the best time to check the engine oil level?"
+  },
+  "options": {
+    "nl": ["Wanneer de motor koud is", "Wanneer de motor warm is", "Tijdens het rijden"],
+    "en": ["When the engine is cold", "When the engine is warm", "While driving"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Het motoroliepeil moet het beste worden gecontroleerd wanneer de motor koud is. Bij een warme motor staat de olie verspreid en kan de meting onnauwkeurig zijn.",
+    "en": "Engine oil level is best checked when the engine is cold. With a warm engine, the oil is dispersed and the measurement may be inaccurate."
+  }
+}

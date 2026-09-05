@@ -1,5 +1,5 @@
 export class UIRenderer {
-    constructor() {
+    constructor(translations = null) {
         // Cache DOM elements once during initialization
         this.views = {
             menu: document.getElementById("menu-view"),
@@ -31,6 +31,11 @@ export class UIRenderer {
         this.showAllAnswers = false;
 
         this.currentLang = "nl";
+        this.translations = translations;
+    }
+
+    setTranslations(translations) {
+        this.translations = translations;
     }
 
     setLanguage(lang) {
@@ -94,7 +99,7 @@ export class UIRenderer {
         return path.split('.').reduce((o, p) => o && o[p], obj);
     }
 
-    setTheme(theme) {
+    setTheme(theme, lang = this.currentLang) {
         const isLight = theme === "light";
         if (isLight) {
             document.documentElement.setAttribute("data-theme", "light");
@@ -104,9 +109,15 @@ export class UIRenderer {
         
         // textContent avoids forced layout recalculation triggered by innerText
         this.themeIcon.textContent = isLight ? "🌙" : "☀️";
+        
+        // Use translation dictionary to resolve theme button label based on combined state
+        const translations = this.translations || window.translations || {};
+        const langTranslations = translations[lang] || {};
+        const buttons = langTranslations.buttons || {};
+        
         this.themeText.textContent = isLight 
-            ? (this.currentLang === "nl" ? "Lichte Modus" : "Light Mode")
-            : (this.currentLang === "nl" ? "Donkere Modus" : "Dark Mode");
+            ? (buttons.lightMode || (lang === "nl" ? "Lichte Modus" : "Light Mode"))
+            : (buttons.darkMode || (lang === "nl" ? "Donkere Modus" : "Dark Mode"));
     }
 
     showView(viewName) {

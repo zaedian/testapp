@@ -1,0 +1,21 @@
+{
+  "category": "Gevaarherkenning",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Je rijdt 60 km/h op een landelijke weg in de nacht. Een ree springt plotseling uit de bosjes 30 meter voor je.",
+    "en": "You are driving at 60 km/h on a rural road at night. A deer suddenly jumps out of the bushes 30 meters ahead."
+  },
+  "question": {
+    "nl": "Welke actie moet je nemen?",
+    "en": "What action should you take?"
+  },
+  "options": {
+    "nl": ["Remmen", "Gas loslaten", "Niets doen"],
+    "en": ["Brake", "Release Gas", "Do Nothing"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Wild op de weg is een ernstig gevaar, vooral 's nachts met beperkt zicht. Noodremmen is vereist om een botsing te voorkomen.",
+    "en": "Wildlife on the road is a serious hazard, especially at night with limited visibility. Emergency braking is required to prevent a collision."
+  }
+}

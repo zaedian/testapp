@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je controleert de banden van je auto voor een lange reis.",
+    "en": "You are checking your car's tires before a long trip."
+  },
+  "question": {
+    "nl": "Wat is de minimale profieldiepte voor autobanden in Nederland?",
+    "en": "What is the minimum tread depth for car tires in the Netherlands?"
+  },
+  "options": {
+    "nl": ["1.0 mm", "1.6 mm", "2.0 mm", "2.5 mm"],
+    "en": ["1.0 mm", "1.6 mm", "2.0 mm", "2.5 mm"]
+  },
+  "answer": 1,
+  "explanation": {
+    "nl": "De wettelijke minimale profieldiepte voor autobanden in Nederland is 1.6 mm. Voor veiligheid wordt echter minimaal 2-3 mm aanbevolen.",
+    "en": "The legal minimum tread depth for car tires in the Netherlands is 1.6 mm. For safety, however, at least 2-3 mm is recommended."
+  }
+}

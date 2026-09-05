@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je ziet een groen lampje op het dashboard met het symbool van cruise control.",
+    "en": "You see a green light on the dashboard with the cruise control symbol."
+  },
+  "question": {
+    "nl": "Wat betekent dit groene lampje?",
+    "en": "What does this green light mean?"
+  },
+  "options": {
+    "nl": ["Cruise control is actief", "Cruise control is defect", "Snelheidslimiet is bereikt"],
+    "en": ["Cruise control is active", "Cruise control is defective", "Speed limit has been reached"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Groene en blauwe lampjes geven aan dat een systeem actief is. Een groen cruise control lampje betekent dat de cruise control is ingeschakeld.",
+    "en": "Green and blue lights indicate that a system is active. A green cruise control light means cruise control is engaged."
+  }
+}

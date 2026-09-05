@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je wilt het remvloeistofpeil van je auto controleren.",
+    "en": "You want to check the brake fluid level of your car."
+  },
+  "question": {
+    "nl": "Waarom is het belangrijk om het remvloeistofpeil te controleren?",
+    "en": "Why is it important to check the brake fluid level?"
+  },
+  "options": {
+    "nl": ["Te weinig remvloeistof kan leiden tot remverlies", "Het verhoogt de brandstofefficiëntie", "Het is verplicht bij de APK"],
+    "en": ["Too little brake fluid can lead to brake failure", "It increases fuel efficiency", "It is required during APK inspection"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Te weinig remvloeistof kan leiden tot remverlies, wat gevaarlijk is. Controleer regelmatig het remvloeistofpeil en vul bij indien nodig.",
+    "en": "Too little brake fluid can lead to brake failure, which is dangerous. Check brake fluid level regularly and top up if necessary."
+  }
+}

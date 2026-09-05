@@ -1,0 +1,21 @@
+{
+  "category": "Gevaarherkenning",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Je rijdt 50 km/h door een woonwijk. Een bal rolt de straat op en een kind rent erachteraan.",
+    "en": "You are driving at 50 km/h through a residential area. A ball rolls onto the street and a child runs after it."
+  },
+  "question": {
+    "nl": "Welke actie moet je nemen?",
+    "en": "What action should you take?"
+  },
+  "options": {
+    "nl": ["Remmen", "Gas loslaten", "Niets doen"],
+    "en": ["Brake", "Release Gas", "Do Nothing"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Een bal op de weg is een waarschuwingssignaal voor een kind dat volgt. Hard remmen is noodzakelijk om het kind te beschermen.",
+    "en": "A ball on the road is a warning sign that a child will follow. Hard braking is necessary to protect the child."
+  }
+}

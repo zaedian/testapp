@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je rijdt in dichte mist met zichtafstand minder dan 50 meter.",
+    "en": "You are driving in dense fog with visibility less than 50 meters."
+  },
+  "question": {
+    "nl": "Welke verlichting moet je gebruiken bij mist met zichtafstand minder dan 50 meter?",
+    "en": "Which lighting must you use in fog with visibility less than 50 meters?"
+  },
+  "options": {
+    "nl": ["Dimlicht en mistachterlicht", "Grootlicht en mistachterlicht", "Alleen dimlicht", "Alleen mistachterlicht"],
+    "en": ["Dipped headlights and rear fog light", "High beams and rear fog light", "Only dipped headlights", "Only rear fog light"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Bij mist met zichtafstand minder dan 50 meter moet je dimlicht en mistachterlicht gebruiken. Grootlicht mag niet worden gebruikt omdat het reflecteert in de mist.",
+    "en": "In fog with visibility less than 50 meters, you must use dipped headlights and rear fog light. High beams must not be used as they reflect in the fog."
+  }
+}

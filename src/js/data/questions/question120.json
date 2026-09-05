@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je nadert een begrafenisstoet met vlaggen.",
+    "en": "You approach a funeral procession with flags."
+  },
+  "question": {
+    "nl": "Wat moet je doen bij een begrafenisstoet?",
+    "en": "What must you do at a funeral procession?"
+  },
+  "options": {
+    "nl": ["De stoet niet doorsnijden en voorrang verlenen", "Normaal doorrijden", "Toeteren om de stoet te waarschuwen"],
+    "en": ["Do not cut through the procession and give way", "Drive through normally", "Honk to warn the procession"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Een begrafenisstoet mag niet worden doorsneden. Je moet voorrang verlenen aan de stoet die door vlaggen is gemarkeerd.",
+    "en": "A funeral procession must not be cut through. You must give way to the procession marked by flags."
+  }
+}

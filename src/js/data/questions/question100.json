@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je ziet een blauw lampje op het dashboard met het symbool van grootlicht.",
+    "en": "You see a blue light on the dashboard with the high beam symbol."
+  },
+  "question": {
+    "nl": "Wat betekent dit blauwe lampje?",
+    "en": "What does this blue light mean?"
+  },
+  "options": {
+    "nl": ["Grootlicht is ingeschakeld", "Grootlicht is defect", "Dimlicht is ingeschakeld"],
+    "en": ["High beams are engaged", "High beams are defective", "Dipped headlights are engaged"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Blauwe lampjes geven aan dat een functie actief is. Een blauw grootlichtlampje betekent dat je grootlicht aan staat.",
+    "en": "Blue lights indicate that a function is active. A blue high beam light means your high beams are on."
+  }
+}

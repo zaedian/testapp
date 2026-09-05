@@ -1,0 +1,21 @@
+{
+  "category": "Inzicht",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je nadert een rood verkeerslicht en benadert een stop.",
+    "en": "You approach a red traffic light and are coming to a stop."
+  },
+  "question": {
+    "nl": "Wat is de meest efficiënte manier om te stoppen volgens eco-driving?",
+    "en": "What is the most efficient way to stop according to eco-driving?"
+  },
+  "options": {
+    "nl": ["Laat tijdig het gas los en rol uit naar de stoplijn", "Rem hard vlak voor de stoplijn", "Houd het gas ingedrukt tot het laatste moment"],
+    "en": ["Release the gas early and coast to the stop line", "Brake hard just before the stop line", "Keep the gas pressed until the last moment"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Bij eco-driving laat je tijdig het gas los en gebruikt de motorremming om uit te rollen. Dit bespaart brandstof en slijt je remmen minder.",
+    "en": "In eco-driving, release the gas early and use engine braking to coast. This saves fuel and wears your brakes less."
+  }
+}

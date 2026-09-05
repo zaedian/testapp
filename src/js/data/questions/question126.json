@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je bereidt je voor op winterrijden.",
+    "en": "You are preparing for winter driving."
+  },
+  "question": {
+    "nl": "Wat is de aanbevolen profieldiepte voor winterbanden?",
+    "en": "What is the recommended tread depth for winter tires?"
+  },
+  "options": {
+    "nl": ["Minimaal 4 mm", "1,6 mm (wettelijke minimum)", "2 mm"],
+    "en": ["Minimum 4 mm", "1.6 mm (legal minimum)", "2 mm"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Voor winterbanden wordt een profieldiepte van minimaal 4 mm aanbevolen voor optimale grip op sneeuw en ijs. Het wettelijke minimum is 1,6 mm.",
+    "en": "For winter tires, a tread depth of at least 4 mm is recommended for optimal grip on snow and ice. The legal minimum is 1.6 mm."
+  }
+}

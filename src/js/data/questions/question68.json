@@ -1,0 +1,21 @@
+{
+  "category": "Inzicht",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je wilt een kruispunt oversteken maar het verkeer daar staat stil. Er is net genoeg ruimte om de oversteek te maken.",
+    "en": "You want to cross an intersection but the traffic there is stationary. There is just enough space to make the crossing."
+  },
+  "question": {
+    "nl": "Mag je het kruispunt oprijden als het verkeer aan de overkant stilstaat?",
+    "en": "May you enter the intersection if traffic on the other side is stationary?"
+  },
+  "options": {
+    "nl": ["Ja, als je er doorheen kunt", "Nee, je mag het kruispunt niet blokkeren", "Alleen als je voorrang hebt", "Alleen als het een stoplicht is"],
+    "en": ["Yes, if you can get through", "No, you must not block the intersection", "Only if you have right of way", "Only if it's a traffic light"]
+  },
+  "answer": 1,
+  "explanation": {
+    "nl": "Je mag een kruispunt niet oprijden als je niet zeker weet dat je het kruispunt kunt verlaten zonder het te blokkeren voor kruisend verkeer.",
+    "en": "You must not enter an intersection if you are not certain you can leave the intersection without blocking it for crossing traffic."
+  }
+}

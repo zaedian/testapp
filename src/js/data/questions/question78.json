@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je ziet een waarschuwingsbord met een symbool van een militaire colonne.",
+    "en": "You see a warning sign with a military column symbol."
+  },
+  "question": {
+    "nl": "Wat betekent dit bord?",
+    "en": "What does this sign mean?"
+  },
+  "options": {
+    "nl": ["Militaire colonne in de buurt", "Militair gebied", "Verboden voor militaire voertuigen", "Militair oefenterrein"],
+    "en": ["Military column nearby", "Military area", "Prohibited for military vehicles", "Military training ground"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Dit bord waarschuwt voor een militaire colonne op de weg. Militaire voertuigen hebben voorrang en je moet extra voorzichtig zijn.",
+    "en": "This sign warns of a military column on the road. Military vehicles have right of way and you must be extra cautious."
+  }
+}

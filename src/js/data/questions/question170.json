@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je ziet een omgekeerde driehoek met rode rand.",
+    "en": "You see an inverted triangle with red border."
+  },
+  "question": {
+    "nl": "Wat betekent dit bord?",
+    "en": "What does this sign mean?"
+  },
+  "options": {
+    "nl": ["Voorrang verlenen", "Stoppen verplicht", "Voorrangsweg"],
+    "en": ["Yield", "Stop mandatory", "Priority road"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Een omgekeerde driehoek met rode rand betekent dat je voorrang moet verlenen aan kruisend verkeer.",
+    "en": "An inverted triangle with red border means you must yield to crossing traffic."
+  }
+}

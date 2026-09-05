@@ -1,0 +1,21 @@
+{
+  "category": "Gevaarherkenning",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Je rijdt 100 km/h op de snelweg. Een auto voor je remt plotseling hard zonder waarschuwing.",
+    "en": "You are driving at 100 km/h on the highway. A car ahead brakes suddenly without warning."
+  },
+  "question": {
+    "nl": "Wat is de veiligste actie?",
+    "en": "What is the safest action?"
+  },
+  "options": {
+    "nl": ["Remmen", "Gas loslaten", "Niets doen"],
+    "en": ["Brake", "Release Gas", "Do Nothing"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Plotseling hard remmen voor je vereist directe reactie. Remmen is nodig om een achteropbotsing te voorkomen.",
+    "en": "Sudden hard braking ahead requires immediate reaction. Braking is necessary to prevent a rear-end collision."
+  }
+}

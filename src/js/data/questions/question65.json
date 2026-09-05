@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je nadert een kruispunt met haaientanden (driehoekige markeringen op de weg).",
+    "en": "You approach an intersection with shark teeth (triangular markings on the road)."
+  },
+  "question": {
+    "nl": "Wat betekenen de haaientanden op de weg?",
+    "en": "What do the shark teeth on the road mean?"
+  },
+  "options": {
+    "nl": ["Je moet voorrang verlenen", "Je hebt voorrang", "Je mag hier inhalen", "Je moet hier stoppen"],
+    "en": ["You must yield", "You have right of way", "You may overtake here", "You must stop here"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Haaientanden geven aan dat je voorrang moet verlenen aan het kruisend verkeer. Ze markeren een voorrangsweg waar jij moet stoppen als er verkeer aankomt.",
+    "en": "Shark teeth indicate that you must yield to crossing traffic. They mark a priority road where you must stop if traffic is approaching."
+  }
+}

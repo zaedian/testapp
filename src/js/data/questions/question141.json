@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je rijdt in een 30-zone met verkeersborden die 30 km/h aangeven.",
+    "en": "You are driving in a 30-zone with signs indicating 30 km/h."
+  },
+  "question": {
+    "nl": "Wat is de maximumsnelheid in een 30-zone?",
+    "en": "What is the maximum speed in a 30-zone?"
+  },
+  "options": {
+    "nl": ["30 km/h", "50 km/h", "40 km/h"],
+    "en": ["30 km/h", "50 km/h", "40 km/h"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "In een 30-zone is de maximumsnelheid 30 km/h. Deze zones zijn vaak in woonwijken en bij scholen.",
+    "en": "In a 30-zone, the maximum speed is 30 km/h. These zones are often in residential areas and near schools."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je hebt drugs gebruikt.",
+    "en": "You have used drugs."
+  },
+  "question": {
+    "nl": "Wat is de wettelijke limiet voor drugs in het bloed bij het besturen van een voertuig?",
+    "en": "What is the legal limit for drugs in the blood when driving a vehicle?"
+  },
+  "options": {
+    "nl": ["0 - drugs zijn volledig verboden bij het rijden", "0,5 promille", "Er is geen limiet voor drugs"],
+    "en": ["0 - drugs are completely prohibited when driving", "0.5 per mil", "There is no limit for drugs"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Drugs zijn volledig verboden bij het rijden. Er is geen toegestane limiet - elke aanwezigheid van drugs in het bloed is illegaal.",
+    "en": "Drugs are completely prohibited when driving. There is no permitted limit - any presence of drugs in the blood is illegal."
+  }
+}

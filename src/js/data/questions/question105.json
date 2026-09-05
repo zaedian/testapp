@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je ziet een brommobiel op de weg.",
+    "en": "You see a microcar (brommobiel) on the road."
+  },
+  "question": {
+    "nl": "Wat is de maximumsnelheid voor een brommobiel?",
+    "en": "What is the maximum speed for a microcar (brommobiel)?"
+  },
+  "options": {
+    "nl": ["45 km/h", "25 km/h", "60 km/h"],
+    "en": ["45 km/h", "25 km/h", "60 km/h"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Brommobielen mogen maximaal 45 km/h rijden. Ze zijn toegestaan op wegen waar de maximumsnelheid 60 km/h of hoger is.",
+    "en": "Microcars may drive a maximum of 45 km/h. They are permitted on roads where the speed limit is 60 km/h or higher."
+  }
+}

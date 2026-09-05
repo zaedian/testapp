@@ -1,0 +1,21 @@
+{
+  "category": "Gevaarherkenning",
+  "timeLimit": 60,
+  "scenario": {
+    "nl": "Je rijdt 80 km/h op een N-weg. Een fietser wijkt plotseling uit naar links om een put te ontwijken.",
+    "en": "You are driving at 80 km/h on an N-road. A cyclist suddenly swerves left to avoid a pothole."
+  },
+  "question": {
+    "nl": "Wat is de veiligste actie?",
+    "en": "What is the safest action?"
+  },
+  "options": {
+    "nl": ["Remmen", "Gas loslaten", "Niets doen"],
+    "en": ["Brake", "Release Gas", "Do Nothing"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Een plotseling uitwijkende fietser is onvoorspelbaar. Remmen geeft je de beste kans om een botsing te voorkomen.",
+    "en": "A suddenly swerving cyclist is unpredictable. Braking gives you the best chance to avoid a collision."
+  }
+}

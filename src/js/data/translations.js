@@ -10,8 +10,8 @@ export const translations = {
     },
     menu: {
       title: "Klaar om je Nederlandse verkeerskennis te testen?",
-      description: "Dit oefenexamen simuleert de officiële CBR theorie-test structuur. Je moet aan de slagingscriteria in alle drie categorieën voldoen om in totaal te slagen.",
-      rulesTitle: "Examenverdeling & Vereisten",
+      description: "Dit oefenexamen simuleert de structuur van het officiële CBR theorie-examen. Je moet aan de eisen in alle drie categorieën voldoen om overall te slagen.",
+      rulesTitle: "Examenopbouw & Eisen",
       hazard: "1. Gevaarherkenning",
       knowledge: "2. Kennis",
       insight: "3. Inzicht",
@@ -31,7 +31,8 @@ export const translations = {
       secondsUnit: "sec",
       timeLimitHint: "Laat leeg om de standaard tijdslimiet van de vraag te gebruiken",
       startBtn: "Start Oefenexamen",
-      startBtnDisabled: "Selecteer eerst een modus"
+      startBtnDisabled: "Selecteer eerst een modus",
+      advanced: "Geavanceerde Opties"
     },
     quiz: {
       category: "Categorie",
@@ -40,7 +41,14 @@ export const translations = {
       nextBtn: "Volgende Vraag",
       finishBtn: "Examen Beëindigen",
       explanation: "Uitleg:",
-      timeout: "Tijd Is Om!"
+      timeout: "Tijd Is Om!",
+      exitBtn: "Afsluiten"
+    },
+    modal: {
+      exitTitle: "Examen Afsluiten?",
+      exitMessage: "Weet je zeker dat je wilt afsluiten? Je voortgang wordt niet opgeslagen.",
+      cancel: "Annuleren",
+      confirm: "Afsluiten"
     },
     results: {
       title: "Examen Samenvatting",
@@ -73,6 +81,10 @@ export const translations = {
     buttons: {
       lightMode: "Lichte Modus",
       darkMode: "Donkere Modus"
+    },
+    settings: {
+      autoAdvance: "Automatisch doorgaan naar volgende vraag",
+      autoAdvanceHint: "Selecteer automatisch de volgende vraag na het beantwoorden"
     }
   },
   en: {
@@ -107,7 +119,8 @@ export const translations = {
       secondsUnit: "sec",
       timeLimitHint: "Leave empty to use question's default time limit",
       startBtn: "Start Practice Exam",
-      startBtnDisabled: "Select a mode first"
+      startBtnDisabled: "Select a mode first",
+      advanced: "Advanced Options"
     },
     quiz: {
       category: "Category",
@@ -116,7 +129,14 @@ export const translations = {
       nextBtn: "Next Question",
       finishBtn: "Finish Exam",
       explanation: "Explanation:",
-      timeout: "Time's Up!"
+      timeout: "Time's Up!",
+      exitBtn: "Exit"
+    },
+    modal: {
+      exitTitle: "Exit Exam?",
+      exitMessage: "Are you sure you want to exit? Your progress will be lost.",
+      cancel: "Cancel",
+      confirm: "Exit"
     },
     results: {
       title: "Exam Summary",
@@ -149,6 +169,10 @@ export const translations = {
     buttons: {
       lightMode: "Light Mode",
       darkMode: "Dark Mode"
+    },
+    settings: {
+      autoAdvance: "Auto-advance to next question",
+      autoAdvanceHint: "Automatically select next question after answering"
     }
   }
 };

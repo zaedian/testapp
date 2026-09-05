@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je ziet een rood cirkelvormig bord met een vrachtwagen met een kruis erover.",
+    "en": "You see a red circular sign with a truck crossed out."
+  },
+  "question": {
+    "nl": "Wat betekent dit bord?",
+    "en": "What does this sign mean?"
+  },
+  "options": {
+    "nl": ["Vrachtwagens verboden", "Vrachtwagens toegestaan", "Parkeerplaats voor vrachtwagens"],
+    "en": ["Trucks prohibited", "Trucks allowed", "Parking for trucks"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Een rood cirkelvormig bord met een vrachtwagen en een kruis erover betekent dat vrachtwagens verboden zijn op deze weg.",
+    "en": "A red circular sign with a truck crossed out means that trucks are prohibited on this road."
+  }
+}

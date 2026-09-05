@@ -6,12 +6,19 @@ import { UIRenderer } from './modules/ui.js';
 
 class ExamApp {
     constructor() {
-        this.ui = new UIRenderer();
+        this.ui = new UIRenderer(translations);
         this.timer = new ExamTimer("timer");
         this.questions = [];
+        this.autoAdvanceEnabled = false;
+        this.autoAdvanceDelay = 400; // milliseconds
+        this.autoAdvanceTimeout = null;
+
+        // Make translations globally available for UI renderer
+        window.translations = translations;
 
         this.initLanguage();
         this.initTheme();
+        this.initAutoAdvance();
         this.initEventListeners();
         this.loadQuestionsAndShowMenu();
     }
@@ -59,36 +66,82 @@ class ExamApp {
         // Dark Mode is default unless 'light' is explicitly saved
         const savedTheme = localStorage.getItem("cbr_theme") || "dark";
         this.currentTheme = savedTheme;
-        this.ui.setTheme(this.currentTheme);
+        this.ui.setTheme(this.currentTheme, this.currentLang);
+    }
+
+    initAutoAdvance() {
+        // Load auto-advance preference from localStorage
+        const savedAutoAdvance = localStorage.getItem("cbr_auto_advance");
+        this.autoAdvanceEnabled = savedAutoAdvance === 'true';
+        const checkbox = document.getElementById("auto-advance-toggle");
+        if (checkbox) {
+            checkbox.checked = this.autoAdvanceEnabled;
+        }
     }
 
     toggleLanguage() {
         this.currentLang = this.currentLang === "nl" ? "en" : "nl";
         localStorage.setItem("cbr_language", this.currentLang);
         this.ui.setLanguage(this.currentLang);
-        this.ui.updateUIText(translations[this.currentLang]);
+        this.ui.setTheme(this.currentTheme, this.currentLang); // Update theme text with new language first
+        this.ui.updateUIText(translations[this.currentLang]); // Then update all other text
         
-        // Re-render current question if quiz is active
+        // Re-render current question if quiz is active, preserving answer state
         if (this.state && this.ui.views.quiz.classList.contains("active")) {
             const q = this.state.getCurrentQuestion();
+            const hasAnswered = this.state.hasAnsweredCurrent();
+            
             this.ui.renderQuestion(
                 q,
                 this.state.currentIndex,
                 this.state.questions.length,
                 (selectedIndex) => this.handleOptionSelect(selectedIndex)
             );
+            
+            // If question was already answered, restore the feedback state
+            if (hasAnswered) {
+                const userAnswer = this.state.userAnswers[this.state.currentIndex];
+                const isTimeout = userAnswer === -1;
+                this.ui.showAnswerFeedback(userAnswer, q.answer, q.explanation, isTimeout);
+            }
         }
     }
 
     toggleTheme() {
         this.currentTheme = this.currentTheme === "dark" ? "light" : "dark";
         localStorage.setItem("cbr_theme", this.currentTheme);
-        this.ui.setTheme(this.currentTheme);
+        this.ui.setTheme(this.currentTheme, this.currentLang);
+        this.ui.updateUIText(translations[this.currentLang]);
     }
 
     initEventListeners() {
         document.getElementById("lang-toggle").addEventListener("click", () => this.toggleLanguage());
         document.getElementById("theme-toggle").addEventListener("click", () => this.toggleTheme());
+        
+        // Advanced toggle button
+        const advancedToggleBtn = document.getElementById("advanced-toggle-btn");
+        if (advancedToggleBtn) {
+            advancedToggleBtn.addEventListener("click", () => {
+                const advancedSection = document.getElementById("advanced-section");
+                const toggleIcon = advancedToggleBtn.querySelector(".toggle-icon");
+                if (advancedSection.style.display === "none") {
+                    advancedSection.style.display = "grid";
+                    toggleIcon.textContent = "▲";
+                } else {
+                    advancedSection.style.display = "none";
+                    toggleIcon.textContent = "▼";
+                }
+            });
+        }
+        
+        // Auto-advance toggle
+        const autoAdvanceCheckbox = document.getElementById("auto-advance-toggle");
+        if (autoAdvanceCheckbox) {
+            autoAdvanceCheckbox.addEventListener("change", (e) => {
+                this.autoAdvanceEnabled = e.target.checked;
+                localStorage.setItem("cbr_auto_advance", this.autoAdvanceEnabled);
+            });
+        }
         
         // Module selection checkboxes
         document.querySelectorAll(".module-checkboxes input[type='checkbox']").forEach(checkbox => {
@@ -133,6 +186,40 @@ class ExamApp {
         document.getElementById("next-btn").addEventListener("click", () => this.handleNextQuestion());
         document.getElementById("menu-btn").addEventListener("click", () => this.showMainMenu());
         document.getElementById("restart-btn").addEventListener("click", () => this.startExam(this.lastQuestionCount || 15));
+        
+        // Exit modal functionality
+        const exitBtn = document.getElementById("exit-btn");
+        const exitModal = document.getElementById("exit-modal");
+        const modalCancelBtn = document.getElementById("modal-cancel-btn");
+        const modalConfirmBtn = document.getElementById("modal-confirm-btn");
+        
+        if (exitBtn) {
+            exitBtn.addEventListener("click", () => {
+                exitModal.style.display = "flex";
+            });
+        }
+        
+        if (modalCancelBtn) {
+            modalCancelBtn.addEventListener("click", () => {
+                exitModal.style.display = "none";
+            });
+        }
+        
+        if (modalConfirmBtn) {
+            modalConfirmBtn.addEventListener("click", () => {
+                exitModal.style.display = "none";
+                this.showMainMenu();
+            });
+        }
+        
+        // Close modal on overlay click
+        if (exitModal) {
+            exitModal.addEventListener("click", (e) => {
+                if (e.target === exitModal) {
+                    exitModal.style.display = "none";
+                }
+            });
+        }
     }
 
     selectMode(count, buttonElement) {
@@ -169,10 +256,11 @@ class ExamApp {
             document.getElementById("time-limit-override").value = "30";
             document.getElementById("time-limit-override").disabled = true;
             
-            // Set question count to total available (60)
-            document.getElementById("custom-question-count").value = "60";
+            // Set question count to total available questions
+            const totalQuestions = this.questions.length;
+            document.getElementById("custom-question-count").value = totalQuestions;
             document.getElementById("custom-question-count").disabled = true;
-            this.selectedQuestionCount = 60;
+            this.selectedQuestionCount = totalQuestions;
             
             // Clear mode button selection and disable them
             document.querySelectorAll(".btn-mode").forEach(btn => {
@@ -225,20 +313,31 @@ class ExamApp {
 
     showMainMenu() {
         this.timer.stop();
-        this.ui.showView("menu");
         
-        // Reset mode selection
-        this.selectedQuestionCount = null;
-        this.customTimeLimit = null;
-        document.querySelectorAll(".btn-mode").forEach(btn => {
-            btn.classList.remove("active");
-            btn.disabled = false;
-        });
+        // Clear any pending auto-advance timeout
+        if (this.autoAdvanceTimeout) {
+            clearTimeout(this.autoAdvanceTimeout);
+            this.autoAdvanceTimeout = null;
+        }
+        
+        this.ui.views.menu.classList.add("active");
+        this.ui.views.quiz.classList.remove("active");
+        this.ui.views.results.classList.remove("active");
+        
+        // Reset start button state
         document.getElementById("start-btn").disabled = true;
         document.getElementById("time-limit-override").value = "";
         document.getElementById("time-limit-override").disabled = false;
         document.getElementById("custom-question-count").value = "";
         document.getElementById("custom-question-count").disabled = false;
+        
+        // Update custom question count placeholder to show total available questions
+        const totalQuestions = this.questions.length;
+        const customInput = document.getElementById("custom-question-count");
+        if (customInput) {
+            customInput.placeholder = `Max: ${totalQuestions}`;
+            customInput.max = totalQuestions;
+        }
         
         // Reset module selection checkboxes to all checked and enabled
         document.querySelectorAll(".module-checkboxes input[type='checkbox']").forEach(checkbox => {
@@ -299,9 +398,27 @@ class ExamApp {
 
         const q = this.state.getCurrentQuestion();
         this.ui.showAnswerFeedback(index, q.answer, q.explanation, isTimeout);
+
+        // Auto-advance if enabled
+        if (this.autoAdvanceEnabled) {
+            // Clear any existing timeout to prevent multiple advances
+            if (this.autoAdvanceTimeout) {
+                clearTimeout(this.autoAdvanceTimeout);
+            }
+            
+            this.autoAdvanceTimeout = setTimeout(() => {
+                this.handleNextQuestion();
+            }, this.autoAdvanceDelay);
+        }
     }
 
     handleNextQuestion() {
+        // Clear any pending auto-advance timeout
+        if (this.autoAdvanceTimeout) {
+            clearTimeout(this.autoAdvanceTimeout);
+            this.autoAdvanceTimeout = null;
+        }
+        
         if (this.state.nextQuestion()) {
             this.loadCurrentQuestion();
         } else {

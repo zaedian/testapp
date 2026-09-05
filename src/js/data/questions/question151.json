@@ -1,0 +1,21 @@
+{
+  "category": "Inzicht",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je rijdt op een weg met onderbroken middenlijn.",
+    "en": "You are driving on a road with a broken center line."
+  },
+  "question": {
+    "nl": "Mag je inhalen?",
+    "en": "May you overtake?"
+  },
+  "options": {
+    "nl": ["Ja, als het veilig is en je voldoende zicht hebt", "Nee, inhalen is altijd verboden", "Alleen bij 60 km/h of minder"],
+    "en": ["Yes, if it is safe and you have sufficient visibility", "No, overtaking is always prohibited", "Only at 60 km/h or less"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Een onderbroken middenlijn betekent dat inhalen is toegestaan als het veilig is en je voldoende zicht hebt op tegemoetkomend verkeer.",
+    "en": "A broken center line means overtaking is permitted if it is safe and you have sufficient view of oncoming traffic."
+  }
+}

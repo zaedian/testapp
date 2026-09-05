@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je rijdt in een woonwijk waar kinderen spelen langs de weg.",
+    "en": "You are driving in a residential area where children are playing along the road."
+  },
+  "question": {
+    "nl": "Wat is de maximumsnelheid in een woonerf?",
+    "en": "What is the maximum speed in a residential zone (woonerf)?"
+  },
+  "options": {
+    "nl": ["15 km/h", "30 km/h", "50 km/h", "60 km/h"],
+    "en": ["15 km/h", "30 km/h", "50 km/h", "60 km/h"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "In een woonerf is de maximumsnelheid 15 km/h ('wandelsnelheid'). Voetgangers hebben hier altijd voorrang en automobilisten moeten extra voorzichtig zijn.",
+    "en": "In a residential zone (woonerf), the maximum speed is 15 km/h ('walking speed'). Pedestrians always have right of way here and drivers must be extra cautious."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je ziet een busstrook met een onderbord '7:00-19:00'.",
+    "en": "You see a bus lane with a sub-plate '7:00-19:00'."
+  },
+  "question": {
+    "nl": "Wat betekent dit onderbord?",
+    "en": "What does this sub-plate mean?"
+  },
+  "options": {
+    "nl": ["De busstrook geldt alleen tussen 7:00 en 19:00 uur", "De busstrook is verboden tussen 7:00 en 19:00 uur", "Je mag er alleen rijden tussen 7:00 en 19:00 uur"],
+    "en": ["The bus lane applies only between 7:00 and 19:00", "The bus lane is prohibited between 7:00 and 19:00", "You may only drive there between 7:00 and 19:00"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Een tijdsgebonden onderbord geeft aan dat de busstrook alleen tijdens de aangegeven uren geldt. Buiten deze tijden mag de strook door alle verkeer worden gebruikt.",
+    "en": "A time-restricted sub-plate indicates that the bus lane applies only during the specified hours. Outside these times, the lane may be used by all traffic."
+  }
+}

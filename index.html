@@ -35,7 +35,7 @@
             </button>
             <button id="theme-toggle" class="control-btn" aria-label="Toggle Theme">
                 <span id="theme-icon">☀️</span> 
-                <span id="theme-text" data-i18n="buttons.lightMode">Light Mode</span>
+                <span id="theme-text">Light Mode</span>
             </button>
         </div>
     </header>
@@ -76,6 +76,37 @@
             </div>
 
             <div class="config-grid">
+                <div class="config-card mode-selection">
+                    <h3 data-i18n="menu.selectMode">Select Exam Mode</h3>
+                    <div class="mode-buttons">
+                        <button class="btn-mode" data-questions="15" data-i18n-questions="15">15 Questions</button>
+                        <button class="btn-mode" data-questions="30" data-i18n-questions="30">30 Questions</button>
+                        <button class="btn-mode" data-questions="60" data-i18n-questions="60">60 Questions</button>
+                    </div>
+                    <div class="input-field-group custom-count-input">
+                        <label for="custom-question-count" data-i18n="menu.orCustom">Or custom amount:</label>
+                        <input type="number" id="custom-question-count" min="1" max="100" placeholder="e.g. 25">
+                    </div>
+                </div>
+
+                <div class="config-card time-limit-selection">
+                    <h3 data-i18n="menu.timeLimitTitle">Time Limit per Question</h3>
+                    <div class="input-field-group time-limit-input">
+                        <input type="number" id="time-limit-override" min="10" max="300" placeholder="Seconds per question">
+                        <span class="input-unit">sec</span>
+                    </div>
+                    <p class="time-limit-hint" data-i18n="menu.timeLimitHint">Leave empty to use question's default time limit</p>
+                </div>
+            </div>
+
+            <div class="advanced-toggle">
+                <button id="advanced-toggle-btn" class="btn-secondary btn-small">
+                    <span data-i18n="menu.advanced">Advanced Options</span>
+                    <span class="toggle-icon">▼</span>
+                </button>
+            </div>
+
+            <div class="config-grid advanced-section" id="advanced-section" style="display: none;">
                 <div class="config-card module-selection">
                     <h3 data-i18n="menu.selectModules">Select Categories</h3>
                     <div class="module-checkboxes">
@@ -94,19 +125,6 @@
                     </div>
                 </div>
 
-                <div class="config-card mode-selection">
-                    <h3 data-i18n="menu.selectMode">Select Exam Mode</h3>
-                    <div class="mode-buttons">
-                        <button class="btn-mode" data-questions="15" data-i18n-questions="15">15 Questions</button>
-                        <button class="btn-mode" data-questions="30" data-i18n-questions="30">30 Questions</button>
-                        <button class="btn-mode" data-questions="60" data-i18n-questions="60">60 Questions</button>
-                    </div>
-                    <div class="input-field-group custom-count-input">
-                        <label for="custom-question-count" data-i18n="menu.orCustom">Or custom amount:</label>
-                        <input type="number" id="custom-question-count" min="1" max="100" placeholder="e.g. 25">
-                    </div>
-                </div>
-
                 <div class="config-card order-selection">
                     <h3 data-i18n="menu.questionOrder">Question Order</h3>
                     <div class="order-buttons">
@@ -121,13 +139,12 @@
                     </div>
                 </div>
 
-                <div class="config-card time-limit-selection">
-                    <h3 data-i18n="menu.timeLimitTitle">Time Limit per Question</h3>
-                    <div class="input-field-group time-limit-input">
-                        <input type="number" id="time-limit-override" min="10" max="300" placeholder="Seconds per question">
-                        <span class="input-unit">sec</span>
-                    </div>
-                    <p class="time-limit-hint" data-i18n="menu.timeLimitHint">Leave empty to use question's default time limit</p>
+                <div class="config-card auto-advance-selection">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="auto-advance-toggle">
+                        <span data-i18n="settings.autoAdvance">Auto-advance to next question</span>
+                    </label>
+                    <p class="setting-hint" data-i18n="settings.autoAdvanceHint">Automatically select next question after answering</p>
                 </div>
             </div>
 
@@ -146,6 +163,7 @@
                 <strong id="total-num">15</strong>
             </div>
             <span class="timer" id="timer">--s</span>
+            <button class="btn-exit" id="exit-btn" data-i18n="quiz.exitBtn">Exit</button>
         </div>
 
         <div class="question-card">
@@ -218,6 +236,18 @@
         <div class="results-actions">
             <button class="btn-secondary" id="menu-btn" data-i18n="results.menuBtn">Main Menu</button>
             <button class="btn-primary" id="restart-btn" data-i18n="results.restartBtn">Restart Exam</button>
+        </div>
+    </div>
+
+    <!-- Exit Confirmation Modal -->
+    <div class="modal-overlay" id="exit-modal" style="display: none;">
+        <div class="modal-content">
+            <h3 data-i18n="modal.exitTitle">Exit Exam?</h3>
+            <p data-i18n="modal.exitMessage">Are you sure you want to exit? Your progress will be lost.</p>
+            <div class="modal-actions">
+                <button class="btn-secondary" id="modal-cancel-btn" data-i18n="modal.cancel">Cancel</button>
+                <button class="btn-danger" id="modal-confirm-btn" data-i18n="modal.confirm">Exit</button>
+            </div>
         </div>
     </div>
 </div>

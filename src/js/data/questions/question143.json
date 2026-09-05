@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je rijdt met een aanhanger van 800 kg.",
+    "en": "You are driving with a trailer weighing 800 kg."
+  },
+  "question": {
+    "nl": "Welk rijbewijs heb je nodig om een aanhanger van 800 kg te slepen?",
+    "en": "Which license do you need to tow a trailer weighing 800 kg?"
+  },
+  "options": {
+    "nl": ["Rijbewijs BE", "Rijbewijs B", "Rijbewijs B96"],
+    "en": ["License BE", "License B", "License B96"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Voor een aanhanger zwaarder dan 750 kg heb je rijbewijs BE nodig. Rijbewijs B is alleen tot 750 kg.",
+    "en": "For a trailer heavier than 750 kg, you need a BE license. License B is only up to 750 kg."
+  }
+}

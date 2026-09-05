@@ -1,0 +1,21 @@
+{
+  "category": "Inzicht",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je rijdt op een gelijkwaardig kruispunt en wilt rechtdoor. Een voetgager loopt rechtdoor op jouw weg.",
+    "en": "You are driving at an equal intersection and want to go straight. A pedestrian is walking straight on your road."
+  },
+  "question": {
+    "nl": "Moet je voorrang verlenen aan de voetganger?",
+    "en": "Must you yield to the pedestrian?"
+  },
+  "options": {
+    "nl": ["Ja, voetgangers rechtdoor op dezelfde weg hebben voorrang boven draaiend verkeer", "Nee, jij hebt voorrang omdat je rechtdoor gaat", "Alleen als de voetganger voor je was"],
+    "en": ["Yes, pedestrians going straight on the same road have priority over turning traffic", "No, you have priority because you are going straight", "Only if the pedestrian was ahead of you"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Voetgangers die rechtdoor gaan op dezelfde weg hebben voorrang boven draaiend verkeer, zelfs zonder zebrapad.",
+    "en": "Pedestrians going straight on the same road have priority over turning traffic, even without a crosswalk."
+  }
+}

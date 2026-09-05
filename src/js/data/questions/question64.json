@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je nadert een kruispunt zonder verkeerslichten of verkeersborden. Van rechts komt een auto aanrijden.",
+    "en": "You approach an intersection without traffic lights or signs. A car approaches from the right."
+  },
+  "question": {
+    "nl": "Wie heeft voorrang op een gelijkwaardig kruispunt?",
+    "en": "Who has right of way at an equal intersection?"
+  },
+  "options": {
+    "nl": ["De auto van rechts", "De auto van links", "De auto die het dichtst bij het kruispunt is", "De auto die het hardst rijdt"],
+    "en": ["The car from the right", "The car from the left", "The car closest to the intersection", "The car driving fastest"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Op een gelijkwaardig kruispunt (zonder voorrangsborden) geldt de regel: voorrang van rechts. Het voertuig dat van rechts komt, heeft voorrang.",
+    "en": "At an equal intersection (without priority signs), the rule applies: right of way from the right. The vehicle coming from the right has priority."
+  }
+}

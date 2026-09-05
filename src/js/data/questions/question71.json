@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je ziet een verkeersbord met een rood cirkel met daarin het getal 80.",
+    "en": "You see a traffic sign with a red circle containing the number 80."
+  },
+  "question": {
+    "nl": "Wat betekent dit verkeersbord?",
+    "en": "What does this traffic sign mean?"
+  },
+  "options": {
+    "nl": ["Maximumsnelheid 80 km/h", "Minimumsnelheid 80 km/h", "Aanbevolen snelheid 80 km/h", "Gemiddelde snelheid 80 km/h"],
+    "en": ["Maximum speed 80 km/h", "Minimum speed 80 km/h", "Recommended speed 80 km/h", "Average speed 80 km/h"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Een rood cirkelvormig bord met een getal geeft de maximumsnelheid aan die op die weg niet mag worden overschreden.",
+    "en": "A red circular sign with a number indicates the maximum speed that must not be exceeded on that road."
+  }
+}

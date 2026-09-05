@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je rijdt buiten de bebouwde kom op een weg waar geen verkeersborden staan.",
+    "en": "You are driving outside built-up areas on a road with no traffic signs."
+  },
+  "question": {
+    "nl": "Wat is de maximumsnelheid buiten de bebouwde kom op een autoweg?",
+    "en": "What is the maximum speed outside built-up areas on an expressway?"
+  },
+  "options": {
+    "nl": ["80 km/h", "100 km/h", "120 km/h", "130 km/h"],
+    "en": ["80 km/h", "100 km/h", "120 km/h", "130 km/h"]
+  },
+  "answer": 1,
+  "explanation": {
+    "nl": "Op autowegen buiten de bebouwde kom is de maximumsnelheid 100 km/h, tenzij anders aangegeven met verkeersborden.",
+    "en": "On expressways outside built-up areas, the maximum speed is 100 km/h, unless otherwise indicated by traffic signs."
+  }
+}

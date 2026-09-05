@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je ziet een gehandicaptenvoertuig met een blauw bord met een rolstoelsymbool.",
+    "en": "You see a disabled vehicle with a blue sign showing a wheelchair symbol."
+  },
+  "question": {
+    "nl": "Welke voorrangsregels gelden voor gehandicaptenvoertuigen?",
+    "en": "What priority rules apply to disabled vehicles?"
+  },
+  "options": {
+    "nl": ["Ze hebben geen speciale voorrang, maar je moet extra voorzichtig zijn", "Ze hebben altijd voorrang", "Ze mogen overal parkeren"],
+    "en": ["They have no special priority, but you must be extra cautious", "They always have right of way", "They may park anywhere"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Gehandicaptenvoertuigen hebben geen wettelijke voorrang, maar bestuurders moeten extra voorzichtig zijn en ruimte geven aan deze kwetsbare weggebruikers.",
+    "en": "Disabled vehicles have no legal priority, but drivers must be extra cautious and give space to these vulnerable road users."
+  }
+}

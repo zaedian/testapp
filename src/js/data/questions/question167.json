@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je ziet een driehoekig bord met rode rand en een kruis.",
+    "en": "You see a triangular sign with red border and a cross."
+  },
+  "question": {
+    "nl": "Wat betekent dit bord?",
+    "en": "What does this sign mean?"
+  },
+  "options": {
+    "nl": ["Kruispunt met voorrang van rechts", "Kruispunt zonder voorrang", "Stoppen verplicht"],
+    "en": ["Intersection with right of way from the right", "Intersection without right of way", "Stop mandatory"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Dit waarschuwingsbord geeft aan dat er een kruispunt nadert waar de regel 'voorrang van rechts' geldt.",
+    "en": "This warning sign indicates that an intersection is approaching where the 'right of way from the right' rule applies."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "category": "Inzicht",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je rijdt op een bochtige weg en ziet een waarschuwingsbord voor een scherpe bocht.",
+    "en": "You are driving on a winding road and see a warning sign for a sharp curve."
+  },
+  "question": {
+    "nl": "Wat is de veiligste snelheid in een scherpe bocht?",
+    "en": "What is the safest speed in a sharp curve?"
+  },
+  "options": {
+    "nl": ["Aangepast aan de bocht, lager dan de maximumsnelheid", "De maximumsnelheid van de weg", "Hoger dan de maximumsnelheid om grip te houden", "Hetzelfde als op een rechte weg"],
+    "en": ["Adjusted to the curve, lower than the maximum speed", "The maximum speed of the road", "Higher than the maximum speed to maintain grip", "The same as on a straight road"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "In bochten moet je je snelheid aanpassen aan de kromming van de weg. Rijd langzamer dan de maximumsnelheid om grip te behouden en veilig door de bocht te komen.",
+    "en": "In curves, you must adjust your speed to the curvature of the road. Drive slower than the maximum speed to maintain grip and navigate the curve safely."
+  }
+}

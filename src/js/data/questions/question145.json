@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je ziet een blauw bord met een witte P en een onderbord met '2 uur'.",
+    "en": "You see a blue sign with a white P and a sub-plate with '2 hours'."
+  },
+  "question": {
+    "nl": "Wat betekent dit onderbord?",
+    "en": "What does this sub-plate mean?"
+  },
+  "options": {
+    "nl": ["Maximaal 2 uur parkeren", "Gratis parkeren voor 2 uur", "Parkeren verboden na 2 uur"],
+    "en": ["Maximum 2 hours parking", "Free parking for 2 hours", "No parking after 2 hours"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Een onderbord met een tijdsduur geeft aan hoe lang je maximaal mag parkeren op die plek.",
+    "en": "A sub-plate with a time duration indicates how long you may park at that location."
+  }
+}

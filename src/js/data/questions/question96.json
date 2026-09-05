@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je ziet een snelheidslimietbord met een geel onderbord met het symbool van een vrachtwagen.",
+    "en": "You see a speed limit sign with a yellow sub-plate showing a truck symbol."
+  },
+  "question": {
+    "nl": "Wat betekent dit onderbord?",
+    "en": "What does this sub-plate mean?"
+  },
+  "options": {
+    "nl": ["De snelheidslimiet geldt alleen voor vrachtwagens", "De snelheidslimiet geldt niet voor vrachtwagens", "Vrachtwagens moeten sneller rijden"],
+    "en": ["The speed limit applies only to trucks", "The speed limit does not apply to trucks", "Trucks must drive faster"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Een onderbord met een voertuigsymbool geeft een uitzondering aan. De regel op het bord geldt alleen voor het type voertuig dat op het onderbord staat.",
+    "en": "A sub-plate with a vehicle symbol indicates an exception. The rule on the sign applies only to the type of vehicle shown on the sub-plate."
+  }
+}

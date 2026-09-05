@@ -1,0 +1,21 @@
+{
+  "category": "Inzicht",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je hebt alcohol gedronken en wilt rijden. Je promillage is 0.5.",
+    "en": "You have consumed alcohol and want to drive. Your blood alcohol level is 0.5."
+  },
+  "question": {
+    "nl": "Mag je rijden met een promillage van 0.5 in Nederland?",
+    "en": "May you drive with a blood alcohol level of 0.5 in the Netherlands?"
+  },
+  "options": {
+    "nl": ["Nee, de limiet is 0.5 voor ervaren bestuurders", "Ja, 0.5 is onder de limiet", "Ja, voor beginners is de limiet 0.5", "Alleen als je 21 jaar of ouder bent"],
+    "en": ["No, the limit is 0.5 for experienced drivers", "Yes, 0.5 is below the limit", "Yes, for beginners the limit is 0.5", "Only if you are 21 or older"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "De wettelijke limiet in Nederland is 0.5 promillage voor ervaren bestuurders (5 jaar rijbewijs). Voor beginners is de limiet 0.2. Bij 0.5 ben je dus aan de limiet, niet eronder.",
+    "en": "The legal limit in the Netherlands is 0.5 blood alcohol level for experienced drivers (5 years license). For beginners, the limit is 0.2. At 0.5 you are at the limit, not below it."
+  }
+}

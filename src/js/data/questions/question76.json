@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je ziet een waarschuwingsbord met een symbool van een kind dat een bal speelt.",
+    "en": "You see a warning sign with a symbol of a child playing with a ball."
+  },
+  "question": {
+    "nl": "Wat waarschuwt dit bord voor?",
+    "en": "What does this sign warn for?"
+  },
+  "options": {
+    "nl": ["Kinderen in de buurt", "Speelplaats", "Schoolzone", "Voetgangerszone"],
+    "en": ["Children nearby", "Playground", "School zone", "Pedestrian zone"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Dit waarschuwingsbord geeft aan dat er kinderen in de buurt kunnen zijn die de weg kunnen oversteken. Pas je snelheid aan en wees extra alert.",
+    "en": "This warning sign indicates that there may be children nearby who could cross the road. Adjust your speed and be extra alert."
+  }
+}

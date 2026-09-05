@@ -1,0 +1,21 @@
+{
+  "category": "Kennis",
+  "timeLimit": 30,
+  "scenario": {
+    "nl": "Je rijdt in de stad en ziet een busstrook met doorgetrokken witte lijn.",
+    "en": "You are driving in the city and see a bus lane with a solid white line."
+  },
+  "question": {
+    "nl": "Mag je als automobilist op deze busstrook rijden?",
+    "en": "May you drive in this bus lane as a motorist?"
+  },
+  "options": {
+    "nl": ["Nee, alleen buslijnvoertuigen mogen hier rijden", "Ja, als je wilt afslaan", "Ja, als de weg verstopt is"],
+    "en": ["No, only public transport vehicles may drive here", "Yes, if you want to turn", "Yes, if the road is congested"]
+  },
+  "answer": 0,
+  "explanation": {
+    "nl": "Een busstrook met een doorgetrokken witte lijn is uitsluitend voor buslijnvoertuigen. Automobilisten mogen hier niet rijden, zelfs niet om af te slaan.",
+    "en": "A bus lane with a solid white line is exclusively for public transport vehicles. Motorists may not drive here, even to turn."
+  }
+}
