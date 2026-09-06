@@ -25,10 +25,13 @@ export function calculateCategoryExtremes(breakdown = {}) {
         return best;
     }, null);
 
-    const weakest = categoryScores.reduce((worst, current) => {
-        if (!worst || current.accuracy < worst.accuracy) return current;
-        return worst;
-    }, null);
+    const hasMixedScores = categoryScores.some(score => score.accuracy !== 100);
+    const weakest = hasMixedScores
+        ? categoryScores.reduce((worst, current) => {
+            if (!worst || current.accuracy < worst.accuracy) return current;
+            return worst;
+        }, null)
+        : null;
 
     return {
         strongestCategory: strongest ? strongest.name : null,

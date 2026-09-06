@@ -6,7 +6,7 @@ export const translations = {
     },
     header: {
       title: "CBR Rijtheorie Oefenen (Categorie B)",
-      exitBtn: "Afsluiten",
+      exitBtn: "Stop",
       readAloudBtn: "Voorlezen",
       stopReadingBtn: "Stop"
     },

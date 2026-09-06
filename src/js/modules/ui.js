@@ -196,9 +196,11 @@ export class UIRenderer {
         shuffledOptions.forEach((item, idx) => {
             const btn = document.createElement("button");
             btn.className = "option-btn";
-            btn.textContent = `${letters[idx] || ''}. ${item.text}`;
+            const displayLetter = letters[idx] || String.fromCharCode(65 + idx);
+            btn.textContent = `${displayLetter}. ${item.text}`;
             btn.dataset.index = item.originalIndex;
-            btn.dataset.displayLetter = letters[idx] || String.fromCharCode(65 + idx);
+            btn.dataset.displayLetter = displayLetter;
+            btn.dataset.letter = displayLetter;
             fragment.appendChild(btn);
         });
 
@@ -292,6 +294,7 @@ export class UIRenderer {
         const correctCount = questionResults.filter(r => r.isCorrect).length;
         const incorrectCount = totalQuestions - correctCount;
         const passRate = totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0;
+        const requiredPassRate = 80;
         const isPassed = Boolean(overallPassed);
 
         const setElementText = (id, text) => {
@@ -302,7 +305,12 @@ export class UIRenderer {
         setElementText("stat-total", totalQuestions);
         setElementText("stat-correct", correctCount);
         setElementText("stat-incorrect", incorrectCount);
+        setElementText("stat-required-rate", `${requiredPassRate}%`);
         setElementText("stat-rate", `${passRate}%`);
+
+        const passedCategories = Object.entries(breakdown).filter(([, data]) => (Number(data?.correct ?? 0)) >= (Number(data?.passLimit ?? 0))).length;
+        const totalCategories = Object.keys(breakdown).length;
+        setElementText("stat-passed-categories", `${passedCategories}/${totalCategories}`);
 
         const formatCategoryStat = (categoryName, fallback = "—") => {
             if (!categoryName || !breakdown[categoryName]) return fallback;
@@ -315,6 +323,60 @@ export class UIRenderer {
 
         setElementText("stat-strongest-category", formatCategoryStat(strongestCategory, "—"));
         setElementText("stat-weakest-category", formatCategoryStat(weakestCategory, "—"));
+
+        const overviewEl = document.getElementById("results-overview");
+        if (overviewEl) {
+            const summaryTitle = isPassed
+                ? (lang === "nl" ? "Je bent geslaagd" : "You passed the exam")
+                : (lang === "nl" ? "Je bent niet geslaagd" : "You did not pass the exam");
+            const summaryText = isPassed
+                ? (lang === "nl"
+                    ? `Je hebt ${passedCategories} van ${totalCategories} categorieën gehaald en voldoet aan de eisen van het examen.`
+                    : `You passed ${passedCategories} out of ${totalCategories} categories and met the exam requirements.`)
+                : (lang === "nl"
+                    ? `Je hebt ${passedCategories} van ${totalCategories} categorieën gehaald. Herhaal de zwakkere categorieën om te slagen.`
+                    : `You passed ${passedCategories} out of ${totalCategories} categories. Review the weaker areas before retaking the exam.`);
+
+            overviewEl.innerHTML = `
+                <div class="results-overview-card">
+                    <h3>${this.escapeHtml(summaryTitle)}</h3>
+                    <p class="results-overview-copy">${this.escapeHtml(summaryText)}</p>
+                </div>
+                <div class="results-overview-card">
+                    <h3>${this.escapeHtml(lang === "nl" ? "Samenvatting" : "Summary")}</h3>
+                    <ul>
+                        <li>${this.escapeHtml(lang === "nl" ? "Jouw score:" : "Your score:")} ${correctCount}/${totalQuestions} (${passRate}%)</li>
+                        <li>${this.escapeHtml(lang === "nl" ? "Sterkste categorie:" : "Strongest category:")} ${this.escapeHtml(strongestCategory ? formatCategoryStat(strongestCategory, "—") : "—")}</li>
+                        <li>${this.escapeHtml(lang === "nl" ? "Zwakste categorie:" : "Weakest category:")} ${this.escapeHtml(weakestCategory ? formatCategoryStat(weakestCategory, "—") : "—")}</li>
+                    </ul>
+                </div>
+            `;
+        }
+
+        const reasonsEl = document.getElementById("results-reasons");
+        if (reasonsEl) {
+            const failedCategories = Object.entries(breakdown)
+                .filter(([, data]) => (Number(data?.correct ?? 0)) < (Number(data?.passLimit ?? 0)))
+                .map(([name, data]) => {
+                    const accuracy = Number(data?.total ?? 0) > 0 ? Math.round(((Number(data?.correct ?? 0)) / Number(data?.total ?? 1)) * 100) : 0;
+                    return `${name}: ${accuracy}%`;
+                });
+
+            const advice = (failedCategories.length > 0)
+                ? (lang === "nl"
+                    ? `Focus op: ${failedCategories.join(', ')}.`
+                    : `Focus on: ${failedCategories.join(', ')}.`)
+                : (lang === "nl"
+                    ? "Je voldoet aan alle gevraagde categorie-eisen."
+                    : "You met the pass requirement for every category.");
+
+            reasonsEl.innerHTML = `
+                <div class="results-overview-card">
+                    <h3>${this.escapeHtml(lang === "nl" ? "Uitleg van je resultaat" : "Your result explained")}</h3>
+                    <p class="results-overview-copy">${this.escapeHtml(advice)}</p>
+                </div>
+            `;
+        }
 
         // Render breakdown safely without unsafe innerHTML
         if (this.breakdownBody) {

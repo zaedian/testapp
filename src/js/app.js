@@ -416,14 +416,15 @@ class ExamApp {
         }
 
         document.addEventListener("click", (e) => {
-            const clicked = e.target.closest ? e.target.closest("#question-tts-btn") : null;
-            if (clicked) {
+            const questionTtsBtn = e.target.closest ? e.target.closest("#question-tts-btn") : null;
+            if (questionTtsBtn) {
                 if (this.soundFxEnabled) this.playSound('click');
                 this.toggleManualTts();
                 return;
             }
 
-            if (e.target && e.target.id === "explanation-tts-btn") {
+            const explanationTtsBtn = e.target.closest ? e.target.closest("#explanation-tts-btn") : null;
+            if (explanationTtsBtn) {
                 if (this.soundFxEnabled) this.playSound('click');
                 this.toggleExplanationTts();
             }
@@ -1033,11 +1034,12 @@ class ExamApp {
         if (questionText) speechSegments.push({ text: questionText, isOption: false });
 
         optionButtons.forEach((btn) => {
-            const letter = btn.dataset.letter || "";
+            const letter = btn.dataset.displayLetter || btn.dataset.letter || "";
             const text = btn.textContent || "";
-            if (letter && text) {
+            const cleanedText = letter ? text.replace(new RegExp(`^${letter}\\.\\s*`, 'i'), '').trim() : text.trim();
+            if (letter && cleanedText) {
                 speechSegments.push({ text: letter, isOption: true, isLetter: true });
-                speechSegments.push({ text: text, isOption: true, isLetter: false });
+                speechSegments.push({ text: cleanedText, isOption: true, isLetter: false });
             }
         });
 
@@ -1389,15 +1391,13 @@ class ExamApp {
 
         let textToSpeak = "";
         const label = explanationBox.querySelector("strong")?.textContent || "";
-        const textNodes = [];
-        explanationBox.childNodes.forEach(node => {
-            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
-                textNodes.push(node.textContent.trim());
-            }
-        });
+        const explanationParagraph = explanationBox.querySelector("p")?.textContent || "";
+        const mergedText = [label, explanationParagraph]
+            .filter(Boolean)
+            .map(text => text.replace(/\s+/g, ' ').trim())
+            .join('. ');
 
-        if (label) textToSpeak += label + ". ";
-        textNodes.forEach(text => { textToSpeak += text + ". "; });
+        if (mergedText) textToSpeak += mergedText + ". ";
 
         if (!textToSpeak) return;
 
