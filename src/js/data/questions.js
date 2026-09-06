@@ -4123,58 +4123,58 @@ export const questions = [
     "category": "Kennis",
     "timeLimit": 30,
     "scenario": {
-      "nl": "Je rijdt in een 30-zone met verkeersborden die 30 km/h aangeven.",
-      "en": "You are driving in a 30-zone with signs indicating 30 km/h."
+      "nl": "U controleert de bandenspanning van uw auto.",
+      "en": "You are checking the tire pressure of your car."
     },
     "question": {
-      "nl": "Wat is de maximumsnelheid in een 30-zone?",
-      "en": "What is the maximum speed in a 30-zone?"
+      "nl": "Wanneer is het beste moment om de bandenspanning te controleren?",
+      "en": "When is the best time to check tire pressure?"
     },
     "options": {
       "nl": [
-        "30 km/h",
-        "50 km/h",
-        "40 km/h"
+        "Wanneer de banden koud zijn",
+        "Wanneer de banden warm zijn na rijden",
+        "Direct na het tanken"
       ],
       "en": [
-        "30 km/h",
-        "50 km/h",
-        "40 km/h"
+        "When the tires are cold",
+        "When the tires are warm after driving",
+        "Immediately after refueling"
       ]
     },
     "answer": 0,
     "explanation": {
-      "nl": "In een 30-zone is de maximumsnelheid 30 km/h. Deze zones zijn vaak in woonwijken en bij scholen.",
-      "en": "In a 30-zone, the maximum speed is 30 km/h. These zones are often in residential areas and near schools."
+      "nl": "Bandenspanning moet worden gecontroleerd wanneer de banden koud zijn (niet gereden). Warme banden geven een te hoge aflezing door luchtdruktoename.",
+      "en": "Tire pressure should be checked when tires are cold (not driven). Warm tires give a too high reading due to air pressure increase."
     }
   },
   {
     "category": "Kennis",
     "timeLimit": 30,
     "scenario": {
-      "nl": "Je rijdt op een weg met een maximumsnelheid van 80 km/h.",
-      "en": "You are driving on a road with a maximum speed of 80 km/h."
+      "nl": "U ziet een wegmarkering met een doorgetrokken gele lijn.",
+      "en": "You see a road marking with a solid yellow line."
     },
     "question": {
-      "nl": "Wat is de maximumsnelheid buiten de bebouwde kom op een weg zonder borden?",
-      "en": "What is the maximum speed outside built-up areas on a road without signs?"
+      "nl": "Wat betekent een doorgetrokken gele lijn op de weg?",
+      "en": "What does a solid yellow line on the road mean?"
     },
     "options": {
       "nl": [
-        "80 km/h",
-        "60 km/h",
-        "100 km/h"
+        "Het is verboden de lijn te kruisen of er overheen te rijden",
+        "U mag de lijn kruisen om in te halen",
+        "Het is een waarschuwingslijn"
       ],
       "en": [
-        "80 km/h",
-        "60 km/h",
-        "100 km/h"
+        "It is prohibited to cross or drive over the line",
+        "You may cross the line to overtake",
+        "It is a warning line"
       ]
     },
     "answer": 0,
     "explanation": {
-      "nl": "De standaard maximumsnelheid buiten de bebouwde kom is 80 km/h, tenzij anders aangegeven met verkeersborden.",
-      "en": "The standard maximum speed outside built-up areas is 80 km/h, unless otherwise indicated by traffic signs."
+      "nl": "Een doorgetrokken gele lijn betekent dat het verboden is de lijn te kruisen of er overheen te rijden. Dit wordt gebruikt om rijrichtingen te scheiden.",
+      "en": "A solid yellow line means it is prohibited to cross or drive over the line. This is used to separate traffic directions."
     }
   },
   {
@@ -4210,232 +4210,232 @@ export const questions = [
     "category": "Kennis",
     "timeLimit": 30,
     "scenario": {
-      "nl": "Je ziet een verkeersbord met een rood cirkel met daarin het getal 60 en een onderbord met een regenwolk.",
-      "en": "You see a traffic sign with a red circle containing the number 60 and a sub-plate with a rain cloud."
+      "nl": "U ziet een wegmarkering met een onderbroken witte lijn.",
+      "en": "You see a road marking with a broken white line."
     },
     "question": {
-      "nl": "Wat betekent dit onderbord?",
-      "en": "What does this sub-plate mean?"
+      "nl": "Wat betekent een onderbroken witte lijn op de weg?",
+      "en": "What does a broken white line on the road mean?"
     },
     "options": {
       "nl": [
-        "De snelheidslimiet geldt alleen bij regen",
-        "De snelheidslimiet geldt niet bij regen",
-        "De weg is glad bij regen"
+        "U mag de lijn kruisen indien het veilig is",
+        "U mag de lijn nooit kruisen",
+        "Het is een middenstreep"
       ],
       "en": [
-        "The speed limit applies only in rain",
-        "The speed limit does not apply in rain",
-        "The road is slippery in rain"
+        "You may cross the line if it is safe",
+        "You may never cross the line",
+        "It is a center line"
       ]
     },
     "answer": 0,
     "explanation": {
-      "nl": "Een onderbord met een regenwolk geeft aan dat de snelheidslimiet alleen geldt tijdens regenval.",
-      "en": "A sub-plate with a rain cloud indicates that the speed limit applies only during rainfall."
+      "nl": "Een onderbroken witte lijn mag worden gekruist als het veilig is, bijvoorbeeld om in te halen of van rijstrook te wisselen.",
+      "en": "A broken white line may be crossed if it is safe, for example to overtake or change lanes."
     }
   },
   {
     "category": "Kennis",
     "timeLimit": 30,
     "scenario": {
-      "nl": "Je ziet een blauw bord met een witte P en een onderbord met '2 uur'.",
-      "en": "You see a blue sign with a white P and a sub-plate with '2 hours'."
+      "nl": "U ziet een driehoekig bord met een rode rand en een uitroepteken.",
+      "en": "You see a triangular sign with a red border and an exclamation mark."
     },
     "question": {
-      "nl": "Wat betekent dit onderbord?",
-      "en": "What does this sub-plate mean?"
+      "nl": "Wat betekent dit verkeersbord?",
+      "en": "What does this traffic sign mean?"
     },
     "options": {
       "nl": [
-        "Maximaal 2 uur parkeren",
-        "Gratis parkeren voor 2 uur",
-        "Parkeren verboden na 2 uur"
+        "Gevaar",
+        "Stop",
+        "Voorrang"
       ],
       "en": [
-        "Maximum 2 hours parking",
-        "Free parking for 2 hours",
-        "No parking after 2 hours"
+        "Danger",
+        "Stop",
+        "Priority"
       ]
     },
     "answer": 0,
     "explanation": {
-      "nl": "Een onderbord met een tijdsduur geeft aan hoe lang je maximaal mag parkeren op die plek.",
-      "en": "A sub-plate with a time duration indicates how long you may park at that location."
+      "nl": "Een driehoekig bord met een rode rand en een uitroepteken is een waarschuwingsbord dat gevaar aangeeft.",
+      "en": "A triangular sign with a red border and an exclamation mark is a warning sign indicating danger."
     }
   },
   {
     "category": "Inzicht",
     "timeLimit": 30,
     "scenario": {
-      "nl": "Je rijdt op een gelijkwaardig kruispunt en wilt rechtsaf slaan. Een voetganger loopt rechtdoor op de kruisende weg.",
-      "en": "You are driving at an equal intersection and want to turn right. A pedestrian is walking straight on the crossing road."
+      "nl": "U rijdt op een weg met een inhaalverbod. Een fietser rijdt 20 km/h.",
+      "en": "You are driving on a road with no overtaking. A cyclist is riding at 20 km/h."
     },
     "question": {
-      "nl": "Moet je voorrang verlenen aan de voetganger?",
-      "en": "Must you yield to the pedestrian?"
+      "nl": "Mag u de fietser inhalen als er een inhaalverbod geldt?",
+      "en": "May you overtake the cyclist when there is a no overtaking prohibition?"
     },
     "options": {
       "nl": [
-        "Nee, voetgangers van rechts hebben geen voorrang op gelijkwaardige kruisingen",
-        "Ja, voetgangers hebben altijd voorrang",
-        "Alleen als de voetganger op een zebrapad loopt"
+        "Nee, het inhaalverbod geldt voor alle voertuigen",
+        "Ja, fietsers mogen altijd worden ingehaald",
+        "Alleen als er voldoende ruimte is"
       ],
       "en": [
-        "No, pedestrians from the right do not have priority on equal intersections",
-        "Yes, pedestrians always have priority",
-        "Only if the pedestrian is on a crosswalk"
+        "No, the no overtaking prohibition applies to all vehicles",
+        "Yes, cyclists may always be overtaken",
+        "Only if there is sufficient space"
       ]
     },
     "answer": 0,
     "explanation": {
-      "nl": "Voetgangers die van rechts komen op een gelijkwaardige kruising hebben geen voorrang, tenzij ze op een zebrapad lopen.",
-      "en": "Pedestrians coming from the right on an equal intersection do not have priority, unless they are on a crosswalk."
+      "nl": "Een inhaalverbod geldt voor alle voertuigen, inclusief fietsers. U mag niet inhalen, zelfs niet langzame fietsers.",
+      "en": "A no overtaking prohibition applies to all vehicles, including cyclists. You may not overtake, even slow cyclists."
     }
   },
   {
     "category": "Inzicht",
     "timeLimit": 30,
     "scenario": {
-      "nl": "Je rijdt op een gelijkwaardig kruispunt en wilt rechtdoor. Een voetgager loopt rechtdoor op jouw weg.",
-      "en": "You are driving at an equal intersection and want to go straight. A pedestrian is walking straight on your road."
+      "nl": "U rijdt in de bebouwde kom en ziet een schoolzone bord.",
+      "en": "You are driving in a built-up area and see a school zone sign."
     },
     "question": {
-      "nl": "Moet je voorrang verlenen aan de voetganger?",
-      "en": "Must you yield to the pedestrian?"
+      "nl": "Welke extra voorzorgsmaatregelen moet u nemen in een schoolzone?",
+      "en": "What extra precautions must you take in a school zone?"
     },
     "options": {
       "nl": [
-        "Ja, voetgangers rechtdoor op dezelfde weg hebben voorrang boven draaiend verkeer",
-        "Nee, jij hebt voorrang omdat je rechtdoor gaat",
-        "Alleen als de voetganger voor je was"
+        "Snelheid verlagen en extra alert zijn op kinderen",
+        "Alleen stoppen als er kinderen op de weg staan",
+        "De claxon gebruiken om kinderen te waarschuwen"
       ],
       "en": [
-        "Yes, pedestrians going straight on the same road have priority over turning traffic",
-        "No, you have priority because you are going straight",
-        "Only if the pedestrian was ahead of you"
+        "Reduce speed and be extra alert for children",
+        "Only stop if children are on the road",
+        "Use the horn to warn children"
       ]
     },
     "answer": 0,
     "explanation": {
-      "nl": "Voetgangers die rechtdoor gaan op dezelfde weg hebben voorrang boven draaiend verkeer, zelfs zonder zebrapad.",
-      "en": "Pedestrians going straight on the same road have priority over turning traffic, even without a crosswalk."
+      "nl": "In schoolzones moet u uw snelheid verlagen en extra alert zijn op kinderen die onverwachts de weg kunnen stappen.",
+      "en": "In school zones, you must reduce your speed and be extra alert for children who may unexpectedly step onto the road."
     }
   },
   {
     "category": "Inzicht",
     "timeLimit": 30,
     "scenario": {
-      "nl": "Je rijdt in de nacht en ziet een fietser zonder verlichting.",
-      "en": "You are driving at night and see a cyclist without lights."
+      "nl": "U rijdt in de bebouwde kom en ziet een bus die bij een bushalte stopt.",
+      "en": "You are driving in a built-up area and see a bus stopping at a bus stop."
     },
     "question": {
-      "nl": "Wat is de veiligste actie?",
-      "en": "What is the safest action?"
+      "nl": "Wat moet u doen als de bus weer wegrijdt?",
+      "en": "What must you do when the bus drives away again?"
     },
     "options": {
       "nl": [
-        "Snelheid verlagen en extra ruimte houden",
-        "Normaal doorrijden",
-        "Toeteren om de fietser te waarschuwen"
+        "Voorrang verlenen aan de bus",
+        "Direct doorrijden",
+        "Toeteren om de bus te waarschuwen"
       ],
       "en": [
-        "Reduce speed and keep extra distance",
-        "Drive through normally",
-        "Honk to warn the cyclist"
+        "Give way to the bus",
+        "Drive through immediately",
+        "Honk to warn the bus"
       ]
     },
     "answer": 0,
     "explanation": {
-      "nl": "Een fietser zonder verlichting is moeilijk te zien. Verlaag je snelheid en houd extra afstand voor veiligheid.",
-      "en": "A cyclist without lights is difficult to see. Reduce your speed and keep extra distance for safety."
+      "nl": "Bussen die een bushalte verlaten binnen de bebouwde kom hebben voorrang op ander verkeer.",
+      "en": "Buses leaving a bus stop inside built-up areas have priority over other traffic."
     }
   },
   {
     "category": "Inzicht",
     "timeLimit": 30,
     "scenario": {
-      "nl": "Je rijdt op een smalle weg en een tegemoetkomende auto heeft grootlicht aan.",
-      "en": "You are driving on a narrow road and an oncoming car has high beams on."
+      "nl": "U rijdt op een weg met een inhaalverbod. Een tractor rijdt 25 km/h.",
+      "en": "You are driving on a road with no overtaking. A tractor is driving at 25 km/h."
     },
     "question": {
-      "nl": "Wat moet je doen?",
-      "en": "What should you do?"
+      "nl": "Mag u de tractor inhalen?",
+      "en": "May you overtake the tractor?"
     },
     "options": {
       "nl": [
-        "Kijk naar de rechterkant van de weg en dimlicht aan",
-        "Grootlicht terug aanzetten",
-        "Remmen en stoppen"
+        "Nee, het inhaalverbod geldt ook voor tractoren",
+        "Ja, tractoren mogen altijd worden ingehaald",
+        "Alleen als er een doorgetrokken witte lijn is"
       ],
       "en": [
-        "Look at the right side of the road and use dipped headlights",
-        "Turn on high beams in return",
-        "Brake and stop"
+        "No, the no overtaking prohibition also applies to tractors",
+        "Yes, tractors may always be overtaken",
+        "Only if there is a solid white line"
       ]
     },
     "answer": 0,
     "explanation": {
-      "nl": "Kijk naar de rechterkant van de weg om verblinding te vermijden en gebruik dimlicht. Grootlicht terug verergert de situatie.",
-      "en": "Look at the right side of the road to avoid glare and use dipped headlights. Returning high beams worsens the situation."
+      "nl": "Een inhaalverbod geldt voor alle voertuigen, inclusief tractoren. U mag niet inhalen, zelfs niet langzame landbouwvoertuigen.",
+      "en": "A no overtaking prohibition applies to all vehicles, including tractors. You may not overtake, even slow agricultural vehicles."
     }
   },
   {
     "category": "Inzicht",
     "timeLimit": 30,
     "scenario": {
-      "nl": "Je wilt inhalen op een tweebaansweg met doorgetrokken middenlijn.",
-      "en": "You want to overtake on a two-lane road with a solid center line."
+      "nl": "U rijdt in de winter en de weg is bedekt met sneeuw.",
+      "en": "You are driving in winter and the road is covered with snow."
     },
     "question": {
-      "nl": "Mag je inhalen?",
-      "en": "May you overtake?"
+      "nl": "Wat is de veiligste rijstijl op besneeuwde wegen?",
+      "en": "What is the safest driving style on snow-covered roads?"
     },
     "options": {
       "nl": [
-        "Nee, inhalen is verboden bij doorgetrokken middenlijn",
-        "Ja, als het veilig is",
-        "Alleen als de weg vrij is"
+        "Rustig rijden met veel afstand en vroegtijdig remmen",
+        "Snel rijden om door de sneeuw te komen",
+        "Dicht op het voertuig voor u rijden"
       ],
       "en": [
-        "No, overtaking is prohibited with a solid center line",
-        "Yes, if it is safe",
-        "Only if the road is clear"
+        "Drive calmly with extra distance and brake early",
+        "Drive fast to get through the snow",
+        "Drive close to the vehicle ahead"
       ]
     },
     "answer": 0,
     "explanation": {
-      "nl": "Een doorgetrokken middenlijn betekent dat inhalen verboden is. Je mag de lijn niet passeren om in te halen.",
-      "en": "A solid center line means overtaking is prohibited. You may not cross the line to overtake."
+      "nl": "Op besneeuwde wegen moet u rustig rijden, extra afstand houden en vroegtijdig remmen om slippen te voorkomen.",
+      "en": "On snow-covered roads, drive calmly, keep extra distance, and brake early to prevent skidding."
     }
   },
   {
     "category": "Inzicht",
     "timeLimit": 30,
     "scenario": {
-      "nl": "Je rijdt op een weg met onderbroken middenlijn.",
-      "en": "You are driving on a road with a broken center line."
+      "nl": "U rijdt in de regen en de weg is glad.",
+      "en": "You are driving in rain and the road is slippery."
     },
     "question": {
-      "nl": "Mag je inhalen?",
-      "en": "May you overtake?"
+      "nl": "Hoe moet u uw rijstijl aanpassen bij gladde wegen?",
+      "en": "How should you adjust your driving style on slippery roads?"
     },
     "options": {
       "nl": [
-        "Ja, als het veilig is en je voldoende zicht hebt",
-        "Nee, inhalen is altijd verboden",
-        "Alleen bij 60 km/h of minder"
+        "Snelheid verlagen, afstand vergroten en zachter remmen",
+        "Sneller rijden om aquaplaning te voorkomen",
+        "Dicht op het voertuig voor u blijven rijden"
       ],
       "en": [
-        "Yes, if it is safe and you have sufficient visibility",
-        "No, overtaking is always prohibited",
-        "Only at 60 km/h or less"
+        "Reduce speed, increase distance, and brake more gently",
+        "Drive faster to prevent aquaplaning",
+        "Continue driving close to the vehicle ahead"
       ]
     },
     "answer": 0,
     "explanation": {
-      "nl": "Een onderbroken middenlijn betekent dat inhalen is toegestaan als het veilig is en je voldoende zicht hebt op tegemoetkomend verkeer.",
-      "en": "A broken center line means overtaking is permitted if it is safe and you have sufficient view of oncoming traffic."
+      "nl": "Bij gladde wegen moet u uw snelheid verlagen, uw volgafstand vergroten en zachter remmen om slippen en aquaplaning te voorkomen.",
+      "en": "On slippery roads, reduce your speed, increase following distance, and brake more gently to prevent skidding and aquaplaning."
     }
   },
   {
@@ -5132,6 +5132,1050 @@ export const questions = [
     "explanation": {
       "nl": "Een onderbord met 'bewoners' geeft aan dat de parkeerplaats alleen bestemd is voor bewoners met een vergunning.",
       "en": "A sub-plate with 'residents' indicates that the parking space is only for residents with a permit."
+    }
+  },
+  {
+    "category": "Kennis",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "Uw auto is uitgerust met Lane Assist (rijbaanassistentie).",
+      "en": "Your car is equipped with Lane Assist (lane keeping assistance)."
+    },
+    "question": {
+      "nl": "Wat gebeurt er als Lane Assist detecteert dat u onbedoeld de rijbaan verlaat?",
+      "en": "What happens when Lane Assist detects that you are unintentionally leaving your lane?"
+    },
+    "options": {
+      "nl": [
+        "Het systeem corrigeert de stuurinrichting om u in de rijbaan te houden",
+        "De auto stopt automatisch",
+        "Het systeem waarschuwt alleen met een geluidssignaal"
+      ],
+      "en": [
+        "The system corrects the steering direction to keep you in the lane",
+        "The car stops automatically",
+        "The system only warns with an audible signal"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Lane Assist corrigeert de stuurinrichting om de auto binnen de rijbaanmarkeringen te houden. De bestuurder blijft altijd verantwoordelijk voor het sturen.",
+      "en": "Lane Assist corrects the steering direction to keep the car within the lane markings. The driver remains always responsible for steering."
+    }
+  },
+  {
+    "category": "Kennis",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "Uw auto heeft Adaptive Cruise Control (ACC).",
+      "en": "Your car has Adaptive Cruise Control (ACC)."
+    },
+    "question": {
+      "nl": "Wat doet Adaptive Cruise Control als een langzamer voertuig voor u rijdt?",
+      "en": "What does Adaptive Cruise Control do when a slower vehicle is driving ahead of you?"
+    },
+    "options": {
+      "nl": [
+        "Het past automatisch de snelheid aan en remt indien nodig",
+        "Het waarschuwt alleen om te remmen",
+        "Het schakelt automatisch uit"
+      ],
+      "en": [
+        "It automatically adjusts speed and brakes if necessary",
+        "It only warns to brake",
+        "It switches off automatically"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Adaptive Cruise Control past automatisch de snelheid aan aan het voertuig voor u en kan automatisch remmen om een veilige afstand te behouden.",
+      "en": "Adaptive Cruise Control automatically adjusts speed to the vehicle ahead and can brake automatically to maintain a safe distance."
+    }
+  },
+  {
+    "category": "Kennis",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "Uw auto is uitgerust met Automatic Emergency Braking (AEB).",
+      "en": "Your car is equipped with Automatic Emergency Braking (AEB)."
+    },
+    "question": {
+      "nl": "Wat is de functie van Automatic Emergency Braking?",
+      "en": "What is the function of Automatic Emergency Braking?"
+    },
+    "options": {
+      "nl": [
+        "Het remt automatisch als een botsing dreigt en de bestuurder niet reageert",
+        "Het remt automatisch bij elke noodstop",
+        "Het waarschuwt alleen voor obstakels"
+      ],
+      "en": [
+        "It brakes automatically when a collision is imminent and the driver does not react",
+        "It brakes automatically during every emergency stop",
+        "It only warns about obstacles"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "AEB remt automatisch als een botsing dreigt en de bestuurder niet tijdig reageert. Het is een hulpmiddel, geen vervanging voor aandachtig rijden.",
+      "en": "AEB brakes automatically when a collision is imminent and the driver does not react in time. It is an aid, not a replacement for attentive driving."
+    }
+  },
+  {
+    "category": "Kennis",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "Uw auto heeft een Blind Spot Monitoring systeem.",
+      "en": "Your car has a Blind Spot Monitoring system."
+    },
+    "question": {
+      "nl": "Wat waarschuwt het Blind Spot Monitoring systeem voor?",
+      "en": "What does the Blind Spot Monitoring system warn for?"
+    },
+    "options": {
+      "nl": [
+        "Voertuigen in de dode hoek bij het inhalen of van rijstrook wisselen",
+        "Voertuigen die van achteren naderen",
+        "Voertuigen die voor u rijden"
+      ],
+      "en": [
+        "Vehicles in the blind spot when overtaking or changing lanes",
+        "Vehicles approaching from behind",
+        "Vehicles driving ahead of you"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Blind Spot Monitoring waarschuwt voor voertuigen in de dode hoek (zones die niet in de spiegels zichtbaar zijn) bij het inhalen of van rijstrook wisselen.",
+      "en": "Blind Spot Monitoring warns of vehicles in the blind spot (areas not visible in mirrors) when overtaking or changing lanes."
+    }
+  },
+  {
+    "category": "Kennis",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "Uw auto heeft Traffic Sign Recognition.",
+      "en": "Your car has Traffic Sign Recognition."
+    },
+    "question": {
+      "nl": "Wat doet Traffic Sign Recognition?",
+      "en": "What does Traffic Sign Recognition do?"
+    },
+    "options": {
+      "nl": [
+        "Het herkent verkeersborden en toont deze op het dashboard",
+        "Het past automatisch de snelheid aan aan de borden",
+        "Het waarschuwt alleen voor snelheidslimieten"
+      ],
+      "en": [
+        "It recognizes traffic signs and displays them on the dashboard",
+        "It automatically adjusts speed to the signs",
+        "It only warns about speed limits"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Traffic Sign Recognition herkent verkeersborden zoals snelheidslimieten en toont deze op het dashboard. De bestuurder moet zelf de snelheid aanpassen.",
+      "en": "Traffic Sign Recognition recognizes traffic signs such as speed limits and displays them on the dashboard. The driver must adjust speed themselves."
+    }
+  },
+  {
+    "category": "Kennis",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "U rijdt een elektrische auto en wilt opladen bij een openbare laadpaal.",
+      "en": "You are driving an electric car and want to charge at a public charging station."
+    },
+    "question": {
+      "nl": "Wat is de juiste etiquette bij het gebruik van een openbare laadpaal?",
+      "en": "What is the proper etiquette when using a public charging station?"
+    },
+    "options": {
+      "nl": [
+        "Verplaats uw auto direct na het opladen naar een parkeerplaats",
+        "Laat uw auto de hele dag aan de laadpaal staan",
+        "Parkeren op de laadplaats zonder te laden is toegestaan"
+      ],
+      "en": [
+        "Move your car immediately after charging to a parking space",
+        "Leave your car at the charging station all day",
+        "Parking at the charging space without charging is allowed"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Na het opladen moet u uw auto direct verplaatsen naar een reguliere parkeerplaats zodat andere EV-gebruikers kunnen laden. 'ICE-ing' (Internal Combustion Engine parking) is onbeleefd en soms beboetbaar.",
+      "en": "After charging, you must move your car immediately to a regular parking space so other EV users can charge. 'ICE-ing' (Internal Combustion Engine parking) is rude and sometimes punishable by fine."
+    }
+  },
+  {
+    "category": "Kennis",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "U rijdt een elektrische auto.",
+      "en": "You are driving an electric car."
+    },
+    "question": {
+      "nl": "Wat is een belangrijk verschil in gewicht tussen een elektrische auto en een vergelijkbare brandstofauto?",
+      "en": "What is an important difference in weight between an electric car and a comparable fuel car?"
+    },
+    "options": {
+      "nl": [
+        "Elektrische auto's zijn zwaarder door de accu's, wat de remweg verlengt",
+        "Elektrische auto's zijn lichter, wat de remweg verkort",
+        "Er is geen gewichtsverschil"
+      ],
+      "en": [
+        "Electric cars are heavier due to batteries, which lengthens braking distance",
+        "Electric cars are lighter, which shortens braking distance",
+        "There is no weight difference"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Elektrische auto's zijn aanzienlijk zwaarder door de accu's. Dit verlengt de remweg en beïnvloedt het rijgedrag in bochten. Houd hier rekening mee bij remmen en bochten nemen.",
+      "en": "Electric cars are significantly heavier due to batteries. This lengthens braking distance and affects handling in curves. Take this into account when braking and taking curves."
+    }
+  },
+  {
+    "category": "Kennis",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "U ziet een speed pedelec (45 km/h e-bike) op de weg.",
+      "en": "You see a speed pedelec (45 km/h e-bike) on the road."
+    },
+    "question": {
+      "nl": "Hoe herkent u een speed pedelec van een reguliere e-bike?",
+      "en": "How do you recognize a speed pedelec from a regular e-bike?"
+    },
+    "options": {
+      "nl": [
+        "Speed pedelecs hebben een gele kentekenplaat",
+        "Speed pedelecs hebben een blauwe kentekenplaat",
+        "Speed pedelecs hebben geen kentekenplaat"
+      ],
+      "en": [
+        "Speed pedelecs have a yellow license plate",
+        "Speed pedelecs have a blue license plate",
+        "Speed pedelecs have no license plate"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Speed pedelecs (tot 45 km/h) hebben een gele kentekenplaat. Reguliere e-bikes (tot 25 km/h) hebben een blauwe kentekenplaat en mogen op het fietspad rijden.",
+      "en": "Speed pedelecs (up to 45 km/h) have a yellow license plate. Regular e-bikes (up to 25 km/h) have a blue license plate and may ride on bike paths."
+    }
+  },
+  {
+    "category": "Kennis",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "U nadert een rotonde waar fietsers de rotonde oprijden.",
+      "en": "You approach a roundabout where cyclists are entering the roundabout."
+    },
+    "question": {
+      "nl": "Wie heeft voorrang als fietsers de rotonde oprijden?",
+      "en": "Who has priority when cyclists enter the roundabout?"
+    },
+    "options": {
+      "nl": [
+        "Fietsers op de rotonde hebben voorrang op inrijdend gemotoriseerd verkeer",
+        "Gemotoriseerd verkeer heeft altijd voorrang op fietsers",
+        "Voorrang van rechts geldt"
+      ],
+      "en": [
+        "Cyclists on the roundabout have priority over entering motorized traffic",
+        "Motorized traffic always has priority over cyclists",
+        "Right from right applies"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Op rotondes met fietspaden hebben fietsers die al op de rotonde rijden voorrang op inrijdend gemotoriseerd verkeer. Geef hen de ruimte.",
+      "en": "On roundabouts with bike paths, cyclists already on the roundabout have priority over entering motorized traffic. Give them space."
+    }
+  },
+  {
+    "category": "Kennis",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "U rijdt op de snelweg en ziet een matrixbord dat een rode kruis toont op uw rijstrook.",
+      "en": "You are driving on the highway and see a matrix sign showing a red cross on your lane."
+    },
+    "question": {
+      "nl": "Wat betekent een rode kruis op een matrixbord?",
+      "en": "What does a red cross on a matrix sign mean?"
+    },
+    "options": {
+      "nl": [
+        "De rijstrook is gesloten - verlaat de rijstrook",
+        "De snelheidslimiet is verlaagd",
+        "Er is een file verderop"
+      ],
+      "en": [
+        "The lane is closed - leave the lane",
+        "The speed limit is reduced",
+        "There is a traffic jam ahead"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Een rode kruis op een matrixbord betekent dat de rijstrook is gesloten. U moet zo snel mogelijk veilig naar een andere rijstrook wisselen.",
+      "en": "A red cross on a matrix sign means the lane is closed. You must change to another lane as soon as it is safe to do so."
+    }
+  },
+  {
+    "category": "Kennis",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "U wilt een milieuzone in een stad binnenrijden.",
+      "en": "You want to enter an environmental zone in a city."
+    },
+    "question": {
+      "nl": "Welk voertuig heeft toegang tot alle Nederlandse milieuzones?",
+      "en": "Which vehicle has access to all Dutch environmental zones?"
+    },
+    "options": {
+      "nl": [
+        "Voertuigen met een groene milieusticker",
+        "Voertuigen met een gele milieusticker",
+        "Alle voertuigen zonder sticker"
+      ],
+      "en": [
+        "Vehicles with a green environmental sticker",
+        "Vehicles with a yellow environmental sticker",
+        "All vehicles without sticker"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Voertuigen met een groene milieusticker (zero-emissie) hebben toegang tot alle milieuzones. Gele en grijze stickers hebben beperkte toegang of zijn verboden in sommige zones.",
+      "en": "Vehicles with a green environmental sticker (zero-emission) have access to all environmental zones. Yellow and grey stickers have limited access or are prohibited in some zones."
+    }
+  },
+  {
+    "category": "Kennis",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "U nadert een meerstrooksrotonde.",
+      "en": "You approach a multi-lane roundabout."
+    },
+    "question": {
+      "nl": "Welke rijstrook moet u gebruiken om rechtsaf te slaan op een meerstrooksrotonde?",
+      "en": "Which lane should you use to turn right on a multi-lane roundabout?"
+    },
+    "options": {
+      "nl": [
+        "De rechterrijstrook",
+        "De linkerrijstrook",
+        "De middelste rijstrook"
+      ],
+      "en": [
+        "The right lane",
+        "The left lane",
+        "The middle lane"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Op een meerstrooksrotonde gebruikt u de rechterrijstrook voor rechtsaf, de middelste voor rechtdoor, en de linkerrijstrook voor linksaf of volledige ronding.",
+      "en": "On a multi-lane roundabout, use the right lane for turning right, the middle lane for going straight, and the left lane for turning left or full circle."
+    }
+  },
+  {
+    "category": "Kennis",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "U ziet een e-scooter op de weg.",
+      "en": "You see an e-scooter on the road."
+    },
+    "question": {
+      "nl": "Wat is de maximumsnelheid voor een e-scooter op de openbare weg?",
+      "en": "What is the maximum speed for an e-scooter on public roads?"
+    },
+    "options": {
+      "nl": [
+        "25 km/h",
+        "45 km/h",
+        "30 km/h"
+      ],
+      "en": [
+        "25 km/h",
+        "45 km/h",
+        "30 km/h"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "E-scooters mogen maximaal 25 km/h rijden en zijn toegestaan op fietspaden waar dit is aangegeven.",
+      "en": "E-scooters may drive a maximum of 25 km/h and are permitted on bike paths where indicated."
+    }
+  },
+  {
+    "category": "Kennis",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "U rijdt op een weg met een gedeelde rijstrook voor fietsers en auto's.",
+      "en": "You are driving on a road with a shared lane for cyclists and cars."
+    },
+    "question": {
+      "nl": "Wat is de maximale snelheid op een gedeelde rijstrook (fietsstraat)?",
+      "en": "What is the maximum speed on a shared lane (bicycle street)?"
+    },
+    "options": {
+      "nl": [
+        "30 km/h",
+        "50 km/h",
+        "60 km/h"
+      ],
+      "en": [
+        "30 km/h",
+        "50 km/h",
+        "60 km/h"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Op een fietsstraat (gedeelde rijstrook) geldt een maximumsnelheid van 30 km/h. Auto's zijn hier te gast en moeten fietsers voorrang geven.",
+      "en": "On a bicycle street (shared lane), a maximum speed of 30 km/h applies. Cars are guests here and must give way to cyclists."
+    }
+  },
+  {
+    "category": "Kennis",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "U ziet een matrixbord dat een snelheidslimiet van 70 km/h toont.",
+      "en": "You see a matrix sign showing a speed limit of 70 km/h."
+    },
+    "question": {
+      "nl": "Heeft een matrixbord voorrang op een statisch verkeersbord?",
+      "en": "Does a matrix sign take precedence over a static traffic sign?"
+    },
+    "options": {
+      "nl": [
+        "Ja, matrixborden hebben voorrang op statische borden",
+        "Nee, statische borden hebben altijd voorrang",
+        "Ze zijn gelijkwaardig"
+      ],
+      "en": [
+        "Yes, matrix signs take precedence over static signs",
+        "No, static signs always have priority",
+        "They are equal"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Matrixborden hebben voorrang op statische verkeersborden. Ze geven actuele situaties weer zoals wegwerkzaamheden, files of weersomstandigheden.",
+      "en": "Matrix signs take precedence over static traffic signs. They display current situations such as road works, traffic jams, or weather conditions."
+    }
+  },
+  {
+    "category": "Kennis",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "Uw auto heeft een Driver Attention Monitoring systeem.",
+      "en": "Your car has a Driver Attention Monitoring system."
+    },
+    "question": {
+      "nl": "Wat doet Driver Attention Monitoring?",
+      "en": "What does Driver Attention Monitoring do?"
+    },
+    "options": {
+      "nl": [
+        "Het waarschuwt als de bestuurder vermoeid of afgeleid lijkt",
+        "Het neemt automatisch het stuur over",
+        "Het schakelt de motor uit"
+      ],
+      "en": [
+        "It warns if the driver appears tired or distracted",
+        "It automatically takes over the steering",
+        "It switches off the engine"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Driver Attention Monitoring analyseert het rijgedrag en waarschuwt als het detecteert dat de bestuurder vermoeid of afgeleid is. Het neemt geen besturing over.",
+      "en": "Driver Attention Monitoring analyzes driving behavior and warns if it detects that the driver is tired or distracted. It does not take over control."
+    }
+  },
+  {
+    "category": "Kennis",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "U rijdt een elektrische auto met regeneratief remmen.",
+      "en": "You are driving an electric car with regenerative braking."
+    },
+    "question": {
+      "nl": "Wat is regeneratief remmen?",
+      "en": "What is regenerative braking?"
+    },
+    "options": {
+      "nl": [
+        "Het omzetten van bewegingsenergie terug in elektrische energie tijdens remmen",
+        "Een extra krachtig remsysteem voor noodstops",
+        "Automatisch remmen bij het loslaten van het gaspedaal"
+      ],
+      "en": [
+        "Converting kinetic energy back into electrical energy during braking",
+        "An extra powerful braking system for emergency stops",
+        "Automatic braking when releasing the gas pedal"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Regeneratief remmen zet bewegingsenergie om in elektrische energie die in de accu wordt opgeslagen. Dit verhoogt het bereik en slijt de remmen minder.",
+      "en": "Regenerative braking converts kinetic energy into electrical energy stored in the battery. This increases range and wears brakes less."
+    }
+  },
+  {
+    "category": "Kennis",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "U ziet een blauwe zone met parkeerplaatsen in de stad.",
+      "en": "You see a blue zone with parking spaces in the city."
+    },
+    "question": {
+      "nl": "Wat betekent een blauwe zone voor parkeren?",
+      "en": "What does a blue zone for parking mean?"
+    },
+    "options": {
+      "nl": [
+        "U mag maximaal 2 uur parkeren met een parkeerschijf",
+        "U mag onbeperkt parkeren",
+        "U mag alleen 's avonds parkeren"
+      ],
+      "en": [
+        "You may park maximum 2 hours with a parking disc",
+        "You may park unlimited",
+        "You may only park in the evening"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "In een blauwe zone mag u maximaal 2 uur parkeren met een parkeerschijf. De schijf moet op de aankomsttijd worden ingesteld.",
+      "en": "In a blue zone, you may park maximum 2 hours with a parking disc. The disc must be set to the arrival time."
+    }
+  },
+  {
+    "category": "Kennis",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "U nadert een kruispunt met een trambaan.",
+      "en": "You approach an intersection with a tram track."
+    },
+    "question": {
+      "nl": "Wat betekent een bord met een tram in een wit vierkant met blauwe rand?",
+      "en": "What does a sign with a tram in a white square with blue border mean?"
+    },
+    "options": {
+      "nl": [
+        "Trambaan - alleen trams mogen hier rijden",
+        "Tram heeft voorrang",
+        "Tramhalte"
+      ],
+      "en": [
+        "Tram track - only trams may drive here",
+        "Tram has priority",
+        "Tram stop"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Een bord met een tram in een wit vierkant met blauwe rand geeft een trambaan aan. Alleen trams mogen hier rijden, andere voertuigen niet.",
+      "en": "A sign with a tram in a white square with blue border indicates a tram track. Only trams may drive here, other vehicles may not."
+    }
+  },
+  {
+    "category": "Kennis",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "U rijdt op een autosnelweg en ziet een matrixbord met '60 km/h' en een regenwolk.",
+      "en": "You are driving on a highway and see a matrix sign showing '60 km/h' and a rain cloud."
+    },
+    "question": {
+      "nl": "Wat betekent deze matrixbordinformatie?",
+      "en": "What does this matrix sign information mean?"
+    },
+    "options": {
+      "nl": [
+        "De snelheidslimiet is tijdelijk verlaagd naar 60 km/h bij regen",
+        "De snelheidslimiet is permanent 60 km/h",
+        "De limiet geldt alleen bij zware storm"
+      ],
+      "en": [
+        "The speed limit is temporarily reduced to 60 km/h during rain",
+        "The speed limit is permanently 60 km/h",
+        "The limit only applies during heavy storm"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Matrixborden met weersomstandigheden geven tijdelijke snelheidslimieten aan die alleen gelden tijdens die specifieke omstandigheden.",
+      "en": "Matrix signs with weather conditions indicate temporary speed limits that only apply during those specific conditions."
+    }
+  },
+  {
+    "category": "Inzicht",
+    "timeLimit": 60,
+    "scenario": {
+      "nl": "U rijdt 80 km/h op een weg met matrixborden. Een matrixbord toont plotseling '50 km/h'.",
+      "en": "You are driving at 80 km/h on a road with matrix signs. A matrix sign suddenly shows '50 km/h'."
+    },
+    "question": {
+      "nl": "Wat is de veiligste actie?",
+      "en": "What is the safest action?"
+    },
+    "options": {
+      "nl": [
+        "Snelheid onmiddellijk verlagen naar 50 km/h",
+        "Wachten tot u het volgende bord ziet",
+        "De huidige snelheid aanhouden"
+      ],
+      "en": [
+        "Immediately reduce speed to 50 km/h",
+        "Wait until you see the next sign",
+        "Maintain current speed"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Matrixborden hebben voorrang en moeten direct worden opgevolgd. Verlaag onmiddellijk uw snelheid naar de aangegeven limiet.",
+      "en": "Matrix signs have precedence and must be followed immediately. Immediately reduce your speed to the indicated limit."
+    }
+  },
+  {
+    "category": "Gevaarherkenning",
+    "timeLimit": 60,
+    "scenario": {
+      "nl": "U rijdt 100 km/h op de snelweg. Een auto voor u schakelt zonder richtingaanwijzer plotseling naar uw rijstrook.",
+      "en": "You are driving at 100 km/h on the highway. A car ahead suddenly switches to your lane without a turn signal."
+    },
+    "question": {
+      "nl": "Wat is de veiligste actie?",
+      "en": "What is the safest action?"
+    },
+    "options": {
+      "nl": [
+        "Remmen",
+        "Gas loslaten",
+        "Niets doen"
+      ],
+      "en": [
+        "Brake",
+        "Release Gas",
+        "Do Nothing"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Onverwacht van rijstrook wisselen op hoge snelheid vereist directe remactie om een botsing te voorkomen.",
+      "en": "Unexpected lane changing at high speed requires immediate braking action to prevent a collision."
+    }
+  },
+  {
+    "category": "Gevaarherkenning",
+    "timeLimit": 60,
+    "scenario": {
+      "nl": "U rijdt 70 km/h op een N-weg. Een kind rent plotseling de weg op achter een geparkeerde auto.",
+      "en": "You are driving at 70 km/h on an N-road. A child suddenly runs onto the road from behind a parked car."
+    },
+    "question": {
+      "nl": "Welke actie moet u nemen?",
+      "en": "What action should you take?"
+    },
+    "options": {
+      "nl": [
+        "Remmen",
+        "Gas loslaten",
+        "Niets doen"
+      ],
+      "en": [
+        "Brake",
+        "Release Gas",
+        "Do Nothing"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Een kind dat plotseling de weg rent achter een geparkeerde auto is een ernstig gevaar. Hard remmen is noodzakelijk.",
+      "en": "A child suddenly running onto the road from behind a parked car is a serious hazard. Hard braking is necessary."
+    }
+  },
+  {
+    "category": "Gevaarherkenning",
+    "timeLimit": 60,
+    "scenario": {
+      "nl": "U rijdt 50 km/h in de stad. Een voetganger kijkt op de telefoon en stapt de weg op zonder te kijken.",
+      "en": "You are driving at 50 km/h in the city. A pedestrian looks at their phone and steps onto the road without looking."
+    },
+    "question": {
+      "nl": "Wat is de veiligste actie?",
+      "en": "What is the safest action?"
+    },
+    "options": {
+      "nl": [
+        "Remmen",
+        "Gas loslaten",
+        "Toeteren"
+      ],
+      "en": [
+        "Brake",
+        "Release Gas",
+        "Honk"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Een afgeleide voetganger die de weg op stapt is onvoorspelbaar. Direct remmen is de veiligste reactie.",
+      "en": "A distracted pedestrian stepping onto the road is unpredictable. Immediate braking is the safest reaction."
+    }
+  },
+  {
+    "category": "Gevaarherkenning",
+    "timeLimit": 60,
+    "scenario": {
+      "nl": "U rijdt 90 km/h op de snelweg. Een vrachtwagen voor u verliest lading.",
+      "en": "You are driving at 90 km/h on the highway. A truck ahead loses its load."
+    },
+    "question": {
+      "nl": "Wat is de veiligste actie?",
+      "en": "What is the safest action?"
+    },
+    "options": {
+      "nl": [
+        "Remmen",
+        "Gas loslaten",
+        "Van rijstrook wisselen"
+      ],
+      "en": [
+        "Brake",
+        "Release Gas",
+        "Change lanes"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Vallende lading is een plotseling obstakel. Remmen om snelheid te verlagen is de veiligste eerste reactie.",
+      "en": "Falling load is a sudden obstacle. Braking to reduce speed is the safest first reaction."
+    }
+  },
+  {
+    "category": "Gevaarherkenning",
+    "timeLimit": 60,
+    "scenario": {
+      "nl": "U rijdt 60 km/h op een weg met slecht zicht door bochten. Een auto komt plotseling tegemoet op uw rijstrook.",
+      "en": "You are driving at 60 km/h on a road with poor visibility due to curves. A car suddenly approaches oncoming in your lane."
+    },
+    "question": {
+      "nl": "Wat is de veiligste actie?",
+      "en": "What is the safest action?"
+    },
+    "options": {
+      "nl": [
+        "Remmen",
+        "Gas loslaten",
+        "Van rijstrook wisselen"
+      ],
+      "en": [
+        "Brake",
+        "Release Gas",
+        "Change lanes"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Tegemoetkomend verkeer op uw rijstrook vereist directe remactie om een botsing te voorkomen.",
+      "en": "Oncoming traffic in your lane requires immediate braking action to prevent a collision."
+    }
+  },
+  {
+    "category": "Kennis",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "U ziet een rood kruisvormig bord met witte letters 'APK'.",
+      "en": "You see a red cross-shaped sign with white letters 'APK'."
+    },
+    "question": {
+      "nl": "Wat betekent dit bord?",
+      "en": "What does this sign mean?"
+    },
+    "options": {
+      "nl": [
+        "APK-keuringsstation",
+        "Parkeren verboden",
+        "Hospitaal in de buurt"
+      ],
+      "en": [
+        "Vehicle inspection station",
+        "No parking",
+        "Hospital nearby"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Een rood kruisvormig bord met 'APK' geeft een APK-keuringsstation aan waar voertuigen kunnen worden gekeurd.",
+      "en": "A red cross-shaped sign with 'APK' indicates a vehicle inspection station where vehicles can be inspected."
+    }
+  },
+  {
+    "category": "Kennis",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "U ziet een blauw bord met een witte 'H'.",
+      "en": "You see a blue sign with a white 'H'."
+    },
+    "question": {
+      "nl": "Wat betekent dit bord?",
+      "en": "What does this sign mean?"
+    },
+    "options": {
+      "nl": [
+        "Ziekenhuis",
+        "Hotel",
+        "Haven"
+      ],
+      "en": [
+        "Hospital",
+        "Hotel",
+        "Harbor"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Een blauw bord met een witte 'H' geeft een ziekenhuis aan.",
+      "en": "A blue sign with a white 'H' indicates a hospital."
+    }
+  },
+  {
+    "category": "Kennis",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "U ziet een bord met een witte 'P' op een blauwe achtergrond met een onderbord 'P+R'.",
+      "en": "You see a sign with a white 'P' on a blue background with a sub-plate 'P+R'."
+    },
+    "question": {
+      "nl": "Wat betekent P+R?",
+      "en": "What does P+R mean?"
+    },
+    "options": {
+      "nl": [
+        "Park and Ride - parkeren en verder reizen met openbaar vervoer",
+        "Privé en Residentieel",
+        "Plus Rijstrook"
+      ],
+      "en": [
+        "Park and Ride - park and continue with public transport",
+        "Private and Residential",
+        "Plus Lane"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "P+R staat voor Park and Ride. U parkeert uw auto en reist verder met openbaar vervoer naar de stad.",
+      "en": "P+R stands for Park and Ride. You park your car and continue to the city by public transport."
+    }
+  },
+  {
+    "category": "Kennis",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "U ziet een bord met een witte 'i' op een blauwe achtergrond.",
+      "en": "You see a sign with a white 'i' on a blue background."
+    },
+    "question": {
+      "nl": "Wat betekent dit bord?",
+      "en": "What does this sign mean?"
+    },
+    "options": {
+      "nl": [
+        "Informatie",
+        "Ingang",
+        "Interchange"
+      ],
+      "en": [
+        "Information",
+        "Entrance",
+        "Interchange"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Een blauw bord met een witte 'i' geeft een informatiepunt aan waar toeristen informatie kunnen krijgen.",
+      "en": "A blue sign with a white 'i' indicates an information point where tourists can get information."
+    }
+  },
+  {
+    "category": "Kennis",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "U ziet een bord met een witte 'E' op een blauwe achtergrond.",
+      "en": "You see a sign with a white 'E' on a blue background."
+    },
+    "question": {
+      "nl": "Wat betekent dit bord?",
+      "en": "What does this sign mean?"
+    },
+    "options": {
+      "nl": [
+        "Eerste hulp",
+        "Entree",
+        "Eiland"
+      ],
+      "en": [
+        "First aid",
+        "Entrance",
+        "Island"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Een blauw bord met een witte 'E' geeft een eerste hulp post aan.",
+      "en": "A blue sign with a white 'E' indicates a first aid post."
+    }
+  },
+  {
+    "category": "Inzicht",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "U rijdt op een weg met een maximumsnelheid van 100 km/h. Het begint te regenen.",
+      "en": "You are driving on a road with a maximum speed of 100 km/h. It starts raining."
+    },
+    "question": {
+      "nl": "Hoe moet u uw snelheid aanpassen?",
+      "en": "How should you adjust your speed?"
+    },
+    "options": {
+      "nl": [
+        "Snelheid verlagen naar een veilig niveau voor de omstandigheden",
+        "De maximumsnelheid aanhouden",
+        "Snelheid verhogen om sneller door de regen te komen"
+      ],
+      "en": [
+        "Reduce speed to a safe level for the conditions",
+        "Maintain the maximum speed",
+        "Increase speed to get through the rain faster"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Bij regen moet u uw snelheid verlagen naar een niveau dat veilig is voor de gladde omstandigheden, zelfs als dit onder de maximumsnelheid is.",
+      "en": "In rain, you must reduce your speed to a level safe for the slippery conditions, even if this is below the maximum speed."
+    }
+  },
+  {
+    "category": "Inzicht",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "U rijdt in een tunnel en uw auto stopt plotseling.",
+      "en": "You are driving in a tunnel and your car suddenly stops."
+    },
+    "question": {
+      "nl": "Wat moet u doen?",
+      "en": "What must you do?"
+    },
+    "options": {
+      "nl": [
+        "De noodtelefoon gebruiken en de motor laten draaien",
+        "De motor direct uitzetten",
+        "De tunnel verlaten lopend"
+      ],
+      "en": [
+        "Use the emergency phone and keep the engine running",
+        "Turn off the engine immediately",
+        "Leave the tunnel on foot"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "In een tunnel moet u de motor laten draaien voor ventilatie en de noodtelefoon gebruiken om hulp te vragen.",
+      "en": "In a tunnel, keep the engine running for ventilation and use the emergency phone to call for help."
+    }
+  },
+  {
+    "category": "Inzicht",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "U ziet een politieauto met zwaailichten achter u.",
+      "en": "You see a police car with flashing lights behind you."
+    },
+    "question": {
+      "nl": "Wat moet u doen?",
+      "en": "What must you do?"
+    },
+    "options": {
+      "nl": [
+        "Rechts inhalen en stoppen op een veilige plek",
+        "Snel doorrijden",
+        "Links inhalen"
+      ],
+      "en": [
+        "Move right and stop at a safe location",
+        "Drive through quickly",
+        "Move left"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Bij een politieauto met zwaailichten moet u rechts inhalen en op een veilige plek stoppen om de politie voorbij te laten.",
+      "en": "When a police car with flashing lights is behind you, move right and stop at a safe location to let the police pass."
+    }
+  },
+  {
+    "category": "Kennis",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "U ziet een bord met een witte 'F' op een blauwe achtergrond.",
+      "en": "You see a sign with a white 'F' on a blue background."
+    },
+    "question": {
+      "nl": "Wat betekent dit bord?",
+      "en": "What does this sign mean?"
+    },
+    "options": {
+      "nl": [
+        "Brandweer",
+        "Fabriek",
+        "Fietspad"
+      ],
+      "en": [
+        "Fire station",
+        "Factory",
+        "Bike path"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Een blauw bord met een witte 'F' geeft een brandweerkazerne aan.",
+      "en": "A blue sign with a white 'F' indicates a fire station."
+    }
+  },
+  {
+    "category": "Kennis",
+    "timeLimit": 30,
+    "scenario": {
+      "nl": "U ziet een bord met een witte politieauto op een blauwe achtergrond.",
+      "en": "You see a sign with a white police car on a blue background."
+    },
+    "question": {
+      "nl": "Wat betekent dit bord?",
+      "en": "What does this sign mean?"
+    },
+    "options": {
+      "nl": [
+        "Politiebureau",
+        "Politiecontrole",
+        "Parkeerplaats voor politie"
+      ],
+      "en": [
+        "Police station",
+        "Police checkpoint",
+        "Police parking"
+      ]
+    },
+    "answer": 0,
+    "explanation": {
+      "nl": "Een blauw bord met een witte politieauto geeft een politiebureau aan.",
+      "en": "A blue sign with a white police car indicates a police station."
     }
   }
 ];

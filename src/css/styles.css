@@ -30,7 +30,7 @@
 }
 
 [data-theme="light"] {
-  --bg: #f1f5f9;
+  --bg: #0a0e27;/*#f1f5f9;*/
   --card: #ffffff;
   --card-sub: #f8fafc;
   --card-hover: #edf2f7;

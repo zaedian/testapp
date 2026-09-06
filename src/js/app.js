@@ -856,6 +856,16 @@ class ExamApp {
         this.ui.views.quiz.classList.remove("active");
         this.ui.views.results.classList.remove("active");
 
+        // Reload settings from localStorage to ensure UI reflects saved values
+        this.initLanguage();
+        this.initTheme();
+        this.initAutoAdvance();
+        this.initFeedbackMode();
+        this.initReadAloud();
+        this.initSoundFx();
+        this.initFontSize();
+        this.initTtsSpeed();
+
         this.updateStartButtonState();
 
         const timeLimitOverride = document.getElementById("time-limit-override");
@@ -1707,6 +1717,8 @@ class ExamApp {
         this.quizFontSize = 16;
         this.ttsSpeed = 1.0;
         this.autoAdvanceEnabled = false;
+        this.currentLang = 'nl';
+        this.currentTheme = 'dark';
 
         try {
             localStorage.removeItem("cbr_feedback_mode");
@@ -1715,6 +1727,8 @@ class ExamApp {
             localStorage.removeItem("cbr_font_size");
             localStorage.removeItem("cbr_tts_speed");
             localStorage.removeItem("cbr_auto_advance");
+            localStorage.removeItem("cbr_language");
+            localStorage.removeItem("cbr_theme");
         } catch (error) {
             // Ignore storage failures gracefully.
         }
@@ -1745,6 +1759,14 @@ class ExamApp {
 
         const ttsSpeedValue = document.getElementById("tts-speed-value");
         if (ttsSpeedValue) ttsSpeedValue.textContent = "1.0x";
+
+        // Reset language and theme to defaults
+        this.currentLang = 'nl';
+        this.currentTheme = 'dark';
+        this.ui.setLanguage(this.currentLang);
+        this.ui.setTheme(this.currentTheme, this.currentLang);
+        this.updateLanguageIcon();
+        this.ui.updateUIText(translations[this.currentLang]);
 
         this.applyFontSize();
         this.stopSpeech();
