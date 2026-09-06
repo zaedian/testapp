@@ -19,6 +19,14 @@ function supportsFlagEmoji() {
     return flagWidth > fallbackWidth * 1.2;
 }
 
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register(new URL('../../service-worker.js', import.meta.url), { updateViaCache: 'none' }).catch((error) => {
+            console.warn('Service worker registration failed:', error);
+        });
+    });
+}
+
 class ExamApp {
     safeGetStorage(key, fallbackValue) {
         try {
@@ -1467,7 +1475,7 @@ class ExamApp {
             const seen = new Set();
             textElements.forEach(el => {
                 if (el.offsetParent !== null) {
-                    const text = el.textContent.trim();
+                    const text = this._getSpeakableMenuText(el, el.textContent.trim());
                     if (!text) return;
                     if (text.includes('🔊') || text.includes('⏹️')) return;
                     if (seen.has(text)) return;
@@ -1486,6 +1494,17 @@ class ExamApp {
         };
 
         this.speechSynthesis.speak(utterance);
+    }
+
+    _getSpeakableMenuText(element, text) {
+        if (!text) return "";
+
+        const i18nKey = element?.dataset?.i18n;
+        if (i18nKey === "menu.minCorrect") {
+            return text.replace(/^Min\.\s*/i, "");
+        }
+
+        return text;
     }
 
     showResetModal() {
@@ -1516,7 +1535,18 @@ class ExamApp {
         this.speakModal(exitModal);
     }
 
-    resetToDefaults() {
+    async clearSiteCache() {
+        if (!('caches' in window)) return;
+
+        try {
+            const cacheNames = await caches.keys();
+            await Promise.all(cacheNames.map((cacheName) => caches.delete(cacheName)));
+        } catch (error) {
+            console.warn('Failed to clear site cache:', error);
+        }
+    }
+
+    async resetToDefaults() {
         this.feedbackMode = 'practice';
         this.readAloudEnabled = false;
         this.soundFxEnabled = false;
@@ -1565,6 +1595,8 @@ class ExamApp {
         this.applyFontSize();
         this.stopSpeech();
         this.stopPageTts();
+        await this.clearSiteCache();
+        window.location.reload();
     }
 
     updateFontSizePreview() {
