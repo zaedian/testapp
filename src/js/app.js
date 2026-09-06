@@ -962,6 +962,24 @@ class ExamApp {
         this.updateTtsButtonVisibility();
         this.updateBackButtonVisibility();
 
+        // FIX #17: Restore the "already answered" UI state for this question, no matter
+        // which direction we navigated in from. Previously only handlePreviousQuestion()
+        // re-showed feedback for an answered question; handleNextQuestion() didn't. So
+        // walking forward through already-answered questions rendered them as if unanswered
+        // (your pick wasn't shown), AND the Next button stayed disabled — because in
+        // practice mode showAnswerFeedback() is what re-enables it, and in exam mode the
+        // same "mark as answered" step never ran either. That's what caused "can't go to
+        // the next unanswered question."
+        if (hasAnswered) {
+            const userAnswer = this.state.userAnswers[this.state.currentIndex];
+            const isTimeout = userAnswer === -1;
+            if (this.feedbackMode === 'practice') {
+                this.ui.showAnswerFeedback(userAnswer, q.answer, q.explanation, isTimeout);
+            } else if (this.ui.nextBtn) {
+                this.ui.nextBtn.disabled = false;
+            }
+        }
+
         if (this.readAloudEnabled) {
             this.speakQuestion(q);
         }
@@ -1029,6 +1047,17 @@ class ExamApp {
 
     handlePreviousQuestion() {
         this.stopSpeech();
+
+        // FIX #16: A pending auto-advance timeout (queued right after answering a
+        // question) was only ever cleared in handleNextQuestion(). If the user hit
+        // "Back" before that timeout fired, it would fire later anyway and silently
+        // call handleNextQuestion(), yanking them forward again — which looks exactly
+        // like "I clicked an option and nothing happened" because the visible question
+        // had already changed out from under them.
+        if (this.autoAdvanceTimeout) {
+            clearTimeout(this.autoAdvanceTimeout);
+            this.autoAdvanceTimeout = null;
+        }
 
         // FIX #14: Same fix as handleNextQuestion — save the outgoing question's
         // remaining time before the index changes.
