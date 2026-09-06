@@ -108,6 +108,7 @@ export class UIRenderer {
         }
         
         // textContent avoids forced layout recalculation triggered by innerText
+        // Show the opposite mode (what clicking will switch to)
         this.themeIcon.textContent = isLight ? "🌙" : "☀️";
         
         // Use translation dictionary to resolve theme button label based on combined state
@@ -116,8 +117,8 @@ export class UIRenderer {
         const buttons = langTranslations.buttons || {};
         
         this.themeText.textContent = isLight 
-            ? (buttons.lightMode || (lang === "nl" ? "Lichte Modus" : "Light Mode"))
-            : (buttons.darkMode || (lang === "nl" ? "Donkere Modus" : "Dark Mode"));
+            ? (buttons.darkMode || (lang === "nl" ? "Donkere Modus" : "Dark Mode"))
+            : (buttons.lightMode || (lang === "nl" ? "Lichte Modus" : "Light Mode"));
     }
 
     showView(viewName) {
@@ -131,7 +132,7 @@ export class UIRenderer {
         }
     }
 
-    renderQuestion(question, currentIndex, totalQuestions, onSelectOption) {
+    renderQuestion(question, currentIndex, totalQuestions, onSelectOption, feedbackMode = 'practice') {
         this.progressBar.style.width = `${(currentIndex / totalQuestions) * 100}%`;
         this.currentNum.textContent = currentIndex + 1;
         this.totalNum.textContent = totalQuestions;
@@ -152,13 +153,17 @@ export class UIRenderer {
         const nextText = lang === "nl" ? "Volgende Vraag" : "Next Question";
         this.nextBtn.textContent = (currentIndex === totalQuestions - 1) ? finishText : nextText;
 
+        // Shuffle options with their original indices
+        const shuffledOptions = options.map((opt, idx) => ({ text: opt, originalIndex: idx }));
+        this.shuffleArray(shuffledOptions);
+
         const fragment = document.createDocumentFragment();
         const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
-        options.forEach((opt, idx) => {
+        shuffledOptions.forEach((item, idx) => {
             const btn = document.createElement("button");
             btn.className = "option-btn";
-            btn.textContent = opt;
-            btn.dataset.index = idx;
+            btn.textContent = item.text;
+            btn.dataset.index = item.originalIndex; // Store original index for answer checking
             btn.dataset.letter = letters[idx] || String.fromCharCode(65 + idx);
             fragment.appendChild(btn);
         });
@@ -173,15 +178,24 @@ export class UIRenderer {
         };
     }
 
+    shuffleArray(array) {
+        // Fisher-Yates shuffle algorithm
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
     showAnswerFeedback(selectedIndex, correctIndex, explanation, isTimeout = false) {
         const btns = this.optionsContainer.children;
         for (let idx = 0; idx < btns.length; idx++) {
             const btn = btns[idx];
             btn.disabled = true;
-            if (idx === correctIndex) {
+            const originalIndex = Number(btn.dataset.index);
+            if (originalIndex === correctIndex) {
                 btn.classList.add("correct");
             }
-            if (idx === selectedIndex && selectedIndex !== correctIndex) {
+            if (originalIndex === selectedIndex && selectedIndex !== correctIndex) {
                 btn.classList.add("incorrect");
             }
         }
@@ -200,8 +214,32 @@ export class UIRenderer {
         const expLabel = document.createElement("strong");
         expLabel.textContent = this.currentLang === "nl" ? "Uitleg: " : "Explanation: ";
         
-        this.explanationBox.append(expLabel, explanationText);
+        // Add TTS button for explanation
+        const expTtsBtn = document.createElement("button");
+        expTtsBtn.className = "btn-exit btn-small explanation-tts-btn";
+        expTtsBtn.id = "explanation-tts-btn";
+        expTtsBtn.textContent = "🔊";
+        expTtsBtn.style.marginLeft = "10px";
+        expTtsBtn.style.padding = "4px 8px";
+        expTtsBtn.style.fontSize = "0.9rem";
+        
+        const labelContainer = document.createElement("div");
+        labelContainer.style.display = "flex";
+        labelContainer.style.alignItems = "center";
+        labelContainer.appendChild(expLabel);
+        labelContainer.appendChild(expTtsBtn);
+        
+        this.explanationBox.appendChild(labelContainer);
+        this.explanationBox.appendChild(document.createTextNode(explanationText));
         this.explanationBox.style.display = "block";
+        this.nextBtn.disabled = false;
+    }
+
+    enableNextButton() {
+        const btns = this.optionsContainer.children;
+        for (let idx = 0; idx < btns.length; idx++) {
+            btns[idx].disabled = true;
+        }
         this.nextBtn.disabled = false;
     }
 
@@ -226,7 +264,9 @@ export class UIRenderer {
             const categoryPassed = data.correct >= data.passLimit;
             const row = document.createElement("tr");
 
-            const statusText = categoryPassed ? (lang === "nl" ? "GESLAAGD" : "PASSED") : (lang === "nl" ? "GEZAKT" : "FAILED");
+            const statusText = categoryPassed 
+            ? (translations[lang]?.results?.passed || (lang === "nl" ? "GESLAAGD" : "PASSED")) 
+            : (translations[lang]?.results?.failed || (lang === "nl" ? "GEZAKT" : "FAILED"));
 
             row.innerHTML = `
                 <td><strong>${cat}</strong></td>
@@ -243,8 +283,8 @@ export class UIRenderer {
 
         // Update status badge
         const isPassed = Boolean(overallPassed);
-        const passedText = lang === "nl" ? "GESLAAGD" : "PASSED";
-        const failedText = lang === "nl" ? "GEZAKT" : "FAILED";
+        const passedText = translations[lang]?.results?.passed || (lang === "nl" ? "GESLAAGD" : "PASSED");
+        const failedText = translations[lang]?.results?.failed || (lang === "nl" ? "GEZAKT" : "FAILED");
         this.statusBadge.textContent = isPassed ? passedText : failedText;
         this.statusBadge.className = `status-badge ${isPassed ? 'pass' : 'fail'}`;
 

@@ -5,13 +5,12 @@ export const translations = {
       subtitle: "Even geduld a.u.b."
     },
     header: {
-      title: "CBR Rijtheorie Oefenen (Categorie B)",
-      subtitle: "Officiële Nederlandse Verkeersregels & Gevaarherkenning Training"
+      title: "CBR Rijtheorie Oefenen (Categorie B)"
     },
     menu: {
-      title: "Klaar om je Nederlandse verkeerskennis te testen?",
-      description: "Dit oefenexamen simuleert de structuur van het officiële CBR theorie-examen. Je moet aan de eisen in alle drie categorieën voldoen om overall te slagen.",
+      description: "Oefenexamen dat het officiële CBR theorie-examen simuleert.",
       rulesTitle: "Examenopbouw & Eisen",
+      selectModeHint: "Selecteer het aantal vragen om door te gaan",
       hazard: "1. Gevaarherkenning",
       knowledge: "2. Kennis",
       insight: "3. Inzicht",
@@ -42,13 +41,17 @@ export const translations = {
       finishBtn: "Examen Beëindigen",
       explanation: "Uitleg:",
       timeout: "Tijd Is Om!",
-      exitBtn: "Afsluiten"
+      exitBtn: "Afsluiten",
+      readAloudBtn: "🔊 Voorlezen",
+      stopReadingBtn: "⏹️ Stop"
     },
     modal: {
       exitTitle: "Examen Afsluiten?",
       exitMessage: "Weet je zeker dat je wilt afsluiten? Je voortgang wordt niet opgeslagen.",
       cancel: "Annuleren",
-      confirm: "Afsluiten"
+      confirm: "Afsluiten",
+      resetTitle: "Reset naar Standaard?",
+      resetMessage: "Weet je zeker dat je alle instellingen wilt resetten naar de standaardwaarden?"
     },
     results: {
       title: "Examen Samenvatting",
@@ -84,7 +87,20 @@ export const translations = {
     },
     settings: {
       autoAdvance: "Automatisch doorgaan naar volgende vraag",
-      autoAdvanceHint: "Selecteer automatisch de volgende vraag na het beantwoorden"
+      autoAdvanceHint: "Selecteer automatisch de volgende vraag na het beantwoorden",
+      feedbackModeTitle: "Feedback Modus",
+      practiceMode: "Oefenmodus (Directe Feedback)",
+      examMode: "Examenmodus (Geen Feedback)",
+      feedbackModeHint: "Examenmodus verbergt antwoorden tot je de quiz hebt voltooid",
+      readAloud: "Voorlezen / Tekst-naar-Spraak",
+      readAloudHint: "Lees vragen en antwoorden automatisch voor",
+      readAloudSpeed: "Snelheid",
+      readAloudTest: "Test Voorlezen",
+      soundFx: "Geluidseffecten",
+      soundFxHint: "Speel geluiden af voor klikken en antwoorden",
+      fontSizeTitle: "Lettergrootte",
+      fontSizePreview: "Voorbeeld tekst",
+      resetDefaults: "Reset naar Standaard"
     }
   },
   en: {
@@ -93,13 +109,12 @@ export const translations = {
       subtitle: "Please wait a moment"
     },
     header: {
-      title: "CBR Driving Theory Practice (Category B)",
-      subtitle: "Official Netherlands Traffic Rules & Hazard Training"
+      title: "CBR Driving Theory Practice (Category B)"
     },
     menu: {
-      title: "Ready to test your Dutch traffic knowledge?",
-      description: "This practice exam simulates the official CBR theory test structure. You must satisfy the passing criteria in all three categories to pass overall.",
+      description: "Practice exam simulating the official CBR theory test.",
       rulesTitle: "Exam Breakdown & Requirements",
+      selectModeHint: "Please select the number of questions to continue",
       hazard: "1. Hazard Perception",
       knowledge: "2. Traffic Knowledge",
       insight: "3. Traffic Insight",
@@ -130,13 +145,17 @@ export const translations = {
       finishBtn: "Finish Exam",
       explanation: "Explanation:",
       timeout: "Time's Up!",
-      exitBtn: "Exit"
+      exitBtn: "Exit",
+      readAloudBtn: "🔊 Read",
+      stopReadingBtn: "⏹️ Stop"
     },
     modal: {
       exitTitle: "Exit Exam?",
       exitMessage: "Are you sure you want to exit? Your progress will be lost.",
       cancel: "Cancel",
-      confirm: "Exit"
+      confirm: "Exit",
+      resetTitle: "Reset to Defaults?",
+      resetMessage: "Are you sure you want to reset all settings to default values?"
     },
     results: {
       title: "Exam Summary",
@@ -172,7 +191,20 @@ export const translations = {
     },
     settings: {
       autoAdvance: "Auto-advance to next question",
-      autoAdvanceHint: "Automatically select next question after answering"
+      autoAdvanceHint: "Automatically select next question after answering",
+      feedbackModeTitle: "Feedback Mode",
+      practiceMode: "Practice Mode (Instant Feedback)",
+      examMode: "Exam Mode (No Feedback)",
+      feedbackModeHint: "Exam mode hides answers until you finish the quiz",
+      readAloud: "Enable Read-Aloud / Text-to-Speech",
+      readAloudHint: "Read questions and answers aloud automatically",
+      readAloudSpeed: "Speed",
+      readAloudTest: "Test Read-Aloud",
+      soundFx: "Sound Effects",
+      soundFxHint: "Play sounds for clicks and answers",
+      fontSizeTitle: "Font Size",
+      fontSizePreview: "Sample text",
+      resetDefaults: "Reset to Defaults"
     }
   }
 };
