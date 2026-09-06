@@ -565,6 +565,14 @@ class ExamApp {
             });
         }
 
+        const backBtn = document.getElementById("back-btn");
+        if (backBtn) {
+            backBtn.addEventListener("click", () => {
+                if (this.soundFxEnabled) this.playSound('click');
+                this.handlePreviousQuestion();
+            });
+        }
+
         const menuBtn = document.getElementById("menu-btn");
         if (menuBtn) {
             menuBtn.addEventListener("click", () => {
@@ -973,6 +981,14 @@ class ExamApp {
             this.loadCurrentQuestion();
         } else {
             this.showResults();
+        }
+    }
+
+    handlePreviousQuestion() {
+        this.stopSpeech();
+
+        if (this.state.previousQuestion()) {
+            this.loadCurrentQuestion();
         }
     }
 

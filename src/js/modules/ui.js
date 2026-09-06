@@ -294,7 +294,6 @@ export class UIRenderer {
         const correctCount = questionResults.filter(r => r.isCorrect).length;
         const incorrectCount = totalQuestions - correctCount;
         const passRate = totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0;
-        const requiredPassRate = 80;
         const isPassed = Boolean(overallPassed);
 
         const setElementText = (id, text) => {
@@ -305,7 +304,7 @@ export class UIRenderer {
         setElementText("stat-total", totalQuestions);
         setElementText("stat-correct", correctCount);
         setElementText("stat-incorrect", incorrectCount);
-        setElementText("stat-required-rate", `${requiredPassRate}%`);
+        setElementText("stat-required-rate", "80%");
         setElementText("stat-rate", `${passRate}%`);
 
         const passedCategories = Object.entries(breakdown).filter(([, data]) => (Number(data?.correct ?? 0)) >= (Number(data?.passLimit ?? 0))).length;
@@ -385,19 +384,15 @@ export class UIRenderer {
         if (this.breakdownBody) {
             const fragment = document.createDocumentFragment();
             for (const [cat, data] of Object.entries(breakdown)) {
-                const categoryPassed = data.correct >= data.passLimit;
+                const accuracy = data.total > 0 ? Math.round((data.correct / data.total) * 100) : 0;
                 const row = document.createElement("tr");
-
-                const statusText = categoryPassed 
-                    ? this.getTranslation("results.passed", lang === "nl" ? "GESLAAGD" : "PASSED")
-                    : this.getTranslation("results.failed", lang === "nl" ? "GEZAKT" : "FAILED");
 
                 row.innerHTML = `
                     <td><strong>${this.escapeHtml(cat)}</strong></td>
                     <td>${data.correct} / ${data.total}</td>
-                    <td>Min. ${data.passLimit}</td>
-                    <td class="${categoryPassed ? 'text-success' : 'text-danger'}">
-                        ${this.escapeHtml(statusText)}
+                    <td>${accuracy}%</td>
+                    <td class="${accuracy >= 80 ? 'text-success' : 'text-danger'}">
+                        ${accuracy >= 80 ? (lang === "nl" ? "GESLAAGD" : "PASSED") : (lang === "nl" ? "GEZAKT" : "FAILED")}
                     </td>
                 `;
                 fragment.appendChild(row);

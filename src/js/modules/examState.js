@@ -228,13 +228,11 @@ export class ExamState {
             data.passLimit = Math.max(1, Math.ceil(data.total * ratio));
         }
 
-        let overallPassed = true;
-        for (const data of Object.values(breakdown)) {
-            if (data.correct < data.passLimit) {
-                overallPassed = false;
-                break;
-            }
-        }
+        // Calculate overall pass based on 80% overall score
+        const totalCorrect = Object.values(breakdown).reduce((sum, data) => sum + data.correct, 0);
+        const totalQuestions = Object.values(breakdown).reduce((sum, data) => sum + data.total, 0);
+        const overallPassRate = totalQuestions > 0 ? (totalCorrect / totalQuestions) : 0;
+        const overallPassed = overallPassRate >= 0.80;
 
         const categoryExtremes = calculateCategoryExtremes(breakdown);
 

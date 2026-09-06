@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v7';
+const CACHE_VERSION = 'v8';
 const CACHE_NAME = `cbr-cache-${CACHE_VERSION}`;
 
 // Dynamically derive base path from SW scope (works on GitHub Pages subdirectories and localhost)
