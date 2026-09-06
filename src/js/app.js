@@ -21,9 +21,9 @@ function supportsFlagEmoji() {
 
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register(new URL('../../service-worker.js', import.meta.url), { updateViaCache: 'none' }).catch((error) => {
-            console.warn('Service worker registration failed:', error);
-        });
+        navigator.serviceWorker.register('/cbr/service-worker.js', { updateViaCache: 'none' })
+            .then(reg => console.log('SW registered with scope:', reg.scope))
+            .catch(error => console.warn('SW registration failed:', error));
     });
 }
 
@@ -985,6 +985,7 @@ class ExamApp {
         this.ui.showView("results");
         const resultsData = this.state.calculateResults();
         resultsData.questionResults = this.state.questionResults;
+        this.lastResultsData = resultsData;
         this.ui.renderResults(resultsData);
 
         this.updateResultsTtsVisibility();
@@ -1016,6 +1017,168 @@ class ExamApp {
         const voice = this._getVoice(lang);
         if (voice) utterance.voice = voice;
         return utterance;
+    }
+
+    _formatSpeechText(template, values = {}) {
+        return String(template || '').replace(/\{(\w+)\}/g, (_, key) => {
+            const value = values[key];
+            return value === undefined || value === null ? '' : String(value);
+        });
+    }
+
+    _getCategoryDisplayName(categoryName) {
+        const categoryMap = this.currentLang === "en"
+            ? {
+                Gevaarherkenning: "Hazard Perception",
+                Kennis: "Traffic Knowledge",
+                Inzicht: "Traffic Insight"
+            }
+            : {
+                Gevaarherkenning: "Gevaarherkenning",
+                Kennis: "Kennis",
+                Inzicht: "Inzicht"
+            };
+
+        return categoryMap[categoryName] || categoryName;
+    }
+
+    _getSpeechTranslation(key, fallback, values = {}) {
+        const t = (window.translations && window.translations[this.currentLang] && window.translations[this.currentLang].results) || {};
+        return this._formatSpeechText(t[key] || fallback, values);
+    }
+
+    _buildResultsNarration(resultsData = {}) {
+        const {
+            breakdown = {},
+            overallPassed = false,
+            questionResults = [],
+            strongestCategory = null,
+            weakestCategory = null
+        } = resultsData;
+
+        const totalQuestions = Number(questionResults.length || 0);
+        const correctCount = totalQuestions > 0
+            ? questionResults.filter(r => r.isCorrect).length
+            : 0;
+        const incorrectCount = totalQuestions - correctCount;
+        const passRate = totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0;
+
+        const passedCategories = Object.entries(breakdown).filter(([, data]) => (
+            Number(data?.correct ?? 0) >= Number(data?.passLimit ?? 0)
+        )).length;
+        const totalCategories = Object.keys(breakdown).length;
+
+        const strongest = strongestCategory ? this._getCategoryDisplayName(strongestCategory) : null;
+        const weakest = weakestCategory ? this._getCategoryDisplayName(weakestCategory) : null;
+
+        const parts = [];
+        parts.push(this._getSpeechTranslation(
+            "spokenSummaryIntro",
+            this.currentLang === "nl" ? "Hier is je examenvatting." : "Here is your exam summary."
+        ));
+        parts.push(this._getSpeechTranslation(
+            "spokenOverallScore",
+            this.currentLang === "nl"
+                ? "Je hebt {correct} van de {total} vragen goed beantwoord."
+                : "You answered {correct} out of {total} questions correctly.",
+            { correct: correctCount, total: totalQuestions }
+        ));
+        parts.push(this._getSpeechTranslation(
+            overallPassed ? "spokenPassedExam" : "spokenFailedExam",
+            overallPassed
+                ? (this.currentLang === "nl"
+                    ? "Dat betekent dat je bent geslaagd voor het examen."
+                    : "That means you passed the exam.")
+                : (this.currentLang === "nl"
+                    ? "Dat betekent dat je niet bent geslaagd voor het examen."
+                    : "That means you did not pass the exam.")
+        ));
+        parts.push(this._getSpeechTranslation(
+            "spokenPassRate",
+            this.currentLang === "nl"
+                ? "Je slagingspercentage was {rate} procent."
+                : "Your pass rate was {rate} percent.",
+            { rate: passRate }
+        ));
+        parts.push(this._getSpeechTranslation(
+            "spokenCategoryBreakdownIntro",
+            this.currentLang === "nl"
+                ? "Hier is de categorieverdeling."
+                : "Here is the category breakdown."
+        ));
+
+        Object.entries(breakdown).forEach(([categoryName, data]) => {
+            const categoryLabel = this._getCategoryDisplayName(categoryName);
+            const correct = Number(data?.correct ?? 0);
+            const total = Number(data?.total ?? 0);
+            const required = Number(data?.passLimit ?? 0);
+            const passed = correct >= required;
+
+            parts.push(this._getSpeechTranslation(
+                "spokenCategoryLine",
+                this.currentLang === "nl"
+                    ? "{category}: je had {correct} van de {total} goed. Je had {required} nodig om te slagen. {result}"
+                    : "{category}: you scored {correct} out of {total}. You needed {required} to pass. {result}",
+                {
+                    category: categoryLabel,
+                    correct,
+                    total,
+                    required,
+                    result: this._getSpeechTranslation(
+                        passed ? "spokenCategoryPassed" : "spokenCategoryFailed",
+                        passed
+                            ? (this.currentLang === "nl"
+                                ? "Je bent voor deze categorie geslaagd."
+                                : "You passed this category.")
+                            : (this.currentLang === "nl"
+                                ? "Je bent voor deze categorie niet geslaagd."
+                                : "You did not pass this category.")
+                    )
+                }
+            ));
+        });
+
+        if (strongest) {
+            parts.push(this._getSpeechTranslation(
+                "spokenStrongestCategory",
+                this.currentLang === "nl"
+                    ? "Je sterkste categorie was {category}."
+                    : "Your strongest category was {category}.",
+                { category: strongest }
+            ));
+        }
+
+        if (weakest) {
+            parts.push(this._getSpeechTranslation(
+                "spokenWeakestCategory",
+                this.currentLang === "nl"
+                    ? "Je zwakste categorie was {category}."
+                    : "Your weakest category was {category}.",
+                { category: weakest }
+            ));
+        }
+
+        parts.push(this._getSpeechTranslation(
+            overallPassed ? "spokenPassedAdvice" : "spokenFailedAdvice",
+            overallPassed
+                ? (this.currentLang === "nl"
+                    ? "Gefeliciteerd. Je voldoet aan alle categorie-eisen."
+                    : "Congratulations. You met the requirements for every category.")
+                : (this.currentLang === "nl"
+                    ? "Focus op de zwakkere categorieën voordat je het opnieuw probeert."
+                    : "Focus on the weaker categories before trying again.")
+        ));
+
+        if (questionResults.length > 0) {
+            parts.push(this._getSpeechTranslation(
+                "spokenDetailedIntro",
+                this.currentLang === "nl"
+                    ? "Gedetailleerde vraaganalyse staat hieronder."
+                    : "Detailed question analysis is shown below."
+            ));
+        }
+
+        return parts.filter(Boolean).join(" ");
     }
 
     // FIX #7: speakQuestion now uses a loop-id token to prevent concurrent loops
@@ -1265,36 +1428,7 @@ class ExamApp {
 
         const lang = this.currentLang === "nl" ? "nl-NL" : "en-US";
 
-        const totalQuestions = document.getElementById("stat-total")?.textContent || "0";
-        const correctAnswers = document.getElementById("stat-correct")?.textContent || "0";
-        const incorrectAnswers = document.getElementById("stat-incorrect")?.textContent || "0";
-        const passRate = document.getElementById("stat-rate")?.textContent || "0%";
-        const statusBadge = document.getElementById("status-badge")?.textContent || "";
-
-        const t = (window.translations && window.translations[this.currentLang] && window.translations[this.currentLang].results) || {};
-
-        let textToSpeak = "";
-        textToSpeak += (t.title || "Exam Summary") + ". ";
-        textToSpeak += (t.totalQuestions || "Total Questions") + ": " + totalQuestions + ". ";
-        textToSpeak += (t.correctAnswers || "Correct Answers") + ": " + correctAnswers + ". ";
-        textToSpeak += (t.incorrectAnswers || "Incorrect Answers") + ": " + incorrectAnswers + ". ";
-        textToSpeak += (t.passRate || "Pass Rate") + ": " + passRate + ". ";
-        textToSpeak += "Status: " + statusBadge + ". ";
-
-        const detailedAnalysis = document.querySelector(".detailed-analysis");
-        if (detailedAnalysis && detailedAnalysis.offsetParent !== null) {
-            const analysisTitle = detailedAnalysis.querySelector("h3")?.textContent || "";
-            if (analysisTitle) textToSpeak += analysisTitle + ". ";
-
-            detailedAnalysis.querySelectorAll(".answer-card").forEach((card) => {
-                const questionNum = card.querySelector(".question-number")?.textContent || "";
-                const questionText = card.querySelector(".answer-card-question")?.textContent || "";
-                const status = card.querySelector(".status-badge-small")?.textContent || "";
-                if (questionNum) textToSpeak += questionNum + ". ";
-                if (questionText) textToSpeak += questionText + ". ";
-                if (status) textToSpeak += status + ". ";
-            });
-        }
+        const textToSpeak = this._buildResultsNarration(this.lastResultsData || {});
 
         if (!textToSpeak) return;
 

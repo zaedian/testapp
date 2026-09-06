@@ -1257,6 +1257,11 @@ button {
   line-height: 1.7;
 }
 
+.results-overview-card li {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
 .report-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1375,6 +1380,9 @@ button {
   font-size: 1.75rem;
   font-weight: 800;
   color: var(--text);
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .text-success {

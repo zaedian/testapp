@@ -321,6 +321,9 @@ export class UIRenderer {
             return `${categoryName} (${accuracy}%)`;
         };
 
+        const strongestLabel = this.getTranslation("results.strongestCategoryLabel", lang === "nl" ? "Sterkste categorie:" : "Strongest category:");
+        const weakestLabel = this.getTranslation("results.weakestCategoryLabel", lang === "nl" ? "Zwakste categorie:" : "Weakest category:");
+
         setElementText("stat-strongest-category", formatCategoryStat(strongestCategory, "—"));
         setElementText("stat-weakest-category", formatCategoryStat(weakestCategory, "—"));
 
@@ -346,8 +349,8 @@ export class UIRenderer {
                     <h3>${this.escapeHtml(lang === "nl" ? "Samenvatting" : "Summary")}</h3>
                     <ul>
                         <li>${this.escapeHtml(lang === "nl" ? "Jouw score:" : "Your score:")} ${correctCount}/${totalQuestions} (${passRate}%)</li>
-                        <li>${this.escapeHtml(lang === "nl" ? "Sterkste categorie:" : "Strongest category:")} ${this.escapeHtml(strongestCategory ? formatCategoryStat(strongestCategory, "—") : "—")}</li>
-                        <li>${this.escapeHtml(lang === "nl" ? "Zwakste categorie:" : "Weakest category:")} ${this.escapeHtml(weakestCategory ? formatCategoryStat(weakestCategory, "—") : "—")}</li>
+                        <li>${this.escapeHtml(strongestLabel)} ${this.escapeHtml(strongestCategory ? formatCategoryStat(strongestCategory, "—") : "—")}</li>
+                        <li>${this.escapeHtml(weakestLabel)} ${this.escapeHtml(weakestCategory ? formatCategoryStat(weakestCategory, "—") : "—")}</li>
                     </ul>
                 </div>
             `;
