@@ -32,6 +32,18 @@ export class UIRenderer {
 
         this.currentLang = "nl";
         this.translations = translations;
+        this.optionOrderByQuestionIndex = new Map();
+        
+        // Optional callback for TTS functionality
+        this.onTtsSpeak = null;
+    }
+
+    /**
+     * Resets internal state between exam sessions
+     */
+    resetState() {
+        this.optionOrderByQuestionIndex.clear();
+        this.showAllAnswers = false;
     }
 
     setTranslations(translations) {
@@ -40,20 +52,18 @@ export class UIRenderer {
 
     setLanguage(lang) {
         this.currentLang = lang;
-        const isDutch = lang === "nl";
-        this.langIcon.textContent = isDutch ? "🇳🇱" : "🇬🇧";
-        this.langText.textContent = isDutch ? "NL" : "EN";
+        const label = lang.toUpperCase();
+        if (this.langIcon) this.langIcon.textContent = label;
+        if (this.langText) this.langText.textContent = label;
     }
 
     updateUIText(translations) {
         if (!translations) return;
 
-        // 1. Update text elements with data-i18n attribute
         document.querySelectorAll("[data-i18n]").forEach(el => {
             const key = el.dataset.i18n;
             let text = this.getNestedTranslation(translations, key);
             
-            // Handle data-i18n-args for placeholder replacement
             if (text && el.dataset.i18nArgs) {
                 try {
                     const args = JSON.parse(el.dataset.i18nArgs);
@@ -62,63 +72,45 @@ export class UIRenderer {
                     console.warn('Failed to parse i18n args:', e);
                 }
             }
-            
-            if (text) {
-                el.textContent = text;
-            }
+            if (text) el.textContent = text;
         });
 
-        // 2. Update input placeholder attributes (data-i18n-placeholder)
         document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
             const key = el.dataset.i18nPlaceholder;
             const text = this.getNestedTranslation(translations, key);
-            if (text) {
-                el.placeholder = text;
-            }
+            if (text) el.placeholder = text;
         });
 
-        // Explicit fallback for input placeholders by ID
-        const customInput = document.getElementById("custom-question-count");
-        if (customInput && translations.menu?.customPlaceholder) {
-            customInput.placeholder = translations.menu.customPlaceholder;
-        }
-
-        const timeLimitInput = document.getElementById("time-limit-override");
-        if (timeLimitInput && translations.menu?.timeLimitPlaceholder) {
-            timeLimitInput.placeholder = translations.menu.timeLimitPlaceholder;
-        }
-
-        // 3. Update mode buttons text
         document.querySelectorAll(".btn-mode").forEach(btn => {
             const count = btn.dataset.questions;
-            btn.textContent = `${count} ${this.currentLang === "nl" ? "Vragen" : "Questions"}`;
+            const unit = this.getTranslation("menu.questions", this.currentLang === "nl" ? "Vragen" : "Questions");
+            btn.textContent = `${count} ${unit}`;
         });
     }
 
     getNestedTranslation(obj, path) {
-        return path.split('.').reduce((o, p) => o && o[p], obj);
+        return path ? path.split('.').reduce((o, p) => o && o[p], obj) : null;
+    }
+
+    getTranslation(key, fallback = '') {
+        if (!this.translations) return fallback;
+        const langData = this.translations[this.currentLang] || {};
+        return this.getNestedTranslation(langData, key) || fallback;
     }
 
     setTheme(theme, lang = this.currentLang) {
         const isLight = theme === "light";
-        if (isLight) {
-            document.documentElement.setAttribute("data-theme", "light");
-        } else {
-            document.documentElement.removeAttribute("data-theme");
+        document.documentElement.setAttribute("data-theme", isLight ? "light" : "dark");
+        
+        if (this.themeIcon) this.themeIcon.textContent = isLight ? "🌙" : "☀️";
+        
+        if (this.themeText) {
+            const defaultDark = lang === "nl" ? "Donkere Modus" : "Dark Mode";
+            const defaultLight = lang === "nl" ? "Lichte Modus" : "Light Mode";
+            this.themeText.textContent = isLight 
+                ? this.getTranslation("buttons.darkMode", defaultDark)
+                : this.getTranslation("buttons.lightMode", defaultLight);
         }
-        
-        // textContent avoids forced layout recalculation triggered by innerText
-        // Show the opposite mode (what clicking will switch to)
-        this.themeIcon.textContent = isLight ? "🌙" : "☀️";
-        
-        // Use translation dictionary to resolve theme button label based on combined state
-        const translations = this.translations || window.translations || {};
-        const langTranslations = translations[lang] || {};
-        const buttons = langTranslations.buttons || {};
-        
-        this.themeText.textContent = isLight 
-            ? (buttons.darkMode || (lang === "nl" ? "Donkere Modus" : "Dark Mode"))
-            : (buttons.lightMode || (lang === "nl" ? "Lichte Modus" : "Light Mode"));
     }
 
     showView(viewName) {
@@ -132,54 +124,96 @@ export class UIRenderer {
         }
     }
 
-    renderQuestion(question, currentIndex, totalQuestions, onSelectOption, feedbackMode = 'practice') {
-        this.progressBar.style.width = `${(currentIndex / totalQuestions) * 100}%`;
-        this.currentNum.textContent = currentIndex + 1;
-        this.totalNum.textContent = totalQuestions;
-        this.categoryBadge.textContent = question.category;
+    renderQuestion(question, currentIndex, totalQuestions, onSelectOption) {
+        if (!question) return;
+
+        if (this.progressBar) {
+            this.progressBar.style.width = `${((currentIndex + 1) / totalQuestions) * 100}%`;
+        }
+        if (this.currentNum) this.currentNum.textContent = currentIndex + 1;
+        if (this.totalNum) this.totalNum.textContent = totalQuestions;
+        if (this.categoryBadge) this.categoryBadge.textContent = question.category;
         
         const lang = this.currentLang;
         const scenario = typeof question.scenario === 'object' ? question.scenario[lang] : question.scenario;
         const questionText = typeof question.question === 'object' ? question.question[lang] : question.question;
         const options = typeof question.options === 'object' ? question.options[lang] : question.options;
-        
-        this.scenarioText.textContent = scenario;
-        this.questionText.textContent = questionText;
 
-        this.explanationBox.style.display = "none";
-        this.nextBtn.disabled = true;
-        
-        const finishText = lang === "nl" ? "Examen Beëindigen" : "Finish Exam";
-        const nextText = lang === "nl" ? "Volgende Vraag" : "Next Question";
-        this.nextBtn.textContent = (currentIndex === totalQuestions - 1) ? finishText : nextText;
+        if (this.scenarioText) {
+            const hasScenario = Boolean(scenario && String(scenario).trim());
+            this.scenarioText.textContent = hasScenario ? scenario : '';
+            this.scenarioText.style.display = hasScenario ? 'block' : 'none';
+        }
 
-        // Shuffle options with their original indices
-        const shuffledOptions = options.map((opt, idx) => ({ text: opt, originalIndex: idx }));
-        this.shuffleArray(shuffledOptions);
+        if (this.questionText) {
+            if (!this.questionText.parentElement || !this.questionText.parentElement.classList.contains('question-title-row')) {
+                const row = document.createElement('div');
+                row.className = 'question-title-row';
+                const parent = this.questionText.parentElement;
+                if (parent) {
+                    parent.insertBefore(row, this.questionText);
+                    row.appendChild(this.questionText);
+                }
+            }
 
+            const titleRow = this.questionText.parentElement;
+            if (titleRow && !titleRow.querySelector('#question-tts-btn')) {
+                const questionTtsBtn = document.createElement('button');
+                questionTtsBtn.type = 'button';
+                questionTtsBtn.id = 'question-tts-btn';
+                questionTtsBtn.className = 'control-btn header-read-btn question-tts-btn';
+                questionTtsBtn.innerHTML = '<span class="header-read-icon" aria-hidden="true">🔊</span><span class="header-read-state-icon" aria-hidden="true">🔇</span>';
+                questionTtsBtn.title = lang === 'nl' ? 'Vraag voorlezen' : 'Read question aloud';
+                questionTtsBtn.setAttribute('aria-label', lang === 'nl' ? 'Vraag voorlezen' : 'Read question aloud');
+                titleRow.appendChild(questionTtsBtn);
+            }
+
+            this.questionText.textContent = questionText || '';
+        }
+
+        if (this.explanationBox) {
+            this.explanationBox.style.display = "none";
+        }
+
+        if (this.nextBtn) {
+            this.nextBtn.disabled = true;
+            const finishText = this.getTranslation("buttons.finishExam", lang === "nl" ? "Examen Beëindigen" : "Finish Exam");
+            const nextText = this.getTranslation("buttons.nextQuestion", lang === "nl" ? "Volgende Vraag" : "Next Question");
+            this.nextBtn.textContent = (currentIndex === totalQuestions - 1) ? finishText : nextText;
+        }
+
+        // Shuffle options and maintain mapping for this question index
+        if (!this.optionOrderByQuestionIndex.has(currentIndex)) {
+            const shuffledOptions = options.map((opt, idx) => ({ text: opt, originalIndex: idx }));
+            this.shuffleArray(shuffledOptions);
+            this.optionOrderByQuestionIndex.set(currentIndex, shuffledOptions);
+        }
+
+        const shuffledOptions = this.optionOrderByQuestionIndex.get(currentIndex);
         const fragment = document.createDocumentFragment();
         const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
+
         shuffledOptions.forEach((item, idx) => {
             const btn = document.createElement("button");
             btn.className = "option-btn";
-            btn.textContent = item.text;
-            btn.dataset.index = item.originalIndex; // Store original index for answer checking
-            btn.dataset.letter = letters[idx] || String.fromCharCode(65 + idx);
+            btn.textContent = `${letters[idx] || ''}. ${item.text}`;
+            btn.dataset.index = item.originalIndex;
+            btn.dataset.displayLetter = letters[idx] || String.fromCharCode(65 + idx);
             fragment.appendChild(btn);
         });
 
-        this.optionsContainer.replaceChildren(fragment);
-
-        this.optionsContainer.onclick = (e) => {
-            const btn = e.target.closest(".option-btn");
-            if (btn && !btn.disabled) {
-                onSelectOption(Number(btn.dataset.index));
-            }
-        };
+        if (this.optionsContainer) {
+            this.optionsContainer.replaceChildren(fragment);
+            this.optionsContainer.onclick = (e) => {
+                const btn = e.target.closest(".option-btn");
+                if (btn && !btn.disabled) {
+                    onSelectOption(Number(btn.dataset.index));
+                }
+            };
+        }
     }
 
     shuffleArray(array) {
-        // Fisher-Yates shuffle algorithm
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [array[i], array[j]] = [array[j], array[i]];
@@ -187,6 +221,8 @@ export class UIRenderer {
     }
 
     showAnswerFeedback(selectedIndex, correctIndex, explanation, isTimeout = false) {
+        if (!this.optionsContainer || !this.explanationBox) return;
+
         const btns = this.optionsContainer.children;
         for (let idx = 0; idx < btns.length; idx++) {
             const btn = btns[idx];
@@ -202,98 +238,122 @@ export class UIRenderer {
 
         this.explanationBox.replaceChildren();
         
+        const explanationText = typeof explanation === 'object' ? explanation[this.currentLang] : explanation;
+
+        const labelContainer = document.createElement("div");
+        labelContainer.style.display = "flex";
+        labelContainer.style.alignItems = "center";
+        labelContainer.style.gap = "8px";
+        labelContainer.style.flexWrap = "wrap";
+
         if (isTimeout) {
             const timeoutSpan = document.createElement("strong");
             timeoutSpan.className = "text-danger";
             timeoutSpan.textContent = this.currentLang === "nl" ? "Tijd Om! " : "Time's Up! ";
-            this.explanationBox.appendChild(timeoutSpan);
+            labelContainer.appendChild(timeoutSpan);
         }
 
-        const explanationText = typeof explanation === 'object' ? explanation[this.currentLang] : explanation;
-        
         const expLabel = document.createElement("strong");
         expLabel.textContent = this.currentLang === "nl" ? "Uitleg: " : "Explanation: ";
-        
-        // Add TTS button for explanation
-        const expTtsBtn = document.createElement("button");
-        expTtsBtn.className = "btn-exit btn-small explanation-tts-btn";
-        expTtsBtn.id = "explanation-tts-btn";
-        expTtsBtn.textContent = "🔊";
-        expTtsBtn.style.marginLeft = "10px";
-        expTtsBtn.style.padding = "4px 8px";
-        expTtsBtn.style.fontSize = "0.9rem";
-        
-        const labelContainer = document.createElement("div");
-        labelContainer.style.display = "flex";
-        labelContainer.style.alignItems = "center";
         labelContainer.appendChild(expLabel);
+
+        const expTtsBtn = document.createElement("button");
+        expTtsBtn.type = "button";
+        expTtsBtn.id = "explanation-tts-btn";
+        expTtsBtn.className = "control-btn header-read-btn explanation-tts-btn";
+        expTtsBtn.innerHTML = '<span class="header-read-icon" aria-hidden="true">🔊</span><span class="header-read-state-icon" aria-hidden="true">🔇</span>';
+        expTtsBtn.title = this.currentLang === "nl" ? "Uitleg voorlezen" : "Read explanation aloud";
+        expTtsBtn.setAttribute("aria-label", this.currentLang === "nl" ? "Uitleg voorlezen" : "Read explanation aloud");
         labelContainer.appendChild(expTtsBtn);
-        
+
+        const textPara = document.createElement("p");
+        textPara.textContent = explanationText;
+
         this.explanationBox.appendChild(labelContainer);
-        this.explanationBox.appendChild(document.createTextNode(explanationText));
+        this.explanationBox.appendChild(textPara);
         this.explanationBox.style.display = "block";
-        this.nextBtn.disabled = false;
+        
+        if (this.nextBtn) this.nextBtn.disabled = false;
     }
 
-    enableNextButton() {
-        const btns = this.optionsContainer.children;
-        for (let idx = 0; idx < btns.length; idx++) {
-            btns[idx].disabled = true;
-        }
-        this.nextBtn.disabled = false;
-    }
+    renderResults(resultsData = {}) {
+        const {
+            breakdown = {},
+            overallPassed = false,
+            questionResults = [],
+            strongestCategory = null,
+            weakestCategory = null
+        } = resultsData;
 
-    renderResults({ breakdown, overallPassed, questionResults }) {
-        this.progressBar.style.width = "100%";
+        if (this.progressBar) this.progressBar.style.width = "100%";
         
         const lang = this.currentLang;
         const totalQuestions = questionResults.length;
         const correctCount = questionResults.filter(r => r.isCorrect).length;
         const incorrectCount = totalQuestions - correctCount;
         const passRate = totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0;
+        const isPassed = Boolean(overallPassed);
 
-        // Update overall statistics
-        document.getElementById("stat-total").textContent = totalQuestions;
-        document.getElementById("stat-correct").textContent = correctCount;
-        document.getElementById("stat-incorrect").textContent = incorrectCount;
-        document.getElementById("stat-rate").textContent = `${passRate}%`;
+        const setElementText = (id, text) => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = text;
+        };
 
-        // Render category breakdown
-        const fragment = document.createDocumentFragment();
-        for (const [cat, data] of Object.entries(breakdown)) {
-            const categoryPassed = data.correct >= data.passLimit;
-            const row = document.createElement("tr");
+        setElementText("stat-total", totalQuestions);
+        setElementText("stat-correct", correctCount);
+        setElementText("stat-incorrect", incorrectCount);
+        setElementText("stat-rate", `${passRate}%`);
 
-            const statusText = categoryPassed 
-            ? (translations[lang]?.results?.passed || (lang === "nl" ? "GESLAAGD" : "PASSED")) 
-            : (translations[lang]?.results?.failed || (lang === "nl" ? "GEZAKT" : "FAILED"));
+        const formatCategoryStat = (categoryName, fallback = "—") => {
+            if (!categoryName || !breakdown[categoryName]) return fallback;
+            const categoryData = breakdown[categoryName];
+            const total = Number(categoryData?.total ?? 0);
+            const correct = Number(categoryData?.correct ?? 0);
+            const accuracy = total > 0 ? Math.round((correct / total) * 100) : 0;
+            return `${categoryName} (${accuracy}%)`;
+        };
 
-            row.innerHTML = `
-                <td><strong>${cat}</strong></td>
-                <td>${data.correct} / ${data.total}</td>
-                <td>Min. ${data.passLimit}</td>
-                <td class="${categoryPassed ? 'text-success' : 'text-danger'}">
-                    ${statusText}
-                </td>
-            `;
-            fragment.appendChild(row);
+        setElementText("stat-strongest-category", formatCategoryStat(strongestCategory, "—"));
+        setElementText("stat-weakest-category", formatCategoryStat(weakestCategory, "—"));
+
+        // Render breakdown safely without unsafe innerHTML
+        if (this.breakdownBody) {
+            const fragment = document.createDocumentFragment();
+            for (const [cat, data] of Object.entries(breakdown)) {
+                const categoryPassed = data.correct >= data.passLimit;
+                const row = document.createElement("tr");
+
+                const statusText = categoryPassed 
+                    ? this.getTranslation("results.passed", lang === "nl" ? "GESLAAGD" : "PASSED")
+                    : this.getTranslation("results.failed", lang === "nl" ? "GEZAKT" : "FAILED");
+
+                row.innerHTML = `
+                    <td><strong>${this.escapeHtml(cat)}</strong></td>
+                    <td>${data.correct} / ${data.total}</td>
+                    <td>Min. ${data.passLimit}</td>
+                    <td class="${categoryPassed ? 'text-success' : 'text-danger'}">
+                        ${this.escapeHtml(statusText)}
+                    </td>
+                `;
+                fragment.appendChild(row);
+            }
+            this.breakdownBody.replaceChildren(fragment);
         }
 
-        this.breakdownBody.replaceChildren(fragment);
+        if (this.statusBadge) {
+            const statusText = isPassed 
+                ? this.getTranslation("results.passed", lang === "nl" ? "GESLAAGD" : "PASSED")
+                : this.getTranslation("results.failed", lang === "nl" ? "GEZAKT" : "FAILED");
+            this.statusBadge.textContent = statusText;
+            this.statusBadge.className = `status-badge ${isPassed ? 'pass' : 'fail'}`;
+        }
 
-        // Update status badge
-        const isPassed = Boolean(overallPassed);
-        const passedText = translations[lang]?.results?.passed || (lang === "nl" ? "GESLAAGD" : "PASSED");
-        const failedText = translations[lang]?.results?.failed || (lang === "nl" ? "GEZAKT" : "FAILED");
-        this.statusBadge.textContent = isPassed ? passedText : failedText;
-        this.statusBadge.className = `status-badge ${isPassed ? 'pass' : 'fail'}`;
+        if (this.toggleAnswersBtn) {
+            this.showAllAnswers = false;
+            this.toggleAnswersBtn.textContent = lang === "nl" ? "Toon Alle Antwoorden" : "Show All Answers";
+            this.toggleAnswersBtn.onclick = () => this.toggleAnswerView(questionResults);
+        }
 
-        // Reset toggle state
-        this.showAllAnswers = false;
-        this.toggleAnswersBtn.textContent = lang === "nl" ? "Toon Alle Antwoorden" : "Show All Answers";
-        this.toggleAnswersBtn.onclick = () => this.toggleAnswerView(questionResults);
-
-        // Render detailed question analysis
         this.renderAnswerCards(questionResults, false);
     }
 
@@ -301,9 +361,11 @@ export class UIRenderer {
         this.showAllAnswers = !this.showAllAnswers;
         const lang = this.currentLang;
         
-        this.toggleAnswersBtn.textContent = this.showAllAnswers 
-            ? (lang === "nl" ? "Toon Alleen Foute Antwoorden" : "Show Wrong Answers Only")
-            : (lang === "nl" ? "Toon Alle Antwoorden" : "Show All Answers");
+        if (this.toggleAnswersBtn) {
+            this.toggleAnswersBtn.textContent = this.showAllAnswers 
+                ? (lang === "nl" ? "Toon Alleen Foute Antwoorden" : "Show Wrong Answers Only")
+                : (lang === "nl" ? "Toon Alle Antwoorden" : "Show All Answers");
+        }
         
         this.renderAnswerCards(questionResults, this.showAllAnswers);
     }
@@ -311,68 +373,86 @@ export class UIRenderer {
     renderAnswerCards(questionResults, showAll) {
         const lang = this.currentLang;
         const noWrongAnswersDiv = document.getElementById("no-wrong-answers");
-        
         const answersToShow = showAll ? questionResults : questionResults.filter(r => !r.isCorrect);
         
         if (answersToShow.length === 0 && !showAll) {
-            this.answersContainer.style.display = "none";
-            noWrongAnswersDiv.style.display = "block";
-            this.toggleAnswersBtn.style.display = "none";
-        } else {
-            this.answersContainer.style.display = "flex";
-            noWrongAnswersDiv.style.display = "none";
-            this.toggleAnswersBtn.style.display = "block";
-            
-            const fragment = document.createDocumentFragment();
-            answersToShow.forEach((result, index) => {
-                const questionCard = document.createElement("div");
-                questionCard.className = result.isCorrect ? "answer-card correct" : "answer-card wrong";
-                
-                const questionText = typeof result.question.question === 'object' 
-                    ? result.question.question[lang] 
-                    : result.question.question;
-                const options = typeof result.question.options === 'object' 
-                    ? result.question.options[lang] 
-                    : result.question.options;
-                const explanation = typeof result.question.explanation === 'object' 
-                    ? result.question.explanation[lang] 
-                    : result.question.explanation;
-                
-                const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
-                const userAnswerLetter = result.userAnswer !== -1 ? letters[result.userAnswer] : '-';
-                const correctAnswerLetter = letters[result.correctAnswer];
-                const userAnswerText = result.userAnswer !== -1 ? options[result.userAnswer] : '-';
-                const correctAnswerText = options[result.correctAnswer];
-
-                questionCard.innerHTML = `
-                    <div class="answer-card-header">
-                        <span class="question-number">${lang === "nl" ? "Vraag" : "Question"} ${result.questionIndex + 1}</span>
-                        <span class="category-badge">${result.category}</span>
-                        <span class="status-badge-small ${result.isCorrect ? 'correct' : 'wrong'}">
-                            ${result.isCorrect ? (lang === "nl" ? "Juist" : "Correct") : (lang === "nl" ? "Fout" : "Incorrect")}
-                        </span>
-                    </div>
-                    <div class="answer-card-question">${questionText}</div>
-                    <div class="answer-card-details">
-                        <div class="answer-row ${result.isCorrect ? 'correct' : 'wrong'}">
-                            <span class="answer-label">${lang === "nl" ? "Jouw Antwoord:" : "Your Answer:"}</span>
-                            <span class="answer-value">${userAnswerLetter}. ${userAnswerText}</span>
-                        </div>
-                        <div class="answer-row correct">
-                            <span class="answer-label">${lang === "nl" ? "Juiste Antwoord:" : "Correct Answer:"}</span>
-                            <span class="answer-value">${correctAnswerLetter}. ${correctAnswerText}</span>
-                        </div>
-                    </div>
-                    <div class="answer-card-explanation">
-                        <strong>${lang === "nl" ? "Uitleg:" : "Explanation:"}</strong>
-                        <span>${explanation}</span>
-                    </div>
-                `;
-                
-                fragment.appendChild(questionCard);
-            });
-            
-            this.answersContainer.replaceChildren(fragment);
+            if (this.answersContainer) this.answersContainer.style.display = "none";
+            if (noWrongAnswersDiv) noWrongAnswersDiv.style.display = "block";
+            if (this.toggleAnswersBtn) this.toggleAnswersBtn.style.display = "none";
+            return;
         }
+
+        if (this.answersContainer) this.answersContainer.style.display = "flex";
+        if (noWrongAnswersDiv) noWrongAnswersDiv.style.display = "none";
+        if (this.toggleAnswersBtn) this.toggleAnswersBtn.style.display = "block";
+        
+        const fragment = document.createDocumentFragment();
+        const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+        answersToShow.forEach((result) => {
+            const questionCard = document.createElement("div");
+            questionCard.className = result.isCorrect ? "answer-card correct" : "answer-card wrong";
+            
+            const qText = typeof result.question.question === 'object' ? result.question.question[lang] : result.question.question;
+            const options = typeof result.question.options === 'object' ? result.question.options[lang] : result.question.options;
+            const expText = typeof result.question.explanation === 'object' ? result.question.explanation[lang] : result.question.explanation;
+            
+            // Resolve actual display letter shown to user during test
+            const shuffledOrder = this.optionOrderByQuestionIndex.get(result.questionIndex);
+            let userDisplayLetter = '-';
+            let correctDisplayLetter = '-';
+
+            if (shuffledOrder) {
+                const userPos = shuffledOrder.findIndex(o => o.originalIndex === result.userAnswer);
+                const correctPos = shuffledOrder.findIndex(o => o.originalIndex === result.correctAnswer);
+                if (userPos !== -1) userDisplayLetter = letters[userPos];
+                if (correctPos !== -1) correctDisplayLetter = letters[correctPos];
+            } else {
+                userDisplayLetter = result.userAnswer !== -1 ? letters[result.userAnswer] : '-';
+                correctDisplayLetter = letters[result.correctAnswer];
+            }
+
+            const userAnswerText = result.userAnswer !== -1 ? options[result.userAnswer] : '-';
+            const correctAnswerText = options[result.correctAnswer];
+
+            questionCard.innerHTML = `
+                <div class="answer-card-header">
+                    <span class="question-number">${lang === "nl" ? "Vraag" : "Question"} ${result.questionIndex + 1}</span>
+                    <span class="category-badge">${this.escapeHtml(result.category)}</span>
+                    <span class="status-badge-small ${result.isCorrect ? 'correct' : 'wrong'}">
+                        ${result.isCorrect ? (lang === "nl" ? "Juist" : "Correct") : (lang === "nl" ? "Fout" : "Incorrect")}
+                    </span>
+                </div>
+                <div class="answer-card-question">${this.escapeHtml(qText)}</div>
+                <div class="answer-card-details">
+                    <div class="answer-row ${result.isCorrect ? 'correct' : 'wrong'}">
+                        <span class="answer-label">${lang === "nl" ? "Jouw Antwoord:" : "Your Answer:"}</span>
+                        <span class="answer-value">${userDisplayLetter}. ${this.escapeHtml(userAnswerText)}</span>
+                    </div>
+                    <div class="answer-row correct">
+                        <span class="answer-label">${lang === "nl" ? "Juiste Antwoord:" : "Correct Answer:"}</span>
+                        <span class="answer-value">${correctDisplayLetter}. ${this.escapeHtml(correctAnswerText)}</span>
+                    </div>
+                </div>
+                <div class="answer-card-explanation">
+                    <strong>${lang === "nl" ? "Uitleg:" : "Explanation:"}</strong>
+                    <span>${this.escapeHtml(expText)}</span>
+                </div>
+            `;
+            
+            fragment.appendChild(questionCard);
+        });
+        
+        if (this.answersContainer) this.answersContainer.replaceChildren(fragment);
+    }
+
+    escapeHtml(str) {
+        if (typeof str !== 'string') return str;
+        return str
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
     }
 }

@@ -10,15 +10,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="src/css/styles.css?v=4.0">
+    <link rel="stylesheet" href="src/css/styles.css?v=5.0">
 </head>
 <body>
   <!-- Loading Screen -->
   <div id="loading-screen" class="loading-screen">
     <div class="loading-content">
       <div class="loading-spinner"></div>
-      <h2 data-i18n="loading.title">Examen Laden...</h2>
-      <p data-i18n="loading.subtitle">Even geduld a.u.b.</p>
+      <h2 data-i18n="loading.title">Loading Exam...</h2>
+      <p data-i18n="loading.subtitle">Please wait a moment.</p>
     </div>
   </div>
 
@@ -28,11 +28,18 @@
             <h1 data-i18n="header.title">CBR Driving Theory Practice (Category B)</h1>
         </div>
         <div class="header-controls">
-            <button id="lang-toggle" class="control-btn" aria-label="Toggle Language">
+            <button id="header-exit-btn" class="control-btn" aria-label="Exit Exam" title="Exit Exam" style="display:none;" data-i18n="header.exitBtn">
+                Exit
+            </button>
+            <button id="header-read-btn" class="control-btn header-read-btn" aria-label="Toggle Read-Aloud" title="Toggle Read-Aloud" style="display:none;" data-i18n="header.readAloudBtn">
+                <span class="header-read-icon" aria-hidden="true">🔊</span>
+                <span class="header-read-state-icon" aria-hidden="true">🔇</span>
+            </button>
+            <button id="lang-toggle" class="control-btn" aria-label="Toggle Language" title="Toggle Language">
                 <span id="lang-icon">🇳🇱</span> 
                 <span id="lang-text">NL</span>
             </button>
-            <button id="theme-toggle" class="control-btn" aria-label="Toggle Theme">
+            <button id="theme-toggle" class="control-btn" aria-label="Toggle Theme" title="Toggle Theme">
                 <span id="theme-icon">☀️</span> 
                 <span id="theme-text">Light Mode</span>
             </button>
@@ -60,15 +67,15 @@
                     <h3 data-i18n="menu.rulesTitle">Exam Breakdown & Requirements</h3>
                     <ul class="rules-list">
                         <li>
-                            <span class="rule-label"><strong data-i18n="menu.hazard">1. Gevaarherkenning</strong></span>
+                            <span class="rule-label"><strong data-i18n="menu.hazard">1. Hazard Perception</strong></span>
                             <span class="tag tag-primary" data-i18n="menu.minCorrect" data-i18n-args='{"percent":52}'>Min. 52% Correct</span>
                         </li>
                         <li>
-                            <span class="rule-label"><strong data-i18n="menu.knowledge">2. Kennis</strong></span>
+                            <span class="rule-label"><strong data-i18n="menu.knowledge">2. Traffic Knowledge</strong></span>
                             <span class="tag tag-primary" data-i18n="menu.minCorrect" data-i18n-args='{"percent":83}'>Min. 83% Correct</span>
                         </li>
                         <li>
-                            <span class="rule-label"><strong data-i18n="menu.insight">3. Inzicht</strong></span>
+                            <span class="rule-label"><strong data-i18n="menu.insight">3. Traffic Insight</strong></span>
                             <span class="tag tag-primary" data-i18n="menu.minCorrect" data-i18n-args='{"percent":89}'>Min. 89% Correct</span>
                         </li>
                     </ul>
@@ -76,7 +83,7 @@
                 <div class="config-card mode-selection">
                     <h3 data-i18n="menu.selectMode">Select Exam Mode</h3>
                     <div class="mode-buttons">
-                        <button class="btn-mode" data-questions="15" data-i18n-questions="15">15 Questions</button>
+                        <button class="btn-mode active" data-questions="15" data-i18n-questions="15">15 Questions</button>
                         <button class="btn-mode" data-questions="30" data-i18n-questions="30">30 Questions</button>
                         <button class="btn-mode" data-questions="60" data-i18n-questions="60">60 Questions</button>
                     </div>
@@ -185,7 +192,7 @@
                 <div class="config-card font-size-selection">
                     <h3 data-i18n="settings.fontSizeTitle">Font Size</h3>
                     <div class="font-size-control">
-                        <input type="range" id="font-size-slider" min="12" max="24" value="16" step="1">
+                        <input type="range" id="font-size-slider" min="12" max="32" value="16" step="1">
                         <span class="font-size-value" id="font-size-value">16px</span>
                     </div>
                     <div class="font-size-preview" id="font-size-preview">
@@ -198,32 +205,30 @@
                 </div>
             </div>
 
-            <button class="btn-primary btn-large" id="start-btn" disabled data-i18n="menu.startBtn">Start Practice Exam</button>
+            <button class="btn-primary btn-large" id="start-btn" data-i18n="menu.startBtn">Start Practice Exam</button>
         </div>
     </div>
 
     <!-- Quiz View -->
     <div class="quiz-body" id="quiz-view">
         <div class="meta-info">
-            <span class="badge" id="category-badge">Category</span>
+            <span class="badge" id="category-badge"></span>
             <div class="question-tracker">
                 <span data-i18n="quiz.question">Question</span> 
                 <strong id="current-num">1</strong> 
                 <span data-i18n="quiz.of">of</span> 
                 <strong id="total-num">15</strong>
             </div>
-            <span class="timer" id="timer">--s</span>
-            <button class="btn-exit" id="tts-btn" style="display: none;" data-i18n="quiz.readAloudBtn">🔊 Read</button>
-            <button class="btn-exit" id="exit-btn" data-i18n="quiz.exitBtn">Exit</button>
+            <span class="timer" id="timer"></span>
         </div>
 
         <div class="question-card">
-            <div class="scenario-box" id="scenario-text">Scenario details...</div>
-            <h2 class="question-title" id="question-text">Question text goes here?</h2>
+            <div class="scenario-box" id="scenario-text" style="display: none;"></div>
+            <h2 class="question-title" id="question-text"></h2>
             <div class="options-grid" id="options-container"></div>
         </div>
 
-        <div class="explanation" id="explanation-box"></div>
+        <div class="explanation" id="explanation-box" style="display: none;"></div>
 
         <div class="controls">
             <button class="btn-primary" id="next-btn" disabled data-i18n="quiz.nextBtn">Next Question</button>
@@ -234,10 +239,9 @@
     <div class="results-container" id="results-view">
         <div class="meta-info">
             <h2 data-i18n="results.title">Exam Summary</h2>
-            <button class="btn-exit" id="results-tts-btn" style="display: none;" data-i18n="quiz.readAloudBtn">🔊 Read</button>
-            <button class="btn-exit" id="results-exit-btn" data-i18n="quiz.exitBtn">Exit</button>
+            <button class="btn-danger" id="results-exit-btn" style="display: none;" data-i18n="quiz.exitBtn">Exit</button>
         </div>
-        <div id="status-badge" class="status-badge">PASSED</div>
+        <div id="status-badge" class="status-badge"></div>
         
         <!-- Overall Statistics -->
         <div class="stats-grid">
@@ -254,10 +258,31 @@
                 <div class="stat-value text-danger" id="stat-incorrect">0</div>
             </div>
             <div class="stat-card">
-                <div class="stat-label" data-i18n="results.passRate">Pass Rate</div>
+                <div class="stat-label" data-i18n="results.examPassRate">Exam Pass Rate</div>
+                <div class="stat-value" id="stat-required-rate">0%</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label" data-i18n="results.yourPassRate">Your Pass Rate</div>
                 <div class="stat-value" id="stat-rate">0%</div>
             </div>
+            <div class="stat-card">
+                <div class="stat-label" data-i18n="results.passedCategories">Passed Categories</div>
+                <div class="stat-value" id="stat-passed-categories">0/0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label" data-i18n="results.strongestCategory">Strongest Category</div>
+                <div class="stat-value" id="stat-strongest-category">—</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label" data-i18n="results.weakestCategory">Weakest Category</div>
+                <div class="stat-value" id="stat-weakest-category">—</div>
+            </div>
         </div>
+
+        <div id="results-overview" class="results-overview"></div>
+
+        <!-- Human readable reasons for failure/pass -->
+        <div id="results-reasons" class="results-reasons"></div>
 
         <!-- Category Breakdown -->
         <div class="table-responsive">

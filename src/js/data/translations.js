@@ -5,7 +5,10 @@ export const translations = {
       subtitle: "Even geduld a.u.b."
     },
     header: {
-      title: "CBR Rijtheorie Oefenen (Categorie B)"
+      title: "CBR Rijtheorie Oefenen (Categorie B)",
+      exitBtn: "Afsluiten",
+      readAloudBtn: "Voorlezen",
+      stopReadingBtn: "Stop"
     },
     menu: {
       description: "Oefenexamen dat het officiële CBR theorie-examen simuleert.",
@@ -42,15 +45,15 @@ export const translations = {
       explanation: "Uitleg:",
       timeout: "Tijd Is Om!",
       exitBtn: "Afsluiten",
-      readAloudBtn: "🔊 Voorlezen",
-      stopReadingBtn: "⏹️ Stop"
+      readAloudBtn: "Voorlezen",
+      stopReadingBtn: "Stop"
     },
     modal: {
       exitTitle: "Examen Afsluiten?",
       exitMessage: "Weet je zeker dat je wilt afsluiten? Je voortgang wordt niet opgeslagen.",
       cancel: "Annuleren",
       confirm: "Afsluiten",
-      resetTitle: "Reset naar Standaard?",
+      resetTitle: "Reset opties naar standaard?",
       resetMessage: "Weet je zeker dat je alle instellingen wilt resetten naar de standaardwaarden?"
     },
     results: {
@@ -67,7 +70,12 @@ export const translations = {
       totalQuestions: "Totaal Vragen",
       correctAnswers: "Juiste Antwoorden",
       incorrectAnswers: "Foute Antwoorden",
-      passRate: "Slagingspercentage",
+      examPassRate: "Vereist slagingspercentage",
+      yourPassRate: "Jouw slagingspercentage",
+      passRate: "Jouw slagingspercentage",
+      passedCategories: "Geslaagde categorieën",
+      strongestCategory: "Sterkste categorie",
+      weakestCategory: "Zwakste categorie",
       timeSpent: "Tijd Besteed",
       detailedBreakdown: "Gedetailleerde Vraaganalyse",
       showAllAnswers: "Toon Alle Antwoorden",
@@ -100,7 +108,7 @@ export const translations = {
       soundFxHint: "Speel geluiden af voor klikken en antwoorden",
       fontSizeTitle: "Lettergrootte",
       fontSizePreview: "Voorbeeld tekst",
-      resetDefaults: "Reset naar Standaard"
+      resetDefaults: "Reset opties naar standaard"
     }
   },
   en: {
@@ -109,7 +117,10 @@ export const translations = {
       subtitle: "Please wait a moment"
     },
     header: {
-      title: "CBR Driving Theory Practice (Category B)"
+      title: "CBR Driving Theory Practice (Category B)",
+      exitBtn: "Exit",
+      readAloudBtn: "Read aloud",
+      stopReadingBtn: "Stop"
     },
     menu: {
       description: "Practice exam simulating the official CBR theory test.",
@@ -146,15 +157,15 @@ export const translations = {
       explanation: "Explanation:",
       timeout: "Time's Up!",
       exitBtn: "Exit",
-      readAloudBtn: "🔊 Read",
-      stopReadingBtn: "⏹️ Stop"
+      readAloudBtn: "Read aloud",
+      stopReadingBtn: "Stop"
     },
     modal: {
       exitTitle: "Exit Exam?",
       exitMessage: "Are you sure you want to exit? Your progress will be lost.",
       cancel: "Cancel",
       confirm: "Exit",
-      resetTitle: "Reset to Defaults?",
+      resetTitle: "Reset options to default?",
       resetMessage: "Are you sure you want to reset all settings to default values?"
     },
     results: {
@@ -171,7 +182,12 @@ export const translations = {
       totalQuestions: "Total Questions",
       correctAnswers: "Correct Answers",
       incorrectAnswers: "Incorrect Answers",
-      passRate: "Pass Rate",
+      examPassRate: "Exam Pass Rate",
+      yourPassRate: "Your Pass Rate",
+      passRate: "Your Pass Rate",
+      passedCategories: "Passed Categories",
+      strongestCategory: "Strongest Category",
+      weakestCategory: "Weakest Category",
       timeSpent: "Time Spent",
       detailedBreakdown: "Detailed Question Analysis",
       showAllAnswers: "Show All Answers",
@@ -204,7 +220,7 @@ export const translations = {
       soundFxHint: "Play sounds for clicks and answers",
       fontSizeTitle: "Font Size",
       fontSizePreview: "Sample text",
-      resetDefaults: "Reset to Defaults"
+      resetDefaults: "Reset options to default"
     }
   }
 };
