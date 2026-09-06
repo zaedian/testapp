@@ -626,6 +626,7 @@ class ExamApp {
             });
         }
 
+        // FIX #13: guard exitModal listener like the others, instead of assuming it always exists
         if (exitModal) {
             exitModal.addEventListener("click", (e) => {
                 if (e.target === exitModal) {
@@ -852,6 +853,7 @@ class ExamApp {
             this.autoAdvanceTimeout = null;
         }
 
+        this.ui.resetState();
         this.ui.views.menu.classList.add("active");
         this.ui.views.quiz.classList.remove("active");
         this.ui.views.results.classList.remove("active");
@@ -913,6 +915,7 @@ class ExamApp {
             this.initAudioContext();
         }
 
+        this.ui.resetState();
         this.state.reset(questionCount, selectedModules, randomOrder);
         this.ui.showView("quiz");
         this.loadCurrentQuestion();
@@ -921,27 +924,43 @@ class ExamApp {
     loadCurrentQuestion() {
         this.timer.stop();
         const q = this.state.getCurrentQuestion();
+        const hasAnswered = this.state.hasAnsweredCurrent();
 
         this.ui.renderQuestion(
             q,
             this.state.currentIndex,
             this.state.questions.length,
-            (selectedIndex) => this.handleOptionSelect(selectedIndex),
-            this.feedbackMode
+            (selectedIndex) => this.handleOptionSelect(selectedIndex)
         );
 
-        const timeLimit = this.customTimeLimit || q.timeLimit;
+        // Hide timer on already-answered questions
+        const timerElement = document.getElementById('timer');
+        if (timerElement) {
+            timerElement.style.display = hasAnswered ? 'none' : 'inline-block';
+        }
 
-        this.timer.start(
-            timeLimit,
-            null,
-            () => this.handleOptionSelect(-1, true)
-        );
+        // Only start timer if question hasn't been answered yet
+        if (!hasAnswered) {
+            // FIX #15: ExamState doesn't always initialize questionTimerStates itself,
+            // so guard against it being undefined instead of crashing on [index] access.
+            if (!this.state.questionTimerStates) {
+                this.state.questionTimerStates = {};
+            }
+            const savedTime = this.state.questionTimerStates[this.state.currentIndex];
+            const timeLimit = savedTime || (this.customTimeLimit || q.timeLimit);
+
+            this.timer.start(
+                timeLimit,
+                null,
+                () => this.handleOptionSelect(-1, true)
+            );
+        }
 
         // FIX #2: Stop manual TTS flags cleanly without touching page/results/explanation flags
         this.stopManualTts();
 
         this.updateTtsButtonVisibility();
+        this.updateBackButtonVisibility();
 
         if (this.readAloudEnabled) {
             this.speakQuestion(q);
@@ -964,7 +983,9 @@ class ExamApp {
         if (this.feedbackMode === 'practice') {
             this.ui.showAnswerFeedback(index, q.answer, q.explanation, isTimeout);
         } else {
-            this.ui.enableNextButton();
+            if (this.ui.nextBtn) {
+                this.ui.nextBtn.disabled = false;
+            }
         }
 
         if (this.autoAdvanceEnabled) {
@@ -987,6 +1008,18 @@ class ExamApp {
         // FIX #5: Stop explanation/results TTS before advancing
         this.stopSpeech();
 
+        // FIX #14: Save the remaining time for the question we're LEAVING, before the
+        // index advances. Previously this was done inside loadCurrentQuestion(), which
+        // runs after the index had already changed, so the remaining time was saved
+        // under the wrong (new) question's slot instead of the one being left.
+        // FIX #15: guard against questionTimerStates being undefined.
+        if (this.timer.remaining > 0 && !this.state.hasAnsweredCurrent()) {
+            if (!this.state.questionTimerStates) {
+                this.state.questionTimerStates = {};
+            }
+            this.state.questionTimerStates[this.state.currentIndex] = this.timer.remaining;
+        }
+
         if (this.state.nextQuestion()) {
             this.loadCurrentQuestion();
         } else {
@@ -997,9 +1030,42 @@ class ExamApp {
     handlePreviousQuestion() {
         this.stopSpeech();
 
+        // FIX #14: Same fix as handleNextQuestion — save the outgoing question's
+        // remaining time before the index changes.
+        // FIX #15: guard against questionTimerStates being undefined.
+        if (this.timer.remaining > 0 && !this.state.hasAnsweredCurrent()) {
+            if (!this.state.questionTimerStates) {
+                this.state.questionTimerStates = {};
+            }
+            this.state.questionTimerStates[this.state.currentIndex] = this.timer.remaining;
+        }
+
         if (this.state.previousQuestion()) {
             this.loadCurrentQuestion();
+
+            // Show answer feedback if question was already answered
+            const q = this.state.getCurrentQuestion();
+            const hasAnswered = this.state.hasAnsweredCurrent();
+            if (hasAnswered) {
+                const userAnswer = this.state.userAnswers[this.state.currentIndex];
+                const isTimeout = userAnswer === -1;
+                this.ui.showAnswerFeedback(userAnswer, q.answer, q.explanation, isTimeout);
+            }
         }
+    }
+
+    // FIX #13 (main): This method was called from loadCurrentQuestion() but was never
+    // defined anywhere in the file. Calling an undefined method throws a TypeError,
+    // which silently aborted the rest of loadCurrentQuestion() every time a question
+    // loaded — meaning readAloudEnabled auto-play never ran, and the back button was
+    // never hidden on the first question (it stayed visible/enabled always).
+    updateBackButtonVisibility() {
+        const backBtn = document.getElementById('back-btn');
+        if (!backBtn) return;
+
+        const isFirstQuestion = !this.state || this.state.currentIndex === 0;
+        backBtn.style.display = isFirstQuestion ? 'none' : 'inline-block';
+        backBtn.disabled = isFirstQuestion;
     }
 
     showResults() {

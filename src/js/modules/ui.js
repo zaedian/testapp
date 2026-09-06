@@ -16,7 +16,10 @@ export class UIRenderer {
         this.questionText = document.getElementById("question-text");
         this.optionsContainer = document.getElementById("options-container");
         this.explanationBox = document.getElementById("explanation-box");
+        
+        // Navigation Buttons
         this.nextBtn = document.getElementById("next-btn");
+        this.prevBtn = document.getElementById("prev-btn");
 
         this.breakdownBody = document.getElementById("breakdown-body");
         this.statusBadge = document.getElementById("status-badge");
@@ -135,9 +138,13 @@ export class UIRenderer {
         if (this.categoryBadge) this.categoryBadge.textContent = question.category;
         
         const lang = this.currentLang;
-        const scenario = typeof question.scenario === 'object' ? question.scenario[lang] : question.scenario;
-        const questionText = typeof question.question === 'object' ? question.question[lang] : question.question;
-        const options = typeof question.options === 'object' ? question.options[lang] : question.options;
+
+        // Helper to safely resolve localized values
+        const getLocalized = (val) => (val && typeof val === 'object' && !Array.isArray(val)) ? val[lang] : val;
+
+        const scenario = getLocalized(question.scenario);
+        const questionText = getLocalized(question.question);
+        const options = getLocalized(question.options) || [];
 
         if (this.scenarioText) {
             const hasScenario = Boolean(scenario && String(scenario).trim());
@@ -157,15 +164,21 @@ export class UIRenderer {
             }
 
             const titleRow = this.questionText.parentElement;
-            if (titleRow && !titleRow.querySelector('#question-tts-btn')) {
-                const questionTtsBtn = document.createElement('button');
+            let questionTtsBtn = titleRow ? titleRow.querySelector('#question-tts-btn') : null;
+
+            if (titleRow && !questionTtsBtn) {
+                questionTtsBtn = document.createElement('button');
                 questionTtsBtn.type = 'button';
                 questionTtsBtn.id = 'question-tts-btn';
                 questionTtsBtn.className = 'control-btn header-read-btn question-tts-btn';
                 questionTtsBtn.innerHTML = '<span class="header-read-icon" aria-hidden="true">🔊</span><span class="header-read-state-icon" aria-hidden="true">🔇</span>';
-                questionTtsBtn.title = lang === 'nl' ? 'Vraag voorlezen' : 'Read question aloud';
-                questionTtsBtn.setAttribute('aria-label', lang === 'nl' ? 'Vraag voorlezen' : 'Read question aloud');
                 titleRow.appendChild(questionTtsBtn);
+            }
+
+            if (questionTtsBtn) {
+                const ttsLabel = lang === 'nl' ? 'Vraag voorlezen' : 'Read question aloud';
+                questionTtsBtn.title = ttsLabel;
+                questionTtsBtn.setAttribute('aria-label', ttsLabel);
             }
 
             this.questionText.textContent = questionText || '';
@@ -175,6 +188,7 @@ export class UIRenderer {
             this.explanationBox.style.display = "none";
         }
 
+        // Handle Next Button
         if (this.nextBtn) {
             this.nextBtn.disabled = true;
             const finishText = this.getTranslation("buttons.finishExam", lang === "nl" ? "Examen Beëindigen" : "Finish Exam");
@@ -182,23 +196,33 @@ export class UIRenderer {
             this.nextBtn.textContent = (currentIndex === totalQuestions - 1) ? finishText : nextText;
         }
 
-        // Shuffle options and maintain mapping for this question index
-        if (!this.optionOrderByQuestionIndex.has(currentIndex)) {
-            const shuffledOptions = options.map((opt, idx) => ({ text: opt, originalIndex: idx }));
-            this.shuffleArray(shuffledOptions);
-            this.optionOrderByQuestionIndex.set(currentIndex, shuffledOptions);
+        // Handle Previous Button (Hide / Disable on first question)
+        if (this.prevBtn) {
+            const isFirstQuestion = currentIndex === 0;
+            this.prevBtn.disabled = isFirstQuestion;
+            this.prevBtn.style.display = isFirstQuestion ? "none" : "";
+            const prevText = this.getTranslation("buttons.prevQuestion", lang === "nl" ? "Vorige Vraag" : "Previous Question");
+            this.prevBtn.textContent = prevText;
         }
 
-        const shuffledOptions = this.optionOrderByQuestionIndex.get(currentIndex);
+        // Cache option order indices only when options are present
+        if (!this.optionOrderByQuestionIndex.has(currentIndex) && options.length > 0) {
+            const indices = options.map((_, idx) => idx);
+            this.shuffleArray(indices);
+            this.optionOrderByQuestionIndex.set(currentIndex, indices);
+        }
+
+        const shuffledIndices = this.optionOrderByQuestionIndex.get(currentIndex) || options.map((_, idx) => idx);
         const fragment = document.createDocumentFragment();
         const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
 
-        shuffledOptions.forEach((item, idx) => {
+        shuffledIndices.forEach((originalIndex, idx) => {
             const btn = document.createElement("button");
             btn.className = "option-btn";
             const displayLetter = letters[idx] || String.fromCharCode(65 + idx);
-            btn.textContent = `${displayLetter}. ${item.text}`;
-            btn.dataset.index = item.originalIndex;
+            
+            btn.textContent = `${displayLetter}. ${options[originalIndex] || ''}`;
+            btn.dataset.index = originalIndex;
             btn.dataset.displayLetter = displayLetter;
             btn.dataset.letter = displayLetter;
             fragment.appendChild(btn);
@@ -380,7 +404,6 @@ export class UIRenderer {
             `;
         }
 
-        // Render breakdown safely without unsafe innerHTML
         if (this.breakdownBody) {
             const fragment = document.createDocumentFragment();
             for (const [cat, data] of Object.entries(breakdown)) {
@@ -457,14 +480,14 @@ export class UIRenderer {
             const options = typeof result.question.options === 'object' ? result.question.options[lang] : result.question.options;
             const expText = typeof result.question.explanation === 'object' ? result.question.explanation[lang] : result.question.explanation;
             
-            // Resolve actual display letter shown to user during test
+            // Resolve display letters shown during the test
             const shuffledOrder = this.optionOrderByQuestionIndex.get(result.questionIndex);
             let userDisplayLetter = '-';
             let correctDisplayLetter = '-';
 
             if (shuffledOrder) {
-                const userPos = shuffledOrder.findIndex(o => o.originalIndex === result.userAnswer);
-                const correctPos = shuffledOrder.findIndex(o => o.originalIndex === result.correctAnswer);
+                const userPos = shuffledOrder.indexOf(result.userAnswer);
+                const correctPos = shuffledOrder.indexOf(result.correctAnswer);
                 if (userPos !== -1) userDisplayLetter = letters[userPos];
                 if (correctPos !== -1) correctDisplayLetter = letters[correctPos];
             } else {
