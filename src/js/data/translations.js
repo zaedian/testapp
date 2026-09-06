@@ -53,6 +53,7 @@ export const translations = {
       exitMessage: "Weet je zeker dat je wilt afsluiten? Je voortgang wordt niet opgeslagen.",
       cancel: "Annuleren",
       confirm: "Afsluiten",
+      confirmReset: "Reset",
       resetTitle: "Reset opties naar standaard?",
       resetMessage: "Weet je zeker dat je alle instellingen wilt resetten naar de standaardwaarden?"
     },
@@ -181,6 +182,7 @@ export const translations = {
       exitMessage: "Are you sure you want to exit? Your progress will be lost.",
       cancel: "Cancel",
       confirm: "Exit",
+      confirmReset: "Reset",
       resetTitle: "Reset options to default?",
       resetMessage: "Are you sure you want to reset all settings to default values?"
     },

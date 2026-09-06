@@ -671,8 +671,10 @@ class ExamApp {
         const t = (window.translations && window.translations[lang] && window.translations[lang].modal) || {};
         const modalTitle = exitModal.querySelector("h3");
         const modalMessage = exitModal.querySelector("p");
+        const modalConfirmBtn = document.getElementById("modal-confirm-btn");
         if (modalTitle) modalTitle.textContent = t.exitTitle || "Exit?";
         if (modalMessage) modalMessage.textContent = t.exitMessage || "Are you sure you want to exit?";
+        if (modalConfirmBtn) modalConfirmBtn.textContent = t.confirm || "Exit";
 
         exitModal.style.display = "flex";
         exitModal.setAttribute('aria-hidden', 'false');
@@ -1647,12 +1649,14 @@ class ExamApp {
 
         const modalTitle = exitModal.querySelector("h3");
         const modalMessage = exitModal.querySelector("p");
+        const modalConfirmBtn = document.getElementById("modal-confirm-btn");
 
         const lang = this.currentLang;
         const t = (window.translations && window.translations[lang] && window.translations[lang].modal) || {};
 
         if (modalTitle) modalTitle.textContent = t.resetTitle || "Reset to Defaults?";
         if (modalMessage) modalMessage.textContent = t.resetMessage || "Are you sure you want to reset all settings to default values?";
+        if (modalConfirmBtn) modalConfirmBtn.textContent = t.confirmReset || "Reset";
 
         // FIX #4: Use _setModalConfirmAction so the listener is properly replaced
         this._setModalConfirmAction(() => {
