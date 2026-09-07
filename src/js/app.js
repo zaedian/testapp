@@ -320,14 +320,24 @@ class ExamApp {
                 if (isSpeaking) {
                     this._stopAllTts();
                 } else {
-                    if (this.readAloudEnabled) {
-                        this.readAloudEnabled = false;
-                        const readAloudCheckbox = document.getElementById('read-aloud-toggle');
-                        if (readAloudCheckbox) readAloudCheckbox.checked = false;
-                        this.safeSetStorage('cbr_read_aloud', this.readAloudEnabled);
-                        this.stopSpeech();
-                    } else {
-                        this.toggleManualTts();
+                    const menuView = document.getElementById('menu-view');
+                    const quizView = document.getElementById('quiz-view');
+                    const resultsView = document.getElementById('results-view');
+
+                    if (menuView && menuView.classList.contains('active')) {
+                        this.togglePageTts();
+                    } else if (quizView && quizView.classList.contains('active')) {
+                        if (this.readAloudEnabled) {
+                            this.readAloudEnabled = false;
+                            const readAloudCheckbox = document.getElementById('read-aloud-toggle');
+                            if (readAloudCheckbox) readAloudCheckbox.checked = false;
+                            this.safeSetStorage('cbr_read_aloud', this.readAloudEnabled);
+                            this.stopSpeech();
+                        } else {
+                            this.toggleManualTts();
+                        }
+                    } else if (resultsView && resultsView.classList.contains('active')) {
+                        this.toggleResultsTts();
                     }
                 }
 
