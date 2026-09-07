@@ -21,7 +21,7 @@ function supportsFlagEmoji() {
 
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/cbr/service-worker.js', { updateViaCache: 'none' })
+        navigator.serviceWorker.register('./service-worker.js', { updateViaCache: 'none' })
             .then(reg => console.log('SW registered with scope:', reg.scope))
             .catch(error => console.warn('SW registration failed:', error));
     });
